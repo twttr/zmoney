@@ -15,6 +15,9 @@
 		05B93E3025D0442F0089E7A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05B93E2E25D0442F0089E7A8 /* LaunchScreen.storyboard */; };
 		05B93E3B25D0442F0089E7A8 /* zmoneyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B93E3A25D0442F0089E7A8 /* zmoneyTests.swift */; };
 		05B93E4625D0442F0089E7A8 /* zmoneyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B93E4525D0442F0089E7A8 /* zmoneyUITests.swift */; };
+		5442A2E1A16ACDFE3EA473C8 /* Pods_zmoney_zmoneyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA355404053A7CED218A4354 /* Pods_zmoney_zmoneyUITests.framework */; };
+		D36D84F67B18323B33FCDBFB /* Pods_zmoney.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 957310B10DB177304FCD44E9 /* Pods_zmoney.framework */; };
+		DC44E7E2F6F4BF91E49774A0 /* Pods_zmoneyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23868946E70FC2287A02AE67 /* Pods_zmoneyTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,15 @@
 		05B93E4125D0442F0089E7A8 /* zmoneyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = zmoneyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		05B93E4525D0442F0089E7A8 /* zmoneyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = zmoneyUITests.swift; sourceTree = "<group>"; };
 		05B93E4725D0442F0089E7A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		23868946E70FC2287A02AE67 /* Pods_zmoneyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_zmoneyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D1226F424B06A39779B7676 /* Pods-zmoneyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zmoneyTests.debug.xcconfig"; path = "Target Support Files/Pods-zmoneyTests/Pods-zmoneyTests.debug.xcconfig"; sourceTree = "<group>"; };
+		34003AEE6E15B9BBD74D9309 /* Pods-zmoney-zmoneyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zmoney-zmoneyUITests.release.xcconfig"; path = "Target Support Files/Pods-zmoney-zmoneyUITests/Pods-zmoney-zmoneyUITests.release.xcconfig"; sourceTree = "<group>"; };
+		940334E206C842F52A2F7F1C /* Pods-zmoneyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zmoneyTests.release.xcconfig"; path = "Target Support Files/Pods-zmoneyTests/Pods-zmoneyTests.release.xcconfig"; sourceTree = "<group>"; };
+		957310B10DB177304FCD44E9 /* Pods_zmoney.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_zmoney.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B29313521288936CC02BDF12 /* Pods-zmoney.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zmoney.release.xcconfig"; path = "Target Support Files/Pods-zmoney/Pods-zmoney.release.xcconfig"; sourceTree = "<group>"; };
+		C90E6DE19B2FBB68F5DFABC9 /* Pods-zmoney.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zmoney.debug.xcconfig"; path = "Target Support Files/Pods-zmoney/Pods-zmoney.debug.xcconfig"; sourceTree = "<group>"; };
+		DA355404053A7CED218A4354 /* Pods_zmoney_zmoneyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_zmoney_zmoneyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4B127ADFF97C9E149A4ECA6 /* Pods-zmoney-zmoneyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zmoney-zmoneyUITests.debug.xcconfig"; path = "Target Support Files/Pods-zmoney-zmoneyUITests/Pods-zmoney-zmoneyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D36D84F67B18323B33FCDBFB /* Pods_zmoney.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC44E7E2F6F4BF91E49774A0 /* Pods_zmoneyTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5442A2E1A16ACDFE3EA473C8 /* Pods_zmoney_zmoneyUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +98,8 @@
 				05B93E3925D0442F0089E7A8 /* zmoneyTests */,
 				05B93E4425D0442F0089E7A8 /* zmoneyUITests */,
 				05B93E2125D0442E0089E7A8 /* Products */,
+				C1A0EA7354EB85D39B6584D6 /* Pods */,
+				7647DEE38BE90014AAE34358 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,6 +145,29 @@
 			path = zmoneyUITests;
 			sourceTree = "<group>";
 		};
+		7647DEE38BE90014AAE34358 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				957310B10DB177304FCD44E9 /* Pods_zmoney.framework */,
+				DA355404053A7CED218A4354 /* Pods_zmoney_zmoneyUITests.framework */,
+				23868946E70FC2287A02AE67 /* Pods_zmoneyTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C1A0EA7354EB85D39B6584D6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C90E6DE19B2FBB68F5DFABC9 /* Pods-zmoney.debug.xcconfig */,
+				B29313521288936CC02BDF12 /* Pods-zmoney.release.xcconfig */,
+				F4B127ADFF97C9E149A4ECA6 /* Pods-zmoney-zmoneyUITests.debug.xcconfig */,
+				34003AEE6E15B9BBD74D9309 /* Pods-zmoney-zmoneyUITests.release.xcconfig */,
+				2D1226F424B06A39779B7676 /* Pods-zmoneyTests.debug.xcconfig */,
+				940334E206C842F52A2F7F1C /* Pods-zmoneyTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +175,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 05B93E4A25D0442F0089E7A8 /* Build configuration list for PBXNativeTarget "zmoney" */;
 			buildPhases = (
+				480756737CBB81C1A48F9C38 /* [CP] Check Pods Manifest.lock */,
 				05B93E1C25D0442E0089E7A8 /* Sources */,
 				05B93E1D25D0442E0089E7A8 /* Frameworks */,
 				05B93E1E25D0442E0089E7A8 /* Resources */,
+				056F8AEF25F2CF02009DDFD0 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -152,6 +194,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 05B93E4D25D0442F0089E7A8 /* Build configuration list for PBXNativeTarget "zmoneyTests" */;
 			buildPhases = (
+				4E04E7AE5E0CFE618120C76E /* [CP] Check Pods Manifest.lock */,
 				05B93E3225D0442F0089E7A8 /* Sources */,
 				05B93E3325D0442F0089E7A8 /* Frameworks */,
 				05B93E3425D0442F0089E7A8 /* Resources */,
@@ -170,6 +213,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 05B93E5025D0442F0089E7A8 /* Build configuration list for PBXNativeTarget "zmoneyUITests" */;
 			buildPhases = (
+				2AA2168520546271F9DFC67B /* [CP] Check Pods Manifest.lock */,
 				05B93E3D25D0442F0089E7A8 /* Sources */,
 				05B93E3E25D0442F0089E7A8 /* Frameworks */,
 				05B93E3F25D0442F0089E7A8 /* Resources */,
@@ -252,6 +296,92 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		056F8AEF25F2CF02009DDFD0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		2AA2168520546271F9DFC67B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-zmoney-zmoneyUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		480756737CBB81C1A48F9C38 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-zmoney-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4E04E7AE5E0CFE618120C76E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-zmoneyTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		05B93E1C25D0442E0089E7A8 /* Sources */ = {
@@ -433,6 +563,7 @@
 		};
 		05B93E4B25D0442F0089E7A8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C90E6DE19B2FBB68F5DFABC9 /* Pods-zmoney.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -451,6 +582,7 @@
 		};
 		05B93E4C25D0442F0089E7A8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B29313521288936CC02BDF12 /* Pods-zmoney.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -469,6 +601,7 @@
 		};
 		05B93E4E25D0442F0089E7A8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2D1226F424B06A39779B7676 /* Pods-zmoneyTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -490,6 +623,7 @@
 		};
 		05B93E4F25D0442F0089E7A8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 940334E206C842F52A2F7F1C /* Pods-zmoneyTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -511,6 +645,7 @@
 		};
 		05B93E5125D0442F0089E7A8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F4B127ADFF97C9E149A4ECA6 /* Pods-zmoney-zmoneyUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -530,6 +665,7 @@
 		};
 		05B93E5225D0442F0089E7A8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 34003AEE6E15B9BBD74D9309 /* Pods-zmoney-zmoneyUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

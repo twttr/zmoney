@@ -1,0 +1,6 @@
+framework module Pods_zmoney_zmoneyUITests {
+  umbrella header "Pods-zmoney-zmoneyUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

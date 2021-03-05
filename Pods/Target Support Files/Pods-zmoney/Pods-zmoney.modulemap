@@ -1,0 +1,6 @@
+framework module Pods_zmoney {
+  umbrella header "Pods-zmoney-umbrella.h"
+
+  export *
+  module * { export * }
+}

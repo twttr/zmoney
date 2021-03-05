@@ -1,0 +1,6 @@
+framework module Pods_zmoneyTests {
+  umbrella header "Pods-zmoneyTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
