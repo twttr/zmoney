@@ -1,6 +1,13 @@
 zmoney iOS App
 ==================
 
+## How to build the project
+1. Install RVM
+2. Install Ruby
+2. Install cocoapods gem
+2. Run `pod install` in the repository root
+3. Open the project using .xcworkspace file
+
 Sample app for tracking expenses.
 
 ## Use Cases
