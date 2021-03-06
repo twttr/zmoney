@@ -6,7 +6,7 @@ target 'zmoney' do
   use_frameworks!
 
   # Pods for zmoney
-  pod 'SwiftLint'
+  pod 'SwiftLint', '~> 0.43.0'
 
   target 'zmoneyTests' do
     inherit! :search_paths
