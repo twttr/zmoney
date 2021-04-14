@@ -49,7 +49,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
         if let url = URLContexts.first?.url {
-            Zservice().handleOauthRedirect(url: url)
+            let defaults = UserDefaults.standard
+            Zservice().handleOauthRedirect(url: url) { (result) in
+                switch result {
+                case .success(let response):
+                    defaults.set(response.accessToken, forKey: "accessToken")
+                    defaults.set(response.expiresIn, forKey: "expiresIn")
+                    defaults.set(response.refreshToken, forKey: "refreshToken")
+                    defaults.set(response.tokenType, forKey: "tokenType")
+                case .failure(let error):
+                    print(error)
+                }
+            }
         }
     }
 }

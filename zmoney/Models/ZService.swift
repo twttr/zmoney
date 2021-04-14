@@ -23,35 +23,36 @@ struct Zservice {
         UIApplication.shared.open(url)
     }
 
-    func handleOauthRedirect(url: URL) {
+    func handleOauthRedirect(url: URL, withCompletion completion: @escaping (Result<AuthResponse, Error>) -> Void) {
         let urlString = "\(url)"
         if let regex = try? NSRegularExpression(pattern: "[a-zA-Z0-9]{30}") {
             let results = regex.matches(in: urlString, range: NSRange(urlString.startIndex..., in: urlString))
             let token = results.map { String(urlString[Range($0.range, in: urlString)!]) }.first!
             let dataString = """
-                grant_type=authorization_code&
-                client_id=\(clientId)&
-                client_secret=\(clienSecret)&
-                code=\(token)&
-                redirect_uri=\(redirectUri)
-            """.data(using: .utf8)
+            grant_type=authorization_code&\
+            client_id=\(clientId)&\
+            client_secret=\(clienSecret)&\
+            code=\(token)&\
+            redirect_uri=\(redirectUri)
+            """
+            let dataStringEncoded = dataString.data(using: .utf8)
 
             networkService.sendRequest(
                 to: requestTokenUrl,
-                withData: dataString,
+                withData: dataStringEncoded,
                 withHeaders: ["Content-Type": "application/x-www-form-urlencoded"],
                 using: "POST"
             ) { (result) in
                 switch result {
                 case .failure(let error):
-                    print(error)
+                    completion(.failure(error))
                 case .success(let data):
                     let decoder = JSONDecoder()
                     do {
                         let decodedData = try decoder.decode(AuthResponse.self, from: data)
-                        print(decodedData.accessToken)
+                        completion(.success(decodedData))
                     } catch {
-                        print(error)
+                        completion(.failure(error))
                     }
                 }
             }

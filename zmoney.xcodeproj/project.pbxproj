@@ -3,18 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		056F8B0E25F6B314009DDFD0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05B93E2925D0442E0089E7A8 /* Main.storyboard */; };
 		05AD5F3F2624B9B700355F1B /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD5F3E2624B9B700355F1B /* NetworkRequest.swift */; };
 		05AD5F472624BC6300355F1B /* ZService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD5F462624BC6300355F1B /* ZService.swift */; };
-		05AD5F532624C9A700355F1B /* OAuth2 in Frameworks */ = {isa = PBXBuildFile; productRef = 05AD5F522624C9A700355F1B /* OAuth2 */; };
 		05AD5F6226262CEE00355F1B /* AuthResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD5F6126262CEE00355F1B /* AuthResponseModel.swift */; };
+		05AD5F6E262755B300355F1B /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD5F6D262755B300355F1B /* TabBarViewController.swift */; };
+		05AD5F7326275B3D00355F1B /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD5F7226275B3D00355F1B /* NetworkError.swift */; };
 		05B93E2425D0442E0089E7A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B93E2325D0442E0089E7A8 /* AppDelegate.swift */; };
 		05B93E2625D0442E0089E7A8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B93E2525D0442E0089E7A8 /* SceneDelegate.swift */; };
-		05B93E2825D0442E0089E7A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B93E2725D0442E0089E7A8 /* ViewController.swift */; };
+		05B93E2825D0442E0089E7A8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B93E2725D0442E0089E7A8 /* LoginViewController.swift */; };
 		05B93E2D25D0442F0089E7A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05B93E2C25D0442F0089E7A8 /* Assets.xcassets */; };
 		05B93E3025D0442F0089E7A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05B93E2E25D0442F0089E7A8 /* LaunchScreen.storyboard */; };
 		05B93E3B25D0442F0089E7A8 /* zmoneyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B93E3A25D0442F0089E7A8 /* zmoneyTests.swift */; };
@@ -45,10 +46,12 @@
 		05AD5F3E2624B9B700355F1B /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		05AD5F462624BC6300355F1B /* ZService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZService.swift; sourceTree = "<group>"; };
 		05AD5F6126262CEE00355F1B /* AuthResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponseModel.swift; sourceTree = "<group>"; };
+		05AD5F6D262755B300355F1B /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		05AD5F7226275B3D00355F1B /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		05B93E2025D0442E0089E7A8 /* zmoney.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = zmoney.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05B93E2325D0442E0089E7A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05B93E2525D0442E0089E7A8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		05B93E2725D0442E0089E7A8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		05B93E2725D0442E0089E7A8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		05B93E2A25D0442E0089E7A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		05B93E2C25D0442F0089E7A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		05B93E2F25D0442F0089E7A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -75,7 +78,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05AD5F532624C9A700355F1B /* OAuth2 in Frameworks */,
 				D36D84F67B18323B33FCDBFB /* Pods_zmoney.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -105,6 +107,7 @@
 				05AD5F3E2624B9B700355F1B /* NetworkRequest.swift */,
 				05AD5F462624BC6300355F1B /* ZService.swift */,
 				05AD5F6126262CEE00355F1B /* AuthResponseModel.swift */,
+				05AD5F7226275B3D00355F1B /* NetworkError.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -121,7 +124,8 @@
 		05AD5F3B2624B5FF00355F1B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				05B93E2725D0442E0089E7A8 /* ViewController.swift */,
+				05B93E2725D0442E0089E7A8 /* LoginViewController.swift */,
+				05AD5F6D262755B300355F1B /* TabBarViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -222,7 +226,6 @@
 			);
 			name = zmoney;
 			packageProductDependencies = (
-				05AD5F522624C9A700355F1B /* OAuth2 */,
 			);
 			productName = zmoney;
 			productReference = 05B93E2025D0442E0089E7A8 /* zmoney.app */;
@@ -298,7 +301,6 @@
 			);
 			mainGroup = 05B93E1725D0442E0089E7A8;
 			packageReferences = (
-				05AD5F512624C9A700355F1B /* XCRemoteSwiftPackageReference "OAuth2" */,
 			);
 			productRefGroup = 05B93E2125D0442E0089E7A8 /* Products */;
 			projectDirPath = "";
@@ -430,9 +432,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				05AD5F6226262CEE00355F1B /* AuthResponseModel.swift in Sources */,
-				05B93E2825D0442E0089E7A8 /* ViewController.swift in Sources */,
+				05AD5F7326275B3D00355F1B /* NetworkError.swift in Sources */,
+				05B93E2825D0442E0089E7A8 /* LoginViewController.swift in Sources */,
 				05B93E2425D0442E0089E7A8 /* AppDelegate.swift in Sources */,
 				05AD5F3F2624B9B700355F1B /* NetworkRequest.swift in Sources */,
+				05AD5F6E262755B300355F1B /* TabBarViewController.swift in Sources */,
 				05B93E2625D0442E0089E7A8 /* SceneDelegate.swift in Sources */,
 				05AD5F472624BC6300355F1B /* ZService.swift in Sources */,
 			);
@@ -767,25 +771,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		05AD5F512624C9A700355F1B /* XCRemoteSwiftPackageReference "OAuth2" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/p2/OAuth2.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.3.1;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		05AD5F522624C9A700355F1B /* OAuth2 */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 05AD5F512624C9A700355F1B /* XCRemoteSwiftPackageReference "OAuth2" */;
-			productName = OAuth2;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 05B93E1825D0442E0089E7A8 /* Project object */;
 }
