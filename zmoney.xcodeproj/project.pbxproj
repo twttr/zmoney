@@ -15,6 +15,8 @@
 		05AD5F7326275B3D00355F1B /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD5F7226275B3D00355F1B /* NetworkError.swift */; };
 		05AD5F822628B43500355F1B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD5F812628B43500355F1B /* ProfileViewController.swift */; };
 		05AD5F872628B48300355F1B /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD5F862628B48300355F1B /* TransactionsViewController.swift */; };
+		05AD5F9D2628CBDD00355F1B /* DiffRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD5F9C2628CBDD00355F1B /* DiffRequestModel.swift */; };
+		05AD5FA22628D0CD00355F1B /* DiffResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD5FA12628D0CD00355F1B /* DiffResponseModel.swift */; };
 		05B93E2425D0442E0089E7A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B93E2325D0442E0089E7A8 /* AppDelegate.swift */; };
 		05B93E2625D0442E0089E7A8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B93E2525D0442E0089E7A8 /* SceneDelegate.swift */; };
 		05B93E2825D0442E0089E7A8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B93E2725D0442E0089E7A8 /* LoginViewController.swift */; };
@@ -52,6 +54,8 @@
 		05AD5F7226275B3D00355F1B /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		05AD5F812628B43500355F1B /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		05AD5F862628B48300355F1B /* TransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewController.swift; sourceTree = "<group>"; };
+		05AD5F9C2628CBDD00355F1B /* DiffRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffRequestModel.swift; sourceTree = "<group>"; };
+		05AD5FA12628D0CD00355F1B /* DiffResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffResponseModel.swift; sourceTree = "<group>"; };
 		05B93E2025D0442E0089E7A8 /* zmoney.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = zmoney.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05B93E2325D0442E0089E7A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05B93E2525D0442E0089E7A8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +116,8 @@
 				05AD5F462624BC6300355F1B /* ZService.swift */,
 				05AD5F6126262CEE00355F1B /* AuthResponseModel.swift */,
 				05AD5F7226275B3D00355F1B /* NetworkError.swift */,
+				05AD5F9C2628CBDD00355F1B /* DiffRequestModel.swift */,
+				05AD5FA12628D0CD00355F1B /* DiffResponseModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -442,11 +448,13 @@
 				05B93E2825D0442E0089E7A8 /* LoginViewController.swift in Sources */,
 				05B93E2425D0442E0089E7A8 /* AppDelegate.swift in Sources */,
 				05AD5F872628B48300355F1B /* TransactionsViewController.swift in Sources */,
+				05AD5F9D2628CBDD00355F1B /* DiffRequestModel.swift in Sources */,
 				05AD5F3F2624B9B700355F1B /* NetworkRequest.swift in Sources */,
 				05AD5F6E262755B300355F1B /* TabBarViewController.swift in Sources */,
 				05AD5F822628B43500355F1B /* ProfileViewController.swift in Sources */,
 				05B93E2625D0442E0089E7A8 /* SceneDelegate.swift in Sources */,
 				05AD5F472624BC6300355F1B /* ZService.swift in Sources */,
+				05AD5FA22628D0CD00355F1B /* DiffResponseModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

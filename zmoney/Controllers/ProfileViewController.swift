@@ -21,7 +21,6 @@ class ProfileViewController: UIViewController {
         defaults.removeObject(forKey: "expiresIn")
         defaults.removeObject(forKey: "refreshToken")
         defaults.removeObject(forKey: "tokenType")
-        //self.tabBarController?.view.removeFromSuperview()
         if let destinationVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") {
             destinationVC.modalPresentationStyle = .fullScreen
             present(destinationVC, animated: true, completion: nil)
