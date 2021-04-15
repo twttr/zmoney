@@ -11,12 +11,23 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    let defaults = UserDefaults.standard
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        let rootVC: UIViewController
+
+        self.window = UIWindow(windowScene: windowScene)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let accessToken = defaults.string(forKey: "accessToken"), !accessToken.isEmpty {
+            rootVC = storyboard.instantiateViewController(identifier: "TabBarViewController")
+            rootVC.modalPresentationStyle = .fullScreen
+        } else {
+            rootVC = storyboard.instantiateViewController(identifier: "LoginViewController")
+        }
+
+        self.window?.rootViewController = rootVC
+        self.window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -49,8 +60,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
         if let url = URLContexts.first?.url {
-            let defaults = UserDefaults.standard
-            Zservice().handleOauthRedirect(url: url) { (result) in
+            Zservice().handleOauthRedirect(url: url) { [self] (result) in
                 switch result {
                 case .success(let response):
                     defaults.set(response.accessToken, forKey: "accessToken")
