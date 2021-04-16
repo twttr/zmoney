@@ -38,8 +38,8 @@ struct Zservice {
             networkService.sendRequest(
                 to: urlString,
                 withData: diffData,
-                withHeaders: ["Content-Type": "application/json"],
-                using: "GET") { (result) in
+                withHeaders: ["Content-Type": "application/json", "Authorization": "Bearer \(defaults.string(forKey: "accessToken")!)"],
+                using: "POST") { (result) in
                 switch result {
                 case .failure(let error):
                     completion(.failure(error))

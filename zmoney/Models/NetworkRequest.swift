@@ -23,7 +23,6 @@ struct NetworkRequest: NetworkRequestType {
             }
         }
         request.httpBody = data
-
         let session = URLSession.shared
         session.dataTask(with: request) { (data, response, error) in
             if let httpResponse = response as? HTTPURLResponse, (400...600).contains(httpResponse.statusCode) {

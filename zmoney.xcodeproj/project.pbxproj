@@ -24,6 +24,7 @@
 		05B93E3025D0442F0089E7A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05B93E2E25D0442F0089E7A8 /* LaunchScreen.storyboard */; };
 		05B93E3B25D0442F0089E7A8 /* zmoneyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B93E3A25D0442F0089E7A8 /* zmoneyTests.swift */; };
 		05B93E4625D0442F0089E7A8 /* zmoneyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B93E4525D0442F0089E7A8 /* zmoneyUITests.swift */; };
+		05D3E9B8262A001300E9C234 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D3E9B7262A001300E9C234 /* TransactionCell.swift */; };
 		5442A2E1A16ACDFE3EA473C8 /* Pods_zmoney_zmoneyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA355404053A7CED218A4354 /* Pods_zmoney_zmoneyUITests.framework */; };
 		D36D84F67B18323B33FCDBFB /* Pods_zmoney.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 957310B10DB177304FCD44E9 /* Pods_zmoney.framework */; };
 		DC44E7E2F6F4BF91E49774A0 /* Pods_zmoneyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23868946E70FC2287A02AE67 /* Pods_zmoneyTests.framework */; };
@@ -70,6 +71,7 @@
 		05B93E4125D0442F0089E7A8 /* zmoneyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = zmoneyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		05B93E4525D0442F0089E7A8 /* zmoneyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = zmoneyUITests.swift; sourceTree = "<group>"; };
 		05B93E4725D0442F0089E7A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		05D3E9B7262A001300E9C234 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
 		23868946E70FC2287A02AE67 /* Pods_zmoneyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_zmoneyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D1226F424B06A39779B7676 /* Pods-zmoneyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zmoneyTests.debug.xcconfig"; path = "Target Support Files/Pods-zmoneyTests/Pods-zmoneyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		34003AEE6E15B9BBD74D9309 /* Pods-zmoney-zmoneyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zmoney-zmoneyUITests.release.xcconfig"; path = "Target Support Files/Pods-zmoney-zmoneyUITests/Pods-zmoney-zmoneyUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				05AD5F3E2624B9B700355F1B /* NetworkRequest.swift */,
+				05D3E9B7262A001300E9C234 /* TransactionCell.swift */,
 				05AD5F462624BC6300355F1B /* ZService.swift */,
 				05AD5F6126262CEE00355F1B /* AuthResponseModel.swift */,
 				05AD5F7226275B3D00355F1B /* NetworkError.swift */,
@@ -452,6 +455,7 @@
 				05AD5F3F2624B9B700355F1B /* NetworkRequest.swift in Sources */,
 				05AD5F6E262755B300355F1B /* TabBarViewController.swift in Sources */,
 				05AD5F822628B43500355F1B /* ProfileViewController.swift in Sources */,
+				05D3E9B8262A001300E9C234 /* TransactionCell.swift in Sources */,
 				05B93E2625D0442E0089E7A8 /* SceneDelegate.swift in Sources */,
 				05AD5F472624BC6300355F1B /* ZService.swift in Sources */,
 				05AD5FA22628D0CD00355F1B /* DiffResponseModel.swift in Sources */,
