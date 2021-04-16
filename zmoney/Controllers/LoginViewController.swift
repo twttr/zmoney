@@ -8,6 +8,7 @@
 import UIKit
 
 class LoginViewController: UIViewController {
+    @IBOutlet weak var loginButton: UIButton!
     var isObserving = false
 
     deinit {
@@ -20,6 +21,7 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        loginButton.layer.cornerRadius = 5
     }
 
     override func viewDidAppear(_ animated: Bool) {
