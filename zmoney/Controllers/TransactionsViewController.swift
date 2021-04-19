@@ -10,14 +10,14 @@ import UIKit
 class TransactionsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
-    let zservice = Zservice()
+    let zService = Zservice.shared
     var transactionsList = [Transaction]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        zservice.getDiff { (result) in
+        zService.getDiff { (result) in
             switch result {
             case .success(let diffResponse):
                 self.transactionsList = diffResponse.transaction

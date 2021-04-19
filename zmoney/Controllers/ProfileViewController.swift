@@ -16,11 +16,7 @@ class ProfileViewController: UIViewController {
     }
 
     @IBAction func logOutButtonTapped(_ sender: UIButton) {
-        let defaults = UserDefaults.standard
-        defaults.removeObject(forKey: "accessToken")
-        defaults.removeObject(forKey: "expiresIn")
-        defaults.removeObject(forKey: "refreshToken")
-        defaults.removeObject(forKey: "tokenType")
+        Zservice.shared.logout()
         if let destinationVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") {
             destinationVC.modalPresentationStyle = .fullScreen
             present(destinationVC, animated: true, completion: nil)

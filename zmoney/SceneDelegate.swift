@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         self.window = UIWindow(windowScene: windowScene)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let accessToken = defaults.string(forKey: "accessToken"), !accessToken.isEmpty {
+        if Zservice.shared.isLoggedIn {
             rootVC = storyboard.instantiateViewController(identifier: "TabBarViewController")
             rootVC.modalPresentationStyle = .fullScreen
         } else {
@@ -59,18 +59,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-        if let url = URLContexts.first?.url {
-            Zservice().handleOauthRedirect(url: url) { [self] (result) in
-                switch result {
-                case .success(let response):
-                    defaults.set(response.accessToken, forKey: "accessToken")
-                    defaults.set(response.expiresIn, forKey: "expiresIn")
-                    defaults.set(response.refreshToken, forKey: "refreshToken")
-                    defaults.set(response.tokenType, forKey: "tokenType")
-                case .failure(let error):
-                    print(error)
-                }
-            }
-        }
+        Zservice().handleOauthRedirect(url: URLContexts.first?.url)
     }
 }

@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 
 struct Zservice {
+    static let shared = Zservice()
+
     let apiUrl = "https://api.zenmoney.ru/"
     let clientId = "gcd083e97524bce251e4d6d5e9cd71"
     let clienSecret = "955b0c91d2"
@@ -16,12 +18,19 @@ struct Zservice {
     let authUrl = "https://api.zenmoney.ru/oauth2/authorize/"
     let requestTokenUrl = "https://api.zenmoney.ru/oauth2/token/"
     let networkService = NetworkRequest()
+    var isLoggedIn: Bool {
+        TokenService.shared.isTokenPresent()
+    }
 
     func auth() {
         guard let url = URL(
                 string: authUrl + "?response_type=code&client_id=\(clientId)&redirect_uri=\(redirectUri)"
         ) else { return }
         UIApplication.shared.open(url)
+    }
+
+    func logout() {
+        TokenService.shared.removeToken()
     }
 
     func getDiff(withCompletion completion: @escaping (Result<DiffResponseModel, Error>) -> Void) {
@@ -38,7 +47,10 @@ struct Zservice {
             networkService.sendRequest(
                 to: urlString,
                 withData: diffData,
-                withHeaders: ["Content-Type": "application/json", "Authorization": "Bearer \(defaults.string(forKey: "accessToken")!)"],
+                withHeaders: [
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer \(defaults.string(forKey: "accessToken")!)"
+                ],
                 using: "POST") { (result) in
                 switch result {
                 case .failure(let error):
@@ -59,8 +71,9 @@ struct Zservice {
 
     }
 
-    func handleOauthRedirect(url: URL, withCompletion completion: @escaping (Result<AuthResponse, Error>) -> Void) {
-        let urlString = "\(url)"
+    func handleOauthRedirect(url: URL?) {
+        guard let unwrappedUrl = url else { return }
+        let urlString = "\(unwrappedUrl)"
         if let regex = try? NSRegularExpression(pattern: "[a-zA-Z0-9]{30}") {
             let results = regex.matches(in: urlString, range: NSRange(urlString.startIndex..., in: urlString))
             let token = results.map { String(urlString[Range($0.range, in: urlString)!]) }.first!
@@ -81,14 +94,15 @@ struct Zservice {
             ) { (result) in
                 switch result {
                 case .failure(let error):
-                    completion(.failure(error))
+                    print(error.localizedDescription)
                 case .success(let data):
                     let decoder = JSONDecoder()
                     do {
                         let decodedData = try decoder.decode(AuthResponse.self, from: data)
-                        completion(.success(decodedData))
+                        TokenService.shared.saveToken(from: decodedData)
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "LoggedIn"), object: nil)
                     } catch {
-                        completion(.failure(error))
+                        print(error.localizedDescription)
                     }
                 }
             }

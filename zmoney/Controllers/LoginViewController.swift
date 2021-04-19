@@ -9,15 +9,6 @@ import UIKit
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
-    var isObserving = false
-
-    deinit {
-        if isObserving {
-            UserDefaults.standard.removeObserver(self, forKeyPath: "accessToken")
-        }
-    }
-
-    let zservice = Zservice()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,21 +17,19 @@ class LoginViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        UserDefaults.standard.addObserver(self, forKeyPath: "accessToken", options: .new, context: nil)
-        isObserving = true
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.navigateToTransactions),
+            name: NSNotification.Name(rawValue: "LoggedIn"),
+            object: nil
+        )
     }
+
     @IBAction func loginButtonTapped(_ sender: UIButton) {
-        zservice.auth()
+        Zservice.shared.auth()
     }
 
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
-        if isObserving {
-            UserDefaults.standard.removeObserver(self, forKeyPath: "accessToken")
-        }
-        navigateToTransactions()
-    }
-
-    func navigateToTransactions() {
+    @objc func navigateToTransactions() {
         if let destinationVC = self.storyboard?.instantiateViewController(withIdentifier: "TabBarViewController") {
             destinationVC.modalPresentationStyle = .fullScreen
             present(destinationVC, animated: true, completion: nil)
