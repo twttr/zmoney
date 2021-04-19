@@ -34,10 +34,10 @@ struct Zservice {
     }
 
     func getDiff(withCompletion completion: @escaping (Result<DiffResponseModel, Error>) -> Void) {
+        guard let accessToken = TokenService.shared.accessToken else { return }
         let urlString = apiUrl + "v8/diff/"
 
-        let defaults = UserDefaults.standard
-        let lastSyncTimeStamp = defaults.integer(forKey: "lastSyncTimeStamp")
+        let lastSyncTimeStamp = UserDefaults.standard.integer(forKey: "lastSyncTimeStamp")
 
         let currentTimestamp = Int(Date().timeIntervalSince1970)
         let diff = DiffRequestModel(currentClientTimestamp: currentTimestamp, serverTimestamp: lastSyncTimeStamp)
@@ -49,7 +49,7 @@ struct Zservice {
                 withData: diffData,
                 withHeaders: [
                     "Content-Type": "application/json",
-                    "Authorization": "Bearer \(defaults.string(forKey: "accessToken")!)"
+                    "Authorization": "Bearer \(accessToken)"
                 ],
                 using: "POST") { (result) in
                 switch result {

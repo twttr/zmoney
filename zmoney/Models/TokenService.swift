@@ -6,28 +6,36 @@
 //
 
 import Foundation
+import KeychainAccess
 
 struct TokenService {
+    var accessToken: String? {
+        return try? keychain.get("accessToken")
+    }
     static let shared = TokenService()
 
-    let defaults = UserDefaults.standard
+    let keychain = Keychain(service: "com.twttrio.zmoney")
 
     func saveToken(from responseData: AuthResponse) {
-        defaults.set(responseData.accessToken, forKey: "accessToken")
-        defaults.set(responseData.expiresIn, forKey: "expiresIn")
-        defaults.set(responseData.refreshToken, forKey: "refreshToken")
-        defaults.set(responseData.tokenType, forKey: "tokenType")
+        keychain["accessToken"] = responseData.accessToken
+        keychain["expiresIn"] = "\(responseData.expiresIn)"
+        keychain["refreshToken"] = responseData.refreshToken
+        keychain["tokenType"] = responseData.tokenType
     }
 
     func removeToken() {
-        defaults.removeObject(forKey: "accessToken")
-        defaults.removeObject(forKey: "expiresIn")
-        defaults.removeObject(forKey: "refreshToken")
-        defaults.removeObject(forKey: "tokenType")
+        do {
+            try keychain.remove("accessToken")
+            try keychain.remove("expiresIn")
+            try keychain.remove("refreshToken")
+            try keychain.remove("tokenType")
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 
     func isTokenPresent() -> Bool {
-        if let tokenString = defaults.string(forKey: "accessToken"), !tokenString.isEmpty {
+        if let tokenString = try? keychain.get("accessToken"), !tokenString.isEmpty {
             return true
         } else {
             return false

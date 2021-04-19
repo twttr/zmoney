@@ -237,14 +237,13 @@
 				05B93E1D25D0442E0089E7A8 /* Frameworks */,
 				05B93E1E25D0442E0089E7A8 /* Resources */,
 				056F8AEF25F2CF02009DDFD0 /* ShellScript */,
+				B18E37204F58F47CD51B551C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = zmoney;
-			packageProductDependencies = (
-			);
 			productName = zmoney;
 			productReference = 05B93E2025D0442E0089E7A8 /* zmoney.app */;
 			productType = "com.apple.product-type.application";
@@ -276,6 +275,7 @@
 				05B93E3D25D0442F0089E7A8 /* Sources */,
 				05B93E3E25D0442F0089E7A8 /* Frameworks */,
 				05B93E3F25D0442F0089E7A8 /* Resources */,
+				0528FEF1ED3159B3A671A818 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -318,8 +318,6 @@
 				Base,
 			);
 			mainGroup = 05B93E1725D0442E0089E7A8;
-			packageReferences = (
-			);
 			productRefGroup = 05B93E2125D0442E0089E7A8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -359,6 +357,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0528FEF1ED3159B3A671A818 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-zmoney-zmoneyUITests/Pods-zmoney-zmoneyUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-zmoney-zmoneyUITests/Pods-zmoney-zmoneyUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-zmoney-zmoneyUITests/Pods-zmoney-zmoneyUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		056F8AEF25F2CF02009DDFD0 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -440,6 +455,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B18E37204F58F47CD51B551C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-zmoney/Pods-zmoney-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-zmoney/Pods-zmoney-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-zmoney/Pods-zmoney-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
