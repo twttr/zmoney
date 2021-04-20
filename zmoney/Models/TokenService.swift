@@ -9,8 +9,12 @@ import Foundation
 import KeychainAccess
 
 struct TokenService {
-    public var accessToken: String? {
-        return try? keychain.get("accessToken")
+    public var accessToken: String {
+        do {
+            return try keychain.get("accessToken") ?? ""
+        } catch {
+            return ""
+        }
     }
     static let shared = TokenService()
 
@@ -31,14 +35,6 @@ struct TokenService {
             try keychain.remove("tokenType")
         } catch {
             print(error.localizedDescription)
-        }
-    }
-
-    func isTokenPresent() -> Bool {
-        if let tokenString = try? keychain.get("accessToken"), !tokenString.isEmpty {
-            return true
-        } else {
-            return false
         }
     }
 }

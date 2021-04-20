@@ -19,7 +19,7 @@ struct Zservice {
     private let requestTokenUrl = "https://api.zenmoney.ru/oauth2/token/"
     private let networkService = NetworkRequest()
     public var isLoggedIn: Bool {
-        TokenService.shared.isTokenPresent()
+        TokenService.shared.accessToken.isEmpty
     }
 
     func auth() {
@@ -34,7 +34,7 @@ struct Zservice {
     }
 
     func getDiff(withCompletion completion: @escaping (Result<DiffResponseModel, Error>) -> Void) {
-        guard let accessToken = TokenService.shared.accessToken else { return }
+        guard isLoggedIn else { return }
         let urlString = apiUrl + "v8/diff/"
 
         let lastSyncTimeStamp = UserDefaults.standard.integer(forKey: "lastSyncTimeStamp")
@@ -49,7 +49,7 @@ struct Zservice {
                 withData: diffData,
                 withHeaders: [
                     "Content-Type": "application/json",
-                    "Authorization": "Bearer \(accessToken)"
+                    "Authorization": "Bearer \(TokenService.shared.accessToken)"
                 ],
                 using: "POST") { (result) in
                 switch result {
