@@ -17,18 +17,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         self.window = UIWindow(windowScene: windowScene)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if Zservice.shared.isLoggedIn {
-            if let rootVC: TabBarViewController = storyboard.instantiateVC() {
-                rootVC.modalPresentationStyle = .fullScreen
-                self.window?.rootViewController = rootVC
-            }
-        } else {
-            if let rootVC: LoginViewController = storyboard.instantiateVC() {
-                rootVC.modalPresentationStyle = .fullScreen
-                self.window?.rootViewController = rootVC
-            }
-        }
-
+        let rootView = UIViewController()
+        let newView = Zservice.shared.isLoggedIn ?
+            rootView.presentView(view: TabBarViewController(), using: storyboard) :
+            rootView.presentView(view: LoginViewController(), using: storyboard)
+        self.window?.rootViewController = newView
         self.window?.makeKeyAndVisible()
     }
 
