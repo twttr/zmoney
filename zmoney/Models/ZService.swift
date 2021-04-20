@@ -19,7 +19,7 @@ struct Zservice {
     private let requestTokenUrl = "https://api.zenmoney.ru/oauth2/token/"
     private let networkService = NetworkRequest()
     public var isLoggedIn: Bool {
-        TokenService.shared.accessToken.isEmpty
+        !TokenService.shared.accessToken.isEmpty
     }
 
     func auth() {
