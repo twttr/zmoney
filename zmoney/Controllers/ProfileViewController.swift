@@ -17,7 +17,7 @@ class ProfileViewController: UIViewController {
 
     @IBAction func logOutButtonTapped(_ sender: UIButton) {
         Zservice.shared.logout()
-        if let destinationVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") {
+        if let destinationVC: LoginViewController = self.storyboard?.instantiateVC() {
             destinationVC.modalPresentationStyle = .fullScreen
             present(destinationVC, animated: true, completion: nil)
         }

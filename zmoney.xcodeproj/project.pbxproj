@@ -10,6 +10,7 @@
 		055ADEF3262E0B62001DCF5A /* TokenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055ADEF2262E0B62001DCF5A /* TokenService.swift */; };
 		056F8B0E25F6B314009DDFD0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05B93E2925D0442E0089E7A8 /* Main.storyboard */; };
 		0598D6D5262F1DE500400A2C /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0598D6D4262F1DE500400A2C /* Notifications.swift */; };
+		0598D6DA262F208D00400A2C /* UIStoryboard+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0598D6D9262F208D00400A2C /* UIStoryboard+Extensions.swift */; };
 		05AD5F3F2624B9B700355F1B /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD5F3E2624B9B700355F1B /* NetworkRequest.swift */; };
 		05AD5F472624BC6300355F1B /* ZService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD5F462624BC6300355F1B /* ZService.swift */; };
 		05AD5F6226262CEE00355F1B /* AuthResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD5F6126262CEE00355F1B /* AuthResponseModel.swift */; };
@@ -52,6 +53,7 @@
 /* Begin PBXFileReference section */
 		055ADEF2262E0B62001DCF5A /* TokenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenService.swift; sourceTree = "<group>"; };
 		0598D6D4262F1DE500400A2C /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		0598D6D9262F208D00400A2C /* UIStoryboard+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIStoryboard+Extensions.swift"; path = "zmoney/Controllers/UIStoryboard+Extensions.swift"; sourceTree = SOURCE_ROOT; };
 		05AD5F3E2624B9B700355F1B /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		05AD5F462624BC6300355F1B /* ZService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZService.swift; sourceTree = "<group>"; };
 		05AD5F6126262CEE00355F1B /* AuthResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponseModel.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 		05AD5F392624B5EB00355F1B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0598D6D9262F208D00400A2C /* UIStoryboard+Extensions.swift */,
 				055ADEF2262E0B62001DCF5A /* TokenService.swift */,
 				05AD5F3E2624B9B700355F1B /* NetworkRequest.swift */,
 				05D3E9B7262A001300E9C234 /* TransactionCell.swift */,
@@ -494,6 +497,7 @@
 				05AD5F9D2628CBDD00355F1B /* DiffRequestModel.swift in Sources */,
 				05AD5F3F2624B9B700355F1B /* NetworkRequest.swift in Sources */,
 				05AD5F6E262755B300355F1B /* TabBarViewController.swift in Sources */,
+				0598D6DA262F208D00400A2C /* UIStoryboard+Extensions.swift in Sources */,
 				05AD5F822628B43500355F1B /* ProfileViewController.swift in Sources */,
 				05D3E9B8262A001300E9C234 /* TransactionCell.swift in Sources */,
 				05B93E2625D0442E0089E7A8 /* SceneDelegate.swift in Sources */,

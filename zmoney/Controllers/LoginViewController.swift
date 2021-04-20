@@ -30,7 +30,7 @@ class LoginViewController: UIViewController {
     }
 
     @objc private func navigateToTransactions() {
-        if let destinationVC = self.storyboard?.instantiateViewController(withIdentifier: "TabBarViewController") {
+        if let destinationVC: TabBarViewController = storyboard?.instantiateVC() {
             destinationVC.modalPresentationStyle = .fullScreen
             present(destinationVC, animated: true, completion: nil)
         }
