@@ -7,7 +7,7 @@ target 'zmoney' do
 
   # Pods for zmoney
   pod 'SwiftLint', '~> 0.43.0'
-  pod 'KeychainAccess'
+  pod 'KeychainAccess', '~> 4.2.2'
 
   target 'zmoneyTests' do
     inherit! :search_paths
