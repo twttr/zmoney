@@ -9,12 +9,12 @@ import Foundation
 import KeychainAccess
 
 struct TokenService {
-    var accessToken: String? {
+    public var accessToken: String? {
         return try? keychain.get("accessToken")
     }
     static let shared = TokenService()
 
-    let keychain = Keychain(service: "com.twttrio.zmoney")
+    private let keychain = Keychain(service: "com.twttrio.zmoney")
 
     func saveToken(from responseData: AuthResponse) {
         keychain["accessToken"] = responseData.accessToken

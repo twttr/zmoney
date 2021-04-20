@@ -8,10 +8,10 @@
 import UIKit
 
 class TransactionsViewController: UIViewController {
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak private var tableView: UITableView!
 
-    let zService = Zservice.shared
-    var transactionsList = [Transaction]()
+    private let zService = Zservice.shared
+    private var transactionsList = [Transaction]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,13 +42,13 @@ extension TransactionsViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionCell", for: indexPath) as! TransactionCell
         let transaction = transactionsList[indexPath.row]
         if transaction.income == 0 {
-            cell.amountLabel.text = "Outcome \(transaction.outcome)"
-            cell.currencyLabel.text = "\(transaction.opOutcome ?? 0.0)"
+            cell.amountValue = "Outcome \(transaction.outcome)"
+            cell.currencyValue = "\(transaction.opOutcome ?? 0.0)"
         } else {
-            cell.amountLabel.text = "Income \(transaction.income)"
-            cell.currencyLabel.text = "\(transaction.opIncome ?? 0)"
+            cell.amountValue = "Income \(transaction.income)"
+            cell.amountValue = "\(transaction.opIncome ?? 0)"
         }
-        cell.dateLabel.text = transaction.date
+        cell.dateValue = transaction.date
 
         return cell
     }

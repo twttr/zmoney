@@ -19,7 +19,7 @@ struct NetworkError: Error {
         }
     }
 
-    enum HttpStatus: Error {
+    private enum HttpStatus: Error {
         case unauthorized
         case badRequest
         case undefined

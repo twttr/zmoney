@@ -8,7 +8,7 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak private var loginButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,11 +25,11 @@ class LoginViewController: UIViewController {
         )
     }
 
-    @IBAction func loginButtonTapped(_ sender: UIButton) {
+    @IBAction private func loginButtonTapped(_ sender: UIButton) {
         Zservice.shared.auth()
     }
 
-    @objc func navigateToTransactions() {
+    @objc private func navigateToTransactions() {
         if let destinationVC = self.storyboard?.instantiateViewController(withIdentifier: "TabBarViewController") {
             destinationVC.modalPresentationStyle = .fullScreen
             present(destinationVC, animated: true, completion: nil)

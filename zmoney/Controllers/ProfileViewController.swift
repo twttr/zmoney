@@ -8,8 +8,8 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-    @IBOutlet weak var nickLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak private var nickLabel: UILabel!
+    @IBOutlet weak private var emailLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()

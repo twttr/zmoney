@@ -11,14 +11,14 @@ import UIKit
 struct Zservice {
     static let shared = Zservice()
 
-    let apiUrl = "https://api.zenmoney.ru/"
-    let clientId = "gcd083e97524bce251e4d6d5e9cd71"
-    let clienSecret = "955b0c91d2"
-    let redirectUri = "zmoney://oauthcallback"
-    let authUrl = "https://api.zenmoney.ru/oauth2/authorize/"
-    let requestTokenUrl = "https://api.zenmoney.ru/oauth2/token/"
-    let networkService = NetworkRequest()
-    var isLoggedIn: Bool {
+    private let apiUrl = "https://api.zenmoney.ru/"
+    private let clientId = "gcd083e97524bce251e4d6d5e9cd71"
+    private let clienSecret = "955b0c91d2"
+    private let redirectUri = "zmoney://oauthcallback"
+    private let authUrl = "https://api.zenmoney.ru/oauth2/authorize/"
+    private let requestTokenUrl = "https://api.zenmoney.ru/oauth2/token/"
+    private let networkService = NetworkRequest()
+    public var isLoggedIn: Bool {
         TokenService.shared.isTokenPresent()
     }
 
