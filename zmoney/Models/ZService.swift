@@ -100,7 +100,10 @@ struct Zservice {
                     do {
                         let decodedData = try decoder.decode(AuthResponse.self, from: data)
                         TokenService.shared.saveToken(from: decodedData)
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "LoggedIn"), object: nil)
+                        NotificationCenter.default.post(
+                            name: NSNotification.Name(rawValue: ZMoneyNotifications.tokenUpdated),
+                            object: nil
+                        )
                     } catch {
                         print(error.localizedDescription)
                     }

@@ -20,7 +20,7 @@ class LoginViewController: UIViewController {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(self.navigateToTransactions),
-            name: NSNotification.Name(rawValue: "LoggedIn"),
+            name: NSNotification.Name(rawValue: ZMoneyNotifications.tokenUpdated),
             object: nil
         )
     }

@@ -3,12 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		055ADEF3262E0B62001DCF5A /* TokenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055ADEF2262E0B62001DCF5A /* TokenService.swift */; };
 		056F8B0E25F6B314009DDFD0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05B93E2925D0442E0089E7A8 /* Main.storyboard */; };
+		0598D6D5262F1DE500400A2C /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0598D6D4262F1DE500400A2C /* Notifications.swift */; };
 		05AD5F3F2624B9B700355F1B /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD5F3E2624B9B700355F1B /* NetworkRequest.swift */; };
 		05AD5F472624BC6300355F1B /* ZService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD5F462624BC6300355F1B /* ZService.swift */; };
 		05AD5F6226262CEE00355F1B /* AuthResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD5F6126262CEE00355F1B /* AuthResponseModel.swift */; };
@@ -50,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		055ADEF2262E0B62001DCF5A /* TokenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenService.swift; sourceTree = "<group>"; };
+		0598D6D4262F1DE500400A2C /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		05AD5F3E2624B9B700355F1B /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		05AD5F462624BC6300355F1B /* ZService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZService.swift; sourceTree = "<group>"; };
 		05AD5F6126262CEE00355F1B /* AuthResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponseModel.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				05AD5F7226275B3D00355F1B /* NetworkError.swift */,
 				05AD5F9C2628CBDD00355F1B /* DiffRequestModel.swift */,
 				05AD5FA12628D0CD00355F1B /* DiffResponseModel.swift */,
+				0598D6D4262F1DE500400A2C /* Notifications.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -481,6 +484,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0598D6D5262F1DE500400A2C /* Notifications.swift in Sources */,
 				05AD5F6226262CEE00355F1B /* AuthResponseModel.swift in Sources */,
 				05AD5F7326275B3D00355F1B /* NetworkError.swift in Sources */,
 				05B93E2825D0442E0089E7A8 /* LoginViewController.swift in Sources */,
