@@ -55,7 +55,7 @@
 /* Begin PBXFileReference section */
 		055ADEF2262E0B62001DCF5A /* TokenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenService.swift; sourceTree = "<group>"; };
 		0598D6D4262F1DE500400A2C /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
-		0598D6D9262F208D00400A2C /* UIStoryboard+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIStoryboard+Extensions.swift"; path = "zmoney/Controllers/UIStoryboard+Extensions.swift"; sourceTree = SOURCE_ROOT; };
+		0598D6D9262F208D00400A2C /* UIStoryboard+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIStoryboard+Extensions.swift"; path = "zmoney/Models/Extensions/UIStoryboard+Extensions.swift"; sourceTree = SOURCE_ROOT; };
 		0598D6DE262F272900400A2C /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		0598D6EB262F60E600400A2C /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
 		05AD5F3E2624B9B700355F1B /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
@@ -121,21 +121,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		05AD5F392624B5EB00355F1B /* Models */ = {
+		0598D6F3262F63FD00400A2C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				0598D6D9262F208D00400A2C /* UIStoryboard+Extensions.swift */,
-				055ADEF2262E0B62001DCF5A /* TokenService.swift */,
+				0598D6DE262F272900400A2C /* UIViewController+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0598D6F4262F641B00400A2C /* Network */ = {
+			isa = PBXGroup;
+			children = (
 				05AD5F3E2624B9B700355F1B /* NetworkRequest.swift */,
-				05D3E9B7262A001300E9C234 /* TransactionCell.swift */,
-				05AD5F462624BC6300355F1B /* ZService.swift */,
+				055ADEF2262E0B62001DCF5A /* TokenService.swift */,
 				05AD5F6126262CEE00355F1B /* AuthResponseModel.swift */,
 				05AD5F7226275B3D00355F1B /* NetworkError.swift */,
 				05AD5F9C2628CBDD00355F1B /* DiffRequestModel.swift */,
 				05AD5FA12628D0CD00355F1B /* DiffResponseModel.swift */,
+				05AD5F462624BC6300355F1B /* ZService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		0598D6F5262F645C00400A2C /* Constants */ = {
+			isa = PBXGroup;
+			children = (
 				0598D6D4262F1DE500400A2C /* Notifications.swift */,
-				0598D6DE262F272900400A2C /* UIViewController+Extensions.swift */,
 				0598D6EB262F60E600400A2C /* UIConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		05AD5F392624B5EB00355F1B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0598D6F5262F645C00400A2C /* Constants */,
+				0598D6F4262F641B00400A2C /* Network */,
+				0598D6F3262F63FD00400A2C /* Extensions */,
+				05D3E9B7262A001300E9C234 /* TransactionCell.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
