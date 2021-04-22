@@ -12,6 +12,7 @@ class TransactionsViewController: UIViewController {
 
     private let zService = Zservice.shared
     private var transactionsList = [Transaction]()
+    private var instruments = [Instrument]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,7 @@ class TransactionsViewController: UIViewController {
             switch result {
             case .success(let diffResponse):
                 self.transactionsList = diffResponse.transaction.sorted { $0.created > $1.created }
+                self.instruments = diffResponse.instrument
                 self.tableView.reloadData()
             case .failure(let error):
                 print(error)
@@ -46,10 +48,14 @@ extension TransactionsViewController: UITableViewDataSource {
         let transaction = transactionsList[indexPath.row]
         if transaction.income == 0 {
             cell.amountValue = "Outcome \(transaction.outcome)"
-            cell.currencyValue = "\(transaction.opOutcome ?? 0.0)"
+            if let currency = instruments.filter({ $0.id == transaction.incomeInstrument }).first?.shortTitle {
+                cell.currencyValue = currency
+            }
         } else {
             cell.amountValue = "Income \(transaction.income)"
-            cell.currencyValue = "\(transaction.opIncome ?? 0)"
+            if let currency = instruments.filter({ $0.id == transaction.outcomeInstrument }).first?.shortTitle {
+                cell.currencyValue = currency
+            }
         }
         cell.dateValue = transaction.date
 
