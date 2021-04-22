@@ -20,7 +20,7 @@ class TransactionsViewController: UIViewController {
         zService.getDiff { (result) in
             switch result {
             case .success(let diffResponse):
-                self.transactionsList = diffResponse.transaction
+                self.transactionsList = diffResponse.transaction.sorted { $0.created > $1.created }
                 self.tableView.reloadData()
             case .failure(let error):
                 print(error)
@@ -39,14 +39,17 @@ extension TransactionsViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // swiftlint:disable force_cast
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionCell", for: indexPath) as! TransactionCell
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: Constants.Cells.transactionCellIdentifier,
+            for: indexPath
+        ) as! TransactionCell
         let transaction = transactionsList[indexPath.row]
         if transaction.income == 0 {
             cell.amountValue = "Outcome \(transaction.outcome)"
             cell.currencyValue = "\(transaction.opOutcome ?? 0.0)"
         } else {
             cell.amountValue = "Income \(transaction.income)"
-            cell.amountValue = "\(transaction.opIncome ?? 0)"
+            cell.currencyValue = "\(transaction.opIncome ?? 0)"
         }
         cell.dateValue = transaction.date
 

@@ -12,21 +12,24 @@ class TransactionCell: UITableViewCell {
     @IBOutlet weak private var currencyLabel: UILabel!
     @IBOutlet weak private var dateLabel: UILabel!
 
-    var amountValue: String?
-    var currencyValue: String?
-    var dateValue: String?
+    var amountValue: String? = "" {
+        didSet {
+            amountLabel.text = amountValue
+        }
+    }
+    var currencyValue: String? = "" {
+        didSet {
+            currencyLabel.text = currencyValue
+        }
+    }
+    var dateValue: String? = "" {
+        didSet {
+            dateLabel.text = dateValue
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
-
-        guard let amount = amountValue,
-              let currency = currencyValue,
-              let date = dateValue
-        else { return }
-
-        amountLabel.text = amount
-        currencyLabel.text = currency
-        dateLabel.text = date
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

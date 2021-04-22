@@ -11,4 +11,7 @@ enum Constants {
     enum Buttons {
         public static let cornerRadius: CGFloat = 5
     }
+    enum Cells {
+        public static let transactionCellIdentifier = "TransactionCell"
+    }
 }
