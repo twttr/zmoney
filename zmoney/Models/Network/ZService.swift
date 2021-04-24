@@ -101,7 +101,7 @@ struct Zservice {
                         let decodedData = try decoder.decode(AuthResponse.self, from: data)
                         TokenService.shared.saveToken(from: decodedData)
                         NotificationCenter.default.post(
-                            name: NSNotification.Name(rawValue: ZMoneyNotifications.tokenUpdated),
+                            name: .zMoneyConfigUpdated,
                             object: nil
                         )
                     } catch {

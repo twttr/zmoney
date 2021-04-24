@@ -7,10 +7,6 @@
 
 import Foundation
 
-public enum ZMoneyNotifications {
-  public static let tokenUpdated = "ZMoney.tokenUpdated"
-}
-
 extension Notification.Name {
-  public static let zMoneyConfigUpdated = Notification.Name(rawValue: ZMoneyNotifications.tokenUpdated)
+  public static let zMoneyConfigUpdated = Notification.Name(rawValue: "ZMoney.tokenUpdated")
 }
