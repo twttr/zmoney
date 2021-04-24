@@ -15,7 +15,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
     }
 
-    @IBAction func logOutButtonTapped(_ sender: UIButton) {
+    @IBAction private func logOutButtonTapped(_ sender: UIButton) {
         Zservice.shared.logout()
         self.presentView(view: LoginViewController())
     }
