@@ -30,6 +30,6 @@ class LoginViewController: UIViewController {
     }
 
     @objc private func navigateToTransactions() {
-        self.presentView(view: TabBarViewController())
+        self.presentView(view: TabBarViewController.self)
     }
 }
