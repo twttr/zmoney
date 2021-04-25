@@ -11,22 +11,13 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var applicationCoordinator = ApplicationCoordinator()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-
-        self.window = UIWindow(windowScene: windowScene)
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if Zservice.shared.isLoggedIn {
-            if let newView: TabBarViewController = storyboard.instantiateVC() {
-                self.window?.rootViewController = newView
-            }
-        } else {
-            if let newView: LoginViewController = storyboard.instantiateVC() {
-                self.window?.rootViewController = newView
-            }
-        }
-        self.window?.makeKeyAndVisible()
+        window = UIWindow(windowScene: windowScene)
+        applicationCoordinator.window = window
+        applicationCoordinator.presentInitialView()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -58,6 +49,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-        Zservice().handleOauthRedirect(url: URLContexts.first?.url)
+        Zservice.shared.handleOauthRedirect(url: URLContexts.first?.url) {
+            self.applicationCoordinator.presentInitialView()
+        }
     }
 }

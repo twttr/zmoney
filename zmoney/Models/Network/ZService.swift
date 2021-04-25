@@ -8,8 +8,15 @@
 import Foundation
 import UIKit
 
+protocol ZserviceDelegate: class {
+    func didLoggedIn()
+    func didLoggedOff()
+}
+
 struct Zservice {
-    static let shared = Zservice()
+    static var shared = Zservice()
+
+    weak var delegate: ZserviceDelegate?
 
     private let apiUrl = "https://api.zenmoney.ru/"
     private let clientId = "gcd083e97524bce251e4d6d5e9cd71"
@@ -31,6 +38,7 @@ struct Zservice {
 
     func logout() {
         TokenService.shared.removeToken()
+        delegate?.didLoggedOff()
     }
 
     func getDiff(withCompletion completion: @escaping (Result<DiffResponseModel, Error>) -> Void) {
@@ -71,7 +79,7 @@ struct Zservice {
 
     }
 
-    func handleOauthRedirect(url: URL?) {
+    func handleOauthRedirect(url: URL?, withCompletion completion: @escaping () -> Void) {
         guard let unwrappedUrl = url else { return }
         let urlString = "\(unwrappedUrl)"
         if let regex = try? NSRegularExpression(pattern: "[a-zA-Z0-9]{30}") {
@@ -100,10 +108,8 @@ struct Zservice {
                     do {
                         let decodedData = try decoder.decode(AuthResponse.self, from: data)
                         TokenService.shared.saveToken(from: decodedData)
-                        NotificationCenter.default.post(
-                            name: .zMoneyConfigUpdated,
-                            object: nil
-                        )
+                        delegate?.didLoggedIn()
+                        completion()
                     } catch {
                         print(error.localizedDescription)
                     }
