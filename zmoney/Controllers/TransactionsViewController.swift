@@ -13,19 +13,32 @@ class TransactionsViewController: UIViewController {
     private let zService = Zservice.shared
     private var transactionsList = [Transaction]()
     private var instruments = [Instrument]()
+    private var refreshControl = UIRefreshControl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+
+        refreshTransactionsList()
+
+        tableView.refreshControl = refreshControl
+
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(self.refreshTransactionsList), for: .valueChanged)
+    }
+
+    @objc private func refreshTransactionsList() {
         zService.getDiff { (result) in
             switch result {
             case .success(let diffResponse):
                 self.transactionsList = diffResponse.transaction.sorted { $0.created > $1.created }
                 self.instruments = diffResponse.instrument
                 self.tableView.reloadData()
+                self.refreshControl.endRefreshing()
             case .failure(let error):
                 print(error)
+                self.refreshControl.endRefreshing()
             }
         }
     }
