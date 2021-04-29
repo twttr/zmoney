@@ -11,17 +11,19 @@ class ApplicationCoordinator {
     var window: UIWindow?
     private var storyboard = UIStoryboard(name: "Main", bundle: nil)
     private var loginView: LoginViewController?
+    private var tabBarView: TabBarViewController?
 
     init() {
         Zservice.shared.delegate = self
     }
 
     func presentInitialView() {
-        if let tabBarView: TabBarViewController = storyboard.instantiateVC() {
-            window?.rootViewController = tabBarView
-            window?.makeKeyAndVisible()
-            presentLoginViewIfNeeded()
-        }
+        guard tabBarView == nil else { return }
+
+        tabBarView = storyboard.instantiateVC()
+        window?.rootViewController = tabBarView
+        window?.makeKeyAndVisible()
+        presentLoginViewIfNeeded()
     }
 
     private func presentLoginViewIfNeeded() {
