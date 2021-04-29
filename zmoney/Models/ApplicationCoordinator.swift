@@ -20,17 +20,17 @@ class ApplicationCoordinator {
         if let tabBarView: TabBarViewController = storyboard.instantiateVC() {
             window?.rootViewController = tabBarView
             window?.makeKeyAndVisible()
-            presentLoginView()
+            presentLoginViewIfNeeded()
         }
     }
 
-    private func presentLoginView() {
-        if !Zservice.shared.isLoggedIn {
-            loginView = window?.rootViewController?.presentViewModally(
-                view: LoginViewController.self,
-                inPresentation: true
-            )
-        }
+    private func presentLoginViewIfNeeded() {
+        guard !Zservice.shared.isLoggedIn else { return }
+
+        loginView = window?.rootViewController?.createAndPresentViewModally(
+            viewOfType: LoginViewController.self,
+            inPresentation: true
+        )
     }
 }
 
@@ -40,6 +40,6 @@ extension ApplicationCoordinator: ZserviceDelegate {
     }
 
     func didLoggedOff() {
-        presentLoginView()
+        presentLoginViewIfNeeded()
     }
 }

@@ -8,14 +8,14 @@
 import UIKit
 
 extension UIViewController {
-    func presentView<T: UIViewController>(view: T.Type) {
+    func createAndPresentView<T: UIViewController>(viewOfType: T.Type) {
         if let destinationVC: T = self.storyboard?.instantiateVC() {
             destinationVC.modalPresentationStyle = .fullScreen
             present(destinationVC, animated: true, completion: nil)
         }
     }
 
-    func presentViewModally<T: UIViewController>(view: T.Type, inPresentation: Bool) -> T? {
+    func createAndPresentViewModally<T: UIViewController>(viewOfType: T.Type, inPresentation: Bool) -> T? {
         if let destinationVC: T = self.storyboard?.instantiateVC() {
             destinationVC.isModalInPresentation = inPresentation ? true : false
             present(destinationVC, animated: true, completion: nil)
