@@ -59,18 +59,7 @@ extension TransactionsViewController: UITableViewDataSource {
             for: indexPath
         ) as! TransactionCell
         let transaction = transactionsList[indexPath.row]
-        if transaction.income == 0 {
-            cell.amountValue = "Outcome \(transaction.outcome)"
-            if let currency = instruments.filter({ $0.id == transaction.incomeInstrument }).first?.shortTitle {
-                cell.currencyValue = currency
-            }
-        } else {
-            cell.amountValue = "Income \(transaction.income)"
-            if let currency = instruments.filter({ $0.id == transaction.outcomeInstrument }).first?.shortTitle {
-                cell.currencyValue = currency
-            }
-        }
-        cell.dateValue = transaction.date
+        cell.configureCell(with: TransactionCellModel(transactionData: transaction, instrumentData: instruments))
 
         return cell
     }

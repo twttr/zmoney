@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0555FCB02638A28300099E0B /* TransactionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0555FCAF2638A28300099E0B /* TransactionDetailViewController.swift */; };
+		0555FCB3263B385900099E0B /* TransactionCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0555FCB2263B385900099E0B /* TransactionCellModel.swift */; };
 		0559470B2634C0F200CE727C /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0559470A2634C0F200CE727C /* ApplicationCoordinator.swift */; };
 		055ADEF3262E0B62001DCF5A /* TokenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055ADEF2262E0B62001DCF5A /* TokenService.swift */; };
 		056F8B0E25F6B314009DDFD0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05B93E2925D0442E0089E7A8 /* Main.storyboard */; };
@@ -54,6 +56,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0555FCAF2638A28300099E0B /* TransactionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailViewController.swift; sourceTree = "<group>"; };
+		0555FCB2263B385900099E0B /* TransactionCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCellModel.swift; sourceTree = "<group>"; };
 		0559470A2634C0F200CE727C /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
 		055ADEF2262E0B62001DCF5A /* TokenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenService.swift; sourceTree = "<group>"; };
 		0598D6D4262F1DE500400A2C /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
@@ -123,6 +127,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0555FCB1263B383200099E0B /* TransactionCell */ = {
+			isa = PBXGroup;
+			children = (
+				05D3E9B7262A001300E9C234 /* TransactionCell.swift */,
+				0555FCB2263B385900099E0B /* TransactionCellModel.swift */,
+			);
+			path = TransactionCell;
+			sourceTree = "<group>";
+		};
 		0598D6F3262F63FD00400A2C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,10 +171,10 @@
 		05AD5F392624B5EB00355F1B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0555FCB1263B383200099E0B /* TransactionCell */,
 				0598D6F5262F645C00400A2C /* Constants */,
 				0598D6F4262F641B00400A2C /* Network */,
 				0598D6F3262F63FD00400A2C /* Extensions */,
-				05D3E9B7262A001300E9C234 /* TransactionCell.swift */,
 				0559470A2634C0F200CE727C /* ApplicationCoordinator.swift */,
 			);
 			path = Models;
@@ -180,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				05AD5F862628B48300355F1B /* TransactionsViewController.swift */,
+				0555FCAF2638A28300099E0B /* TransactionDetailViewController.swift */,
 				05AD5F812628B43500355F1B /* ProfileViewController.swift */,
 				05B93E2725D0442E0089E7A8 /* LoginViewController.swift */,
 				05AD5F6D262755B300355F1B /* TabBarViewController.swift */,
@@ -531,11 +545,13 @@
 				05AD5F9D2628CBDD00355F1B /* DiffRequestModel.swift in Sources */,
 				05AD5F3F2624B9B700355F1B /* NetworkRequest.swift in Sources */,
 				05AD5F6E262755B300355F1B /* TabBarViewController.swift in Sources */,
+				0555FCB3263B385900099E0B /* TransactionCellModel.swift in Sources */,
 				0598D6DA262F208D00400A2C /* UIStoryboard+Extensions.swift in Sources */,
 				05AD5F822628B43500355F1B /* ProfileViewController.swift in Sources */,
 				05D3E9B8262A001300E9C234 /* TransactionCell.swift in Sources */,
 				05B93E2625D0442E0089E7A8 /* SceneDelegate.swift in Sources */,
 				0559470B2634C0F200CE727C /* ApplicationCoordinator.swift in Sources */,
+				0555FCB02638A28300099E0B /* TransactionDetailViewController.swift in Sources */,
 				05AD5F472624BC6300355F1B /* ZService.swift in Sources */,
 				05AD5FA22628D0CD00355F1B /* DiffResponseModel.swift in Sources */,
 				0598D6EC262F60E600400A2C /* UIConstants.swift in Sources */,
