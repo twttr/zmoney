@@ -53,11 +53,10 @@ extension TransactionsViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // swiftlint:disable force_cast
-        let cell = tableView.dequeueReusableCell(
+        guard let cell = tableView.dequeueReusableCell(
             withIdentifier: Constants.Cells.transactionCellIdentifier,
             for: indexPath
-        ) as! TransactionCell
+        ) as? TransactionCell else { return UITableViewCell() }
         let transaction = transactionsList[indexPath.row]
         cell.configureCell(with: TransactionCellModel(transactionData: transaction, instrumentData: instruments))
 

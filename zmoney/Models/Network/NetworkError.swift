@@ -26,14 +26,19 @@ enum HttpStatus: Error {
     case undefined
 }
 
-// swiftlint:disable line_length
 extension HttpStatus: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .badRequest:
-            return "Server cannot or will not process the request due to something that is perceived to be a client error"
+            return """
+            Server cannot or will not process the request\
+            due to something that is perceived to be a client error
+            """
         case .unauthorized:
-            return "The request has not been applied because it lacks valid authentication credentials for the target resource"
+            return """
+            The request has not been applied because it lacks\
+            valid authentication credentials for the target resource
+            """
         case .undefined:
             return "The error code cannot be identified"
         }

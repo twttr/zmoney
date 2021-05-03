@@ -43,11 +43,14 @@ struct Account: Codable {
     let enableSMS: Bool
     let endDateOffset, endDateOffsetInterval, payoffStep, payoffInterval: JSONNull?
 
-    // swiftlint:disable line_length
     enum CodingKeys: String, CodingKey {
         case id, user, instrument, type, role
         case accountPrivate = "private"
-        case savings, title, inBalance, creditLimit, startBalance, balance, company, archive, enableCorrection, startDate, capitalization, percent, changed, syncID, enableSMS, endDateOffset, endDateOffsetInterval, payoffStep, payoffInterval
+        case savings, title, inBalance, creditLimit,
+             startBalance, balance, company, archive,
+             enableCorrection, startDate, capitalization,
+             percent, changed, syncID, enableSMS, endDateOffset,
+             endDateOffsetInterval, payoffStep, payoffInterval
     }
 }
 

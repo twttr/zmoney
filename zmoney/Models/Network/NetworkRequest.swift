@@ -6,13 +6,22 @@
 //
 
 import Foundation
-// swiftlint:disable line_length
 protocol NetworkRequestType {
-    func sendRequest(to urlString: String, withData data: Data?, withHeaders headers: [String: String]?, using method: String, withCompletion completion: @escaping (Result<Data, Error>) -> Void)
+    func sendRequest(
+        to urlString: String,
+        withData data: Data?,
+        withHeaders headers: [String: String]?,
+        using method: String,
+        withCompletion completion: @escaping (Result<Data, Error>) -> Void)
 }
 
 struct NetworkRequest: NetworkRequestType {
-    func sendRequest(to urlString: String, withData data: Data?, withHeaders headers: [String: String]?, using method: String, withCompletion completion: @escaping (Result<Data, Error>) -> Void) {
+    func sendRequest(
+        to urlString: String,
+        withData data: Data?,
+        withHeaders headers: [String: String]?,
+        using method: String,
+        withCompletion completion: @escaping (Result<Data, Error>) -> Void) {
         let urlStringEncoded = urlString.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)!
         guard let url = URL(string: urlStringEncoded) else { return }
         var request = URLRequest(url: url)
