@@ -13,8 +13,8 @@ class TransactionCell: UITableViewCell {
     @IBOutlet weak private var dateLabel: UILabel!
 
     func configureCell(with model: TransactionCellModel) {
-        amountLabel.text = model.amountValue
-        currencyLabel.text = model.currencyValue
-        dateLabel.text = model.dateValue
+        amountLabel.text = model.amount
+        currencyLabel.text = model.currency
+        dateLabel.text = model.date
     }
 }

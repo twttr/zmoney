@@ -8,28 +8,25 @@
 import Foundation
 
 struct TransactionCellModel {
-    let transactionData: Transaction
-    let instrumentData: [Instrument]
 
-    var amountValue: String {
-        if isOutcome {
-            return "Outcome \(transactionData.outcome)"
-        } else {
-            return "Income \(transactionData.income)"
-        }
-    }
-    var dateValue: String {
-        return transactionData.date
-    }
-    var currencyValue: String? {
-        if isOutcome {
-            return instrumentData.filter({ $0.id == transactionData.incomeInstrument }).first?.shortTitle
-        } else {
-            return instrumentData.filter({ $0.id == transactionData.outcomeInstrument }).first?.shortTitle
-        }
-    }
+    let amount: String
+    let date: String
+    let currency: String
+    let isOutcome: Bool
 
-    private var isOutcome: Bool {
-        return transactionData.income == 0
+}
+
+extension TransactionCellModel {
+    init(transaction: Transaction) {
+        isOutcome = transaction.income == 0
+        date = transaction.date
+
+        if isOutcome {
+            amount = "Outcome \(transaction.outcome)"
+            currency = transaction.outcomeTransactionInstrument?.shortTitle ?? ""
+        } else {
+            amount = "Income \(transaction.income)"
+            currency = transaction.incomeTransactionInstrument?.shortTitle ?? ""
+        }
     }
 }

@@ -11,7 +11,7 @@ import Foundation
 // MARK: - DiffResponseModel
 struct DiffResponseModel: Codable {
     let serverTimestamp: Int
-    let instrument: [Instrument]
+    let instrument: [Int: Instrument]
     let country: [Country]
     let company: [Company]
     let user: [User]
@@ -21,7 +21,30 @@ struct DiffResponseModel: Codable {
     let merchant: [Merchant]
     let reminder: [Reminder]
     let reminderMarker: [ReminderMarker]
-    let transaction: [Transaction]
+    var transaction: [Transaction]
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        serverTimestamp = try container.decode(Int.self, forKey: .serverTimestamp)
+        instrument = try container.decode([Instrument].self, forKey: .instrument).reduce(into: [Int: Instrument]()) {
+            $0[$1.id] = $1
+        }
+        country = try container.decode([Country].self, forKey: .country)
+        company = try container.decode([Company].self, forKey: .company)
+        user = try container.decode([User].self, forKey: .user)
+        account = try container.decode([Account].self, forKey: .account)
+        tag = try container.decode([Tag].self, forKey: .tag)
+        budget = try container.decode([Budget].self, forKey: .budget)
+        merchant = try container.decode([Merchant].self, forKey: .merchant)
+        reminder = try container.decode([Reminder].self, forKey: .reminder)
+        reminderMarker = try container.decode([ReminderMarker].self, forKey: .reminderMarker)
+        transaction = try container.decode([Transaction].self, forKey: .transaction)
+        transaction = transaction.map { transaction -> Transaction in
+            transaction.incomeTransactionInstrument = instrument[transaction.incomeInstrument]
+            transaction.outcomeTransactionInstrument = instrument[transaction.outcomeInstrument]
+            return transaction
+        }
+    }
 }
 
 // MARK: - Account
@@ -157,7 +180,7 @@ struct Tag: Codable {
 }
 
 // MARK: - Transaction
-struct Transaction: Codable {
+class Transaction: Codable {
     let id: String
     let user: Int
     let date: String
@@ -177,6 +200,7 @@ struct Transaction: Codable {
     let opOutcomeInstrument: Int?
     let latitude, longitude: Double?
     let merchant, incomeBankID, outcomeBankID, reminderMarker: String?
+    var incomeTransactionInstrument, outcomeTransactionInstrument: Instrument?
 }
 
 // MARK: - User
