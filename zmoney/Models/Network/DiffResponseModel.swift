@@ -39,10 +39,10 @@ struct DiffResponseModel: Codable {
         reminder = try container.decode([Reminder].self, forKey: .reminder)
         reminderMarker = try container.decode([ReminderMarker].self, forKey: .reminderMarker)
         transaction = try container.decode([Transaction].self, forKey: .transaction)
-        transaction = transaction.map { transaction -> Transaction in
-            transaction.incomeTransactionInstrument = instrument[transaction.incomeInstrument]
-            transaction.outcomeTransactionInstrument = instrument[transaction.outcomeInstrument]
-            return transaction
+
+        for index in 0..<transaction.count {
+            transaction[index].incomeTransactionInstrument = instrument[transaction[index].incomeInstrument]
+            transaction[index].outcomeTransactionInstrument = instrument[transaction[index].outcomeInstrument]
         }
     }
 }
@@ -180,7 +180,7 @@ struct Tag: Codable {
 }
 
 // MARK: - Transaction
-class Transaction: Codable {
+struct Transaction: Codable {
     let id: String
     let user: Int
     let date: String
