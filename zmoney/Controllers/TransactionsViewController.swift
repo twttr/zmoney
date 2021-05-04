@@ -11,8 +11,7 @@ class TransactionsViewController: UIViewController {
     @IBOutlet weak private var tableView: UITableView!
 
     private let zService = Zservice.shared
-    private var transactionsList = [Transaction]()
-    private var instruments = [Instrument]()
+    private var transactionsModels = [TransactionCellModel]()
     private var refreshControl = UIRefreshControl()
 
     override func viewDidLoad() {
@@ -32,8 +31,8 @@ class TransactionsViewController: UIViewController {
         zService.getDiff { (result) in
             switch result {
             case .success(let diffResponse):
-                self.transactionsList = diffResponse.transaction.sorted { $0.created > $1.created }
-                self.instruments = diffResponse.instrument
+                self.transactionsModels = self.makeModels(diffResponse: diffResponse)
+
                 self.tableView.reloadData()
                 self.refreshControl.endRefreshing()
             case .failure(let error):
@@ -42,6 +41,11 @@ class TransactionsViewController: UIViewController {
             }
         }
     }
+
+    private func makeModels(diffResponse: DiffResponseModel) -> [TransactionCellModel] {
+        let transactions = diffResponse.transaction.sorted { $0.created > $1.created }
+        return transactions.map { TransactionCellModel(transaction: $0) }
+    }
 }
 
 extension TransactionsViewController: UITableViewDelegate {
@@ -49,7 +53,7 @@ extension TransactionsViewController: UITableViewDelegate {
 
 extension TransactionsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return transactionsList.count
+        return transactionsModels.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -57,8 +61,8 @@ extension TransactionsViewController: UITableViewDataSource {
             withIdentifier: Constants.Cells.transactionCellIdentifier,
             for: indexPath
         ) as? TransactionCell else { return UITableViewCell() }
-        let transaction = transactionsList[indexPath.row]
-        cell.configureCell(with: TransactionCellModel(transactionData: transaction, instrumentData: instruments))
+        let transaction = transactionsModels[indexPath.row]
+        cell.configureCell(with: transaction)
 
         return cell
     }
