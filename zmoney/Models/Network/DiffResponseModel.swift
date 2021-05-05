@@ -21,7 +21,7 @@ struct DiffResponseModel: Codable {
     let merchant: [Merchant]
     let reminder: [Reminder]
     let reminderMarker: [ReminderMarker]
-    var transaction: [Transaction]
+    let transaction: [Transaction]
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -38,12 +38,13 @@ struct DiffResponseModel: Codable {
         merchant = try container.decode([Merchant].self, forKey: .merchant)
         reminder = try container.decode([Reminder].self, forKey: .reminder)
         reminderMarker = try container.decode([ReminderMarker].self, forKey: .reminderMarker)
-        transaction = try container.decode([Transaction].self, forKey: .transaction)
+        var transactions = try container.decode([Transaction].self, forKey: .transaction)
 
-        for index in 0..<transaction.count {
-            transaction[index].incomeTransactionInstrument = instrument[transaction[index].incomeInstrument]
-            transaction[index].outcomeTransactionInstrument = instrument[transaction[index].outcomeInstrument]
+        for index in transactions.indices {
+            transactions[index].incomeTransactionInstrument = instrument[transactions[index].incomeInstrument]
+            transactions[index].outcomeTransactionInstrument = instrument[transactions[index].outcomeInstrument]
         }
+        transaction = transactions
     }
 }
 
