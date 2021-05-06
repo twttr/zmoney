@@ -1,0 +1,26 @@
+name: Swift
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-ios:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Configure Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.0
+
+    - name: Install Dependencies
+      run: pod install
+
+    - name: Build App
+      run: xcodebuild -workspace "zmoney.xcworkspace" -scheme "zmoney" -destination "generic/platform=iOS" -configuration Release build CODE_SIGNING_ALLOWED=NO
+
+
