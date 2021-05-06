@@ -35,17 +35,11 @@ struct NetworkRequest: NetworkRequestType {
         let session = URLSession.shared
         session.dataTask(with: request) { (data, response, error) in
             if let httpResponse = response as? HTTPURLResponse, (400...600).contains(httpResponse.statusCode) {
-                DispatchQueue.main.async {
-                    completion(.failure(NetworkError().returnError(rawValue: httpResponse.statusCode)))
-                }
+                completion(.failure(NetworkError().returnError(rawValue: httpResponse.statusCode)))
             } else if let data = data {
-                DispatchQueue.main.async {
-                    completion(.success(data))
-                }
+                completion(.success(data))
             } else {
-                DispatchQueue.main.async {
-                    completion(.failure(error!))
-                }
+                completion(.failure(error!))
             }
         }.resume()
     }

@@ -23,8 +23,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-        Zservice.shared.handleOauthRedirect(url: URLContexts.first?.url) {
-            self.applicationCoordinator.presentInitialView()
+        DispatchQueue.main.async {
+            Zservice.shared.handleOauthRedirect(url: URLContexts.first?.url) {
+                self.applicationCoordinator.presentInitialView()
+            }
         }
     }
 }
