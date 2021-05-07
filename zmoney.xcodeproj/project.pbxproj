@@ -12,6 +12,8 @@
 		0559470B2634C0F200CE727C /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0559470A2634C0F200CE727C /* ApplicationCoordinator.swift */; };
 		055ADEF3262E0B62001DCF5A /* TokenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055ADEF2262E0B62001DCF5A /* TokenService.swift */; };
 		056F8B0E25F6B314009DDFD0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05B93E2925D0442E0089E7A8 /* Main.storyboard */; };
+		0580D23C2645A3B500BEFA25 /* NetworkErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0580D23B2645A3B500BEFA25 /* NetworkErrorTests.swift */; };
+		0580D2422645BBAC00BEFA25 /* TransactionCellModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0580D2412645BBAC00BEFA25 /* TransactionCellModelTests.swift */; };
 		0598D6D5262F1DE500400A2C /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0598D6D4262F1DE500400A2C /* Notifications.swift */; };
 		0598D6DA262F208D00400A2C /* UIStoryboard+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0598D6D9262F208D00400A2C /* UIStoryboard+Extensions.swift */; };
 		0598D6DF262F272900400A2C /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0598D6DE262F272900400A2C /* UIViewController+Extensions.swift */; };
@@ -30,7 +32,7 @@
 		05B93E2825D0442E0089E7A8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B93E2725D0442E0089E7A8 /* LoginViewController.swift */; };
 		05B93E2D25D0442F0089E7A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05B93E2C25D0442F0089E7A8 /* Assets.xcassets */; };
 		05B93E3025D0442F0089E7A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05B93E2E25D0442F0089E7A8 /* LaunchScreen.storyboard */; };
-		05B93E3B25D0442F0089E7A8 /* zmoneyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B93E3A25D0442F0089E7A8 /* zmoneyTests.swift */; };
+		05B93E3B25D0442F0089E7A8 /* TokenServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B93E3A25D0442F0089E7A8 /* TokenServiceTests.swift */; };
 		05B93E4625D0442F0089E7A8 /* zmoneyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B93E4525D0442F0089E7A8 /* zmoneyUITests.swift */; };
 		05D3E9B8262A001300E9C234 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D3E9B7262A001300E9C234 /* TransactionCell.swift */; };
 		5442A2E1A16ACDFE3EA473C8 /* Pods_zmoney_zmoneyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA355404053A7CED218A4354 /* Pods_zmoney_zmoneyUITests.framework */; };
@@ -60,6 +62,8 @@
 		0555FCB2263B385900099E0B /* TransactionCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCellModel.swift; sourceTree = "<group>"; };
 		0559470A2634C0F200CE727C /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
 		055ADEF2262E0B62001DCF5A /* TokenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenService.swift; sourceTree = "<group>"; };
+		0580D23B2645A3B500BEFA25 /* NetworkErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorTests.swift; sourceTree = "<group>"; };
+		0580D2412645BBAC00BEFA25 /* TransactionCellModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCellModelTests.swift; sourceTree = "<group>"; };
 		0598D6D4262F1DE500400A2C /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		0598D6D9262F208D00400A2C /* UIStoryboard+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIStoryboard+Extensions.swift"; path = "zmoney/Models/Extensions/UIStoryboard+Extensions.swift"; sourceTree = SOURCE_ROOT; };
 		0598D6DE262F272900400A2C /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
@@ -82,7 +86,7 @@
 		05B93E2F25D0442F0089E7A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		05B93E3125D0442F0089E7A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05B93E3625D0442F0089E7A8 /* zmoneyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = zmoneyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		05B93E3A25D0442F0089E7A8 /* zmoneyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = zmoneyTests.swift; sourceTree = "<group>"; };
+		05B93E3A25D0442F0089E7A8 /* TokenServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenServiceTests.swift; sourceTree = "<group>"; };
 		05B93E3C25D0442F0089E7A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05B93E4125D0442F0089E7A8 /* zmoneyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = zmoneyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		05B93E4525D0442F0089E7A8 /* zmoneyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = zmoneyUITests.swift; sourceTree = "<group>"; };
@@ -134,6 +138,23 @@
 				0555FCB2263B385900099E0B /* TransactionCellModel.swift */,
 			);
 			path = TransactionCell;
+			sourceTree = "<group>";
+		};
+		0580D23F2645ABA600BEFA25 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0580D23B2645A3B500BEFA25 /* NetworkErrorTests.swift */,
+				05B93E3A25D0442F0089E7A8 /* TokenServiceTests.swift */,
+				0580D2412645BBAC00BEFA25 /* TransactionCellModelTests.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0580D2402645ABB100BEFA25 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		0598D6F3262F63FD00400A2C /* Extensions */ = {
@@ -240,7 +261,8 @@
 		05B93E3925D0442F0089E7A8 /* zmoneyTests */ = {
 			isa = PBXGroup;
 			children = (
-				05B93E3A25D0442F0089E7A8 /* zmoneyTests.swift */,
+				0580D23F2645ABA600BEFA25 /* Models */,
+				0580D2402645ABB100BEFA25 /* Controllers */,
 				05B93E3C25D0442F0089E7A8 /* Info.plist */,
 			);
 			path = zmoneyTests;
@@ -562,7 +584,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05B93E3B25D0442F0089E7A8 /* zmoneyTests.swift in Sources */,
+				05B93E3B25D0442F0089E7A8 /* TokenServiceTests.swift in Sources */,
+				0580D23C2645A3B500BEFA25 /* NetworkErrorTests.swift in Sources */,
+				0580D2422645BBAC00BEFA25 /* TransactionCellModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
