@@ -38,7 +38,9 @@ class ApplicationCoordinator {
 
 extension ApplicationCoordinator: ZserviceDelegate {
     func didLoggedIn() {
-        loginView?.dismiss(animated: true, completion: nil)
+        DispatchQueue.main.async {
+            self.loginView?.dismiss(animated: true, completion: nil)
+        }
     }
 
     func didLoggedOff() {
