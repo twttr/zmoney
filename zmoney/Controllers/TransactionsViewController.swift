@@ -28,19 +28,21 @@ class TransactionsViewController: UIViewController {
     }
 
     @objc private func refreshTransactionsList() {
-        DispatchQueue.main.async { [weak self] in
+        zService.getDiff { [weak self] (result) in
             guard let self = self else { return }
+            switch result {
+            case .success(let diffResponse):
+                self.transactionsModels = self.makeModels(diffResponse: diffResponse)
 
-            self.zService.getDiff { (result) in
-                switch result {
-                case .success(let diffResponse):
-                    self.transactionsModels = self.makeModels(diffResponse: diffResponse)
-
+                DispatchQueue.main.async {
                     self.tableView.reloadData()
                     self.refreshControl.endRefreshing()
-                case .failure(let error):
-                    print(error)
+                }
+            case .failure(let error):
+                print(error)
+                DispatchQueue.main.async {
                     self.refreshControl.endRefreshing()
+                    Zservice.shared.logout()
                 }
             }
         }
