@@ -55,6 +55,16 @@ class TransactionsViewController: UIViewController {
 }
 
 extension TransactionsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "ShowTransactionDetail", sender: self)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destinationVC = segue.destination as? TransactionDetailViewController else { return }
+        guard let indexPath = tableView.indexPathForSelectedRow else { return }
+
+        destinationVC.transactionCellModel = transactionsModels[indexPath.row]
+    }
 }
 
 extension TransactionsViewController: UITableViewDataSource {

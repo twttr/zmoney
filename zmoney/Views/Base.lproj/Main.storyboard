@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -135,7 +134,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="54X-TW-td8">
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" red="0.14901960780000001" green="0.21960784310000001" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TransactionCell" rowHeight="60" id="zrc-JT-lM0" customClass="TransactionCell" customModule="zmoney" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="24.5" width="414" height="60"/>
@@ -180,6 +179,7 @@
                                             <outlet property="amountLabel" destination="2ep-Ua-vrx" id="NKF-wo-Gdg"/>
                                             <outlet property="currencyLabel" destination="dRZ-RT-vkd" id="0Wo-xU-im0"/>
                                             <outlet property="dateLabel" destination="nYP-63-hyu" id="05b-IT-gqY"/>
+                                            <segue destination="9vK-y5-2oj" kind="showDetail" identifier="ShowTransactionDetail" id="iS9-s6-btA"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -210,15 +210,101 @@
             <objects>
                 <viewController id="9vK-y5-2oj" customClass="TransactionDetailViewController" customModule="zmoney" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SW7-x6-zbA">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transaction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lWI-YL-2Kd">
+                                <rect key="frame" x="20" y="20" width="374" height="48"/>
+                                <fontDescription key="fontDescription" name="NotoSansOriya-Bold" family="Noto Sans Oriya" pointSize="34"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Nyz-5S-7if">
+                                <rect key="frame" x="20" y="88" width="374" height="200"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Q4i-hB-PnO">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="66.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tUt-8S-cT6">
+                                                <rect key="frame" x="0.0" y="0.0" width="182" height="66.5"/>
+                                                <fontDescription key="fontDescription" name="NotoSansOriya-Bold" family="Noto Sans Oriya" pointSize="21"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000 RUR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbh-3Y-8JJ">
+                                                <rect key="frame" x="192" y="0.0" width="182" height="66.5"/>
+                                                <fontDescription key="fontDescription" name="NotoSansOriya-Bold" family="Noto Sans Oriya" pointSize="21"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="sjU-gh-fcp">
+                                        <rect key="frame" x="0.0" y="66.5" width="374" height="67"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lqh-CS-jEP">
+                                                <rect key="frame" x="0.0" y="0.0" width="183" height="67"/>
+                                                <fontDescription key="fontDescription" name="NotoSansOriya-Bold" family="Noto Sans Oriya" pointSize="21"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N26" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="usQ-ox-X6F">
+                                                <rect key="frame" x="191" y="0.0" width="183" height="67"/>
+                                                <fontDescription key="fontDescription" name="NotoSansOriya-Bold" family="Noto Sans Oriya" pointSize="21"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="qHp-k7-Aig">
+                                        <rect key="frame" x="0.0" y="133.5" width="374" height="66.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eh4-gb-N7K">
+                                                <rect key="frame" x="0.0" y="0.0" width="183" height="66.5"/>
+                                                <fontDescription key="fontDescription" name="NotoSansOriya-Bold" family="Noto Sans Oriya" pointSize="21"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gifts" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4oa-a0-28y">
+                                                <rect key="frame" x="191" y="0.0" width="183" height="66.5"/>
+                                                <fontDescription key="fontDescription" name="NotoSansOriya-Bold" family="Noto Sans Oriya" pointSize="21"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="qHp-k7-Aig" secondAttribute="trailing" id="Gzo-uV-xAl"/>
+                                    <constraint firstItem="qHp-k7-Aig" firstAttribute="leading" secondItem="Nyz-5S-7if" secondAttribute="leading" id="RAs-JP-iMT"/>
+                                    <constraint firstAttribute="trailing" secondItem="Q4i-hB-PnO" secondAttribute="trailing" id="jjN-dp-h7o"/>
+                                    <constraint firstItem="Q4i-hB-PnO" firstAttribute="leading" secondItem="Nyz-5S-7if" secondAttribute="leading" id="mLf-eF-m4w"/>
+                                    <constraint firstAttribute="trailing" secondItem="sjU-gh-fcp" secondAttribute="trailing" id="odU-dQ-D3F"/>
+                                    <constraint firstItem="sjU-gh-fcp" firstAttribute="leading" secondItem="Nyz-5S-7if" secondAttribute="leading" id="vIg-sI-2Nl"/>
+                                    <constraint firstAttribute="height" constant="200" id="ycM-99-wUs"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="ZqW-cD-U0I"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.1475841105" green="0.2205712199" blue="0.32942494750000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="Nyz-5S-7if" firstAttribute="top" secondItem="lWI-YL-2Kd" secondAttribute="bottom" constant="20" id="2nn-g2-rFL"/>
+                            <constraint firstItem="ZqW-cD-U0I" firstAttribute="trailing" secondItem="lWI-YL-2Kd" secondAttribute="trailing" constant="20" id="JcL-bt-hfm"/>
+                            <constraint firstItem="lWI-YL-2Kd" firstAttribute="leading" secondItem="ZqW-cD-U0I" secondAttribute="leading" constant="20" id="P7P-Zj-cFp"/>
+                            <constraint firstItem="lWI-YL-2Kd" firstAttribute="top" secondItem="ZqW-cD-U0I" secondAttribute="top" constant="20" id="rlw-ab-SOb"/>
+                            <constraint firstItem="ZqW-cD-U0I" firstAttribute="trailing" secondItem="Nyz-5S-7if" secondAttribute="trailing" constant="20" id="syV-B6-NnC"/>
+                            <constraint firstItem="Nyz-5S-7if" firstAttribute="leading" secondItem="ZqW-cD-U0I" secondAttribute="leading" constant="20" id="yu2-cy-yGm"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="accountLabel" destination="usQ-ox-X6F" id="Ffq-y8-Wba"/>
+                        <outlet property="amountLabel" destination="hbh-3Y-8JJ" id="6yr-sp-R35"/>
+                        <outlet property="categoryLabel" destination="4oa-a0-28y" id="anf-Z7-XWX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZWP-BV-FdQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2208" y="-527"/>
+            <point key="canvasLocation" x="2207.2463768115945" y="-527.00892857142856"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="ZjJ-JY-ypq">
@@ -243,8 +329,5 @@
     <resources>
         <image name="face.smiling" catalog="system" width="128" height="121"/>
         <image name="list.bullet" catalog="system" width="128" height="88"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

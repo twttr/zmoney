@@ -43,6 +43,23 @@ struct DiffResponseModel: Codable, Equatable {
         for index in transactions.indices {
             transactions[index].incomeTransactionInstrument = instrument[transactions[index].incomeInstrument]
             transactions[index].outcomeTransactionInstrument = instrument[transactions[index].outcomeInstrument]
+
+            if let categoriesStrings = transactions[index].tag {
+                transactions[index].categories = []
+                for categoryString in categoriesStrings {
+                    if let category = tag.filter({ $0.id == categoryString }).first {
+                        transactions[index].categories?.append(category)
+                    }
+                }
+            }
+
+            if let account = account.filter({ $0.id == transactions[index].incomeAccount }).first {
+                transactions[index].toAccount = account
+            }
+
+            if let account = account.filter({ $0.id == transactions[index].outcomeAccount }).first {
+                transactions[index].fromAccount = account
+            }
         }
         transaction = transactions
     }
@@ -201,6 +218,9 @@ struct Transaction: Codable, Equatable {
     let latitude, longitude: Double?
     let merchant, incomeBankID, outcomeBankID, reminderMarker: String?
     var incomeTransactionInstrument, outcomeTransactionInstrument: Instrument?
+    var categories: [Tag]?
+    var fromAccount: Account?
+    var toAccount: Account?
 }
 
 // MARK: - User
