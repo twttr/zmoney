@@ -32,6 +32,7 @@ class TransactionCellModelTests: XCTestCase {
     }
 
     func testTransactionIsOutcome() throws {
+        // Given
         amount = 0.0
         transaction = Transaction(
             id: "0", user: 1, date: "", income: amount, outcome: 0.0, changed: 0, incomeInstrument: 0,
@@ -41,11 +42,16 @@ class TransactionCellModelTests: XCTestCase {
             latitude: 0.0, longitude: 0.0, merchant: "", incomeBankID: "", outcomeBankID: "", reminderMarker: "",
             incomeTransactionInstrument: nil, outcomeTransactionInstrument: nil
         )
+
+        // When
         transactionCellModel = TransactionCellModel(transaction: transaction)
+
+        // Then
         XCTAssertTrue(transactionCellModel.isOutcome)
     }
 
     func testTransactionIsNotOutcome() throws {
+        // Given
         amount = 5.0
         transaction = Transaction(
             id: "0", user: 1, date: "", income: amount, outcome: 0.0, changed: 0, incomeInstrument: 0,
@@ -55,11 +61,16 @@ class TransactionCellModelTests: XCTestCase {
             latitude: 0.0, longitude: 0.0, merchant: "", incomeBankID: "", outcomeBankID: "", reminderMarker: "",
             incomeTransactionInstrument: nil, outcomeTransactionInstrument: nil
         )
+
+        // When
         transactionCellModel = TransactionCellModel(transaction: transaction)
+
+        // Then
         XCTAssertFalse(transactionCellModel.isOutcome)
     }
 
     func testTransactionDate() throws {
+        // Given
         testDate = "testDate"
         transaction = Transaction(
             id: "0", user: 1, date: testDate, income: 5.0, outcome: 0.0, changed: 0, incomeInstrument: 0,
@@ -69,11 +80,16 @@ class TransactionCellModelTests: XCTestCase {
             latitude: 0.0, longitude: 0.0, merchant: "", incomeBankID: "", outcomeBankID: "", reminderMarker: "",
             incomeTransactionInstrument: nil, outcomeTransactionInstrument: nil
         )
+
+        // When
         transactionCellModel = TransactionCellModel(transaction: transaction)
+
+        // Then
         XCTAssertEqual(transactionCellModel.date, testDate)
     }
 
     func testOutcomeTransactionOutput() throws {
+        // Given
         amount = 0.0
         transaction = Transaction(
             id: "0", user: 1, date: "", income: amount, outcome: amount, changed: 0, incomeInstrument: 0,
@@ -83,12 +99,17 @@ class TransactionCellModelTests: XCTestCase {
             latitude: 0.0, longitude: 0.0, merchant: "", incomeBankID: "", outcomeBankID: "", reminderMarker: "",
             incomeTransactionInstrument: nil, outcomeTransactionInstrument: instrument
         )
+
+        // When
         transactionCellModel = TransactionCellModel(transaction: transaction)
+
+        // Then
         XCTAssertEqual(transactionCellModel.amount, "Outcome \(transaction.outcome)")
         XCTAssertEqual(transactionCellModel.currency, instrument.shortTitle)
     }
 
     func testNotOutcomeTransactionOutput() throws {
+        // Given
         amount = 5.0
         transaction = Transaction(
             id: "0", user: 1, date: "", income: amount, outcome: 0.0, changed: 0, incomeInstrument: 0,
@@ -98,7 +119,11 @@ class TransactionCellModelTests: XCTestCase {
             latitude: 0.0, longitude: 0.0, merchant: "", incomeBankID: "", outcomeBankID: "", reminderMarker: "",
             incomeTransactionInstrument: instrument, outcomeTransactionInstrument: nil
         )
+
+        // When
         transactionCellModel = TransactionCellModel(transaction: transaction)
+
+        // Then
         XCTAssertEqual(transactionCellModel.amount, "Income \(transaction.income)")
         XCTAssertEqual(transactionCellModel.currency, instrument.shortTitle)
     }

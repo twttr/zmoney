@@ -25,17 +25,26 @@ class NetworkErrorTests: XCTestCase {
     }
 
     func testReturnBadRequestError() throws {
+        // When
         let error = networkError.returnError(rawValue: 400)
+
+        // Then
         XCTAssertEqual(error.localizedDescription, HttpStatus.badRequest.errorDescription)
     }
 
     func testReturnUnauthorizedError() throws {
+        // When
         let error = networkError.returnError(rawValue: 401)
+
+        // Then
         XCTAssertEqual(error.localizedDescription, HttpStatus.unauthorized.errorDescription)
     }
 
     func testReturnUndefinedError() throws {
+        // When
         let error = networkError.returnError(rawValue: 999)
+
+        // Then
         XCTAssertEqual(error.localizedDescription, HttpStatus.undefined.errorDescription)
     }
 }

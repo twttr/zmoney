@@ -35,17 +35,24 @@ class TokenServiceTests: XCTestCase {
     }
 
     func testSaveToken() throws {
+        // When
         tokenService.saveToken(from: authResponse)
+
+        // Then
         XCTAssertEqual(tokenService.accessToken, accessToken)
     }
 
     func testRemoveToken() throws {
+        // When
         tokenService.saveToken(from: authResponse)
         tokenService.removeToken()
+
+        // Then
         XCTAssert(tokenService.accessToken.isEmpty)
     }
 
     func testReturnEmptyToken() throws {
+        // Then
         XCTAssert(tokenService.accessToken.isEmpty)
     }
 }
