@@ -14,4 +14,7 @@ enum Constants {
     enum Cells {
         public static let transactionCellIdentifier = "TransactionCell"
     }
+    enum Segues {
+        public static let transactionsToTransactionDetail = "ShowTransactionDetail"
+    }
 }

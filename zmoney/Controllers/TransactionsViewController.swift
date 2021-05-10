@@ -56,7 +56,7 @@ class TransactionsViewController: UIViewController {
 
 extension TransactionsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "ShowTransactionDetail", sender: self)
+        performSegue(withIdentifier: Constants.Segues.transactionsToTransactionDetail, sender: self)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
