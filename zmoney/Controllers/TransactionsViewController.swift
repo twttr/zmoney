@@ -13,9 +13,13 @@ class TransactionsViewController: UIViewController {
     private let zService = Zservice.shared
     private var transactionsModels = [TransactionCellModel]()
     private var refreshControl = UIRefreshControl()
+    private var emptyView = UIView()
+    private var errorView = UIView()
+    private var stateController: StateController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        stateController = StateController(loadedView: tableView)
         tableView.delegate = self
         tableView.dataSource = self
 
@@ -28,6 +32,7 @@ class TransactionsViewController: UIViewController {
     }
 
     @objc private func refreshTransactionsList() {
+        self.stateController?.state = .loading
         zService.getDiff { [weak self] (result) in
             guard let self = self else { return }
             switch result {
@@ -35,14 +40,14 @@ class TransactionsViewController: UIViewController {
                 self.transactionsModels = self.makeModels(diffResponse: diffResponse)
 
                 DispatchQueue.main.async {
+                    self.stateController?.state = .loaded
                     self.tableView.reloadData()
                     self.refreshControl.endRefreshing()
                 }
             case .failure(let error):
-                print(error)
                 DispatchQueue.main.async {
                     self.refreshControl.endRefreshing()
-                    Zservice.shared.logout()
+                    self.stateController?.state = .error(error.localizedDescription)
                 }
             }
         }

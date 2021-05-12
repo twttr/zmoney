@@ -20,6 +20,9 @@
 		0598D6DA262F208D00400A2C /* UIStoryboard+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0598D6D9262F208D00400A2C /* UIStoryboard+Extensions.swift */; };
 		0598D6DF262F272900400A2C /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0598D6DE262F272900400A2C /* UIViewController+Extensions.swift */; };
 		0598D6EC262F60E600400A2C /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0598D6EB262F60E600400A2C /* UIConstants.swift */; };
+		05A0664F264C7FBD00A64EE5 /* StateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A0664E264C7FBD00A64EE5 /* StateController.swift */; };
+		05A06651264C854000A64EE5 /* ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05A06650264C854000A64EE5 /* ErrorView.xib */; };
+		05A06653264C85C500A64EE5 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A06652264C85C500A64EE5 /* ErrorView.swift */; };
 		05AD5F3F2624B9B700355F1B /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD5F3E2624B9B700355F1B /* NetworkRequest.swift */; };
 		05AD5F472624BC6300355F1B /* ZService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD5F462624BC6300355F1B /* ZService.swift */; };
 		05AD5F6226262CEE00355F1B /* AuthResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD5F6126262CEE00355F1B /* AuthResponseModel.swift */; };
@@ -38,6 +41,8 @@
 		05B93E4625D0442F0089E7A8 /* zmoneyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B93E4525D0442F0089E7A8 /* zmoneyUITests.swift */; };
 		05CF4342264CAFE600A1FCAE /* JSONTestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CF4341264CAFE600A1FCAE /* JSONTestable.swift */; };
 		05CF4345264D39C200A1FCAE /* TestConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CF4344264D39C200A1FCAE /* TestConstants.swift */; };
+		05CF433D264C9D5700A1FCAE /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05CF433C264C9D5700A1FCAE /* LoadingView.xib */; };
+		05CF433F264C9DB500A1FCAE /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CF433E264C9DB500A1FCAE /* LoadingView.swift */; };
 		05D3E9B8262A001300E9C234 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D3E9B7262A001300E9C234 /* TransactionCell.swift */; };
 		5442A2E1A16ACDFE3EA473C8 /* Pods_zmoney_zmoneyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA355404053A7CED218A4354 /* Pods_zmoney_zmoneyUITests.framework */; };
 		D36D84F67B18323B33FCDBFB /* Pods_zmoney.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 957310B10DB177304FCD44E9 /* Pods_zmoney.framework */; };
@@ -74,6 +79,9 @@
 		0598D6D9262F208D00400A2C /* UIStoryboard+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIStoryboard+Extensions.swift"; path = "zmoney/Models/Extensions/UIStoryboard+Extensions.swift"; sourceTree = SOURCE_ROOT; };
 		0598D6DE262F272900400A2C /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		0598D6EB262F60E600400A2C /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
+		05A0664E264C7FBD00A64EE5 /* StateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateController.swift; sourceTree = "<group>"; };
+		05A06650264C854000A64EE5 /* ErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorView.xib; sourceTree = "<group>"; };
+		05A06652264C85C500A64EE5 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		05AD5F3E2624B9B700355F1B /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		05AD5F462624BC6300355F1B /* ZService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZService.swift; sourceTree = "<group>"; };
 		05AD5F6126262CEE00355F1B /* AuthResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponseModel.swift; sourceTree = "<group>"; };
@@ -99,6 +107,8 @@
 		05B93E4725D0442F0089E7A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05CF4341264CAFE600A1FCAE /* JSONTestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONTestable.swift; sourceTree = "<group>"; };
 		05CF4344264D39C200A1FCAE /* TestConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestConstants.swift; sourceTree = "<group>"; };
+		05CF433C264C9D5700A1FCAE /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
+		05CF433E264C9DB500A1FCAE /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		05D3E9B7262A001300E9C234 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
 		23868946E70FC2287A02AE67 /* Pods_zmoneyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_zmoneyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D1226F424B06A39779B7676 /* Pods-zmoneyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zmoneyTests.debug.xcconfig"; path = "Target Support Files/Pods-zmoneyTests/Pods-zmoneyTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -215,6 +225,10 @@
 			children = (
 				05B93E2925D0442E0089E7A8 /* Main.storyboard */,
 				05B93E2E25D0442F0089E7A8 /* LaunchScreen.storyboard */,
+				05A06652264C85C500A64EE5 /* ErrorView.swift */,
+				05A06650264C854000A64EE5 /* ErrorView.xib */,
+				05CF433E264C9DB500A1FCAE /* LoadingView.swift */,
+				05CF433C264C9D5700A1FCAE /* LoadingView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -227,6 +241,7 @@
 				05AD5F812628B43500355F1B /* ProfileViewController.swift */,
 				05B93E2725D0442E0089E7A8 /* LoginViewController.swift */,
 				05AD5F6D262755B300355F1B /* TabBarViewController.swift */,
+				05A0664E264C7FBD00A64EE5 /* StateController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -440,6 +455,8 @@
 				056F8B0E25F6B314009DDFD0 /* Main.storyboard in Resources */,
 				05B93E3025D0442F0089E7A8 /* LaunchScreen.storyboard in Resources */,
 				05B93E2D25D0442F0089E7A8 /* Assets.xcassets in Resources */,
+				05A06651264C854000A64EE5 /* ErrorView.xib in Resources */,
+				05CF433D264C9D5700A1FCAE /* LoadingView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -590,9 +607,11 @@
 				05AD5F7326275B3D00355F1B /* NetworkError.swift in Sources */,
 				05B93E2825D0442E0089E7A8 /* LoginViewController.swift in Sources */,
 				055ADEF3262E0B62001DCF5A /* TokenService.swift in Sources */,
+				05CF433F264C9DB500A1FCAE /* LoadingView.swift in Sources */,
 				0598D6DF262F272900400A2C /* UIViewController+Extensions.swift in Sources */,
 				05B93E2425D0442E0089E7A8 /* AppDelegate.swift in Sources */,
 				05AD5F872628B48300355F1B /* TransactionsViewController.swift in Sources */,
+				05A06653264C85C500A64EE5 /* ErrorView.swift in Sources */,
 				05AD5F9D2628CBDD00355F1B /* DiffRequestModel.swift in Sources */,
 				05AD5F3F2624B9B700355F1B /* NetworkRequest.swift in Sources */,
 				05AD5F6E262755B300355F1B /* TabBarViewController.swift in Sources */,
@@ -600,6 +619,7 @@
 				0598D6DA262F208D00400A2C /* UIStoryboard+Extensions.swift in Sources */,
 				05AD5F822628B43500355F1B /* ProfileViewController.swift in Sources */,
 				05D3E9B8262A001300E9C234 /* TransactionCell.swift in Sources */,
+				05A0664F264C7FBD00A64EE5 /* StateController.swift in Sources */,
 				05B93E2625D0442E0089E7A8 /* SceneDelegate.swift in Sources */,
 				0559470B2634C0F200CE727C /* ApplicationCoordinator.swift in Sources */,
 				0555FCB02638A28300099E0B /* TransactionDetailViewController.swift in Sources */,
