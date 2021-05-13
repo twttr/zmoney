@@ -23,7 +23,7 @@ class LoadingView: UIView {
     }
 
     private func commonInit() {
-        Bundle.main.loadNibNamed("LoadingView", owner: self, options: nil)
+        Bundle.main.loadNibNamed(Constants.Views.loadingView, owner: self, options: nil)
         addSubview(loadingView)
         loadingView.frame = self.bounds
     }

@@ -24,7 +24,7 @@ class ErrorView: UIView {
     }
 
     private func commonInit() {
-        Bundle.main.loadNibNamed("ErrorView", owner: self, options: nil)
+        Bundle.main.loadNibNamed(Constants.Views.errorView, owner: self, options: nil)
         addSubview(errorView)
         errorView.frame = self.bounds
     }
