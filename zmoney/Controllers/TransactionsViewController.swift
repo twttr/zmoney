@@ -15,11 +15,11 @@ class TransactionsViewController: UIViewController {
     private var refreshControl = UIRefreshControl()
     private var emptyView = UIView()
     private var errorView = UIView()
-    private var stateController: StateController?
+    private var stateController: StateManager?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        stateController = StateController(loadedView: tableView)
+        stateController = StateManager(loadedView: tableView)
         tableView.delegate = self
         tableView.dataSource = self
 

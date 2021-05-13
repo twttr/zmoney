@@ -20,7 +20,7 @@
 		0598D6DA262F208D00400A2C /* UIStoryboard+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0598D6D9262F208D00400A2C /* UIStoryboard+Extensions.swift */; };
 		0598D6DF262F272900400A2C /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0598D6DE262F272900400A2C /* UIViewController+Extensions.swift */; };
 		0598D6EC262F60E600400A2C /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0598D6EB262F60E600400A2C /* UIConstants.swift */; };
-		05A0664F264C7FBD00A64EE5 /* StateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A0664E264C7FBD00A64EE5 /* StateController.swift */; };
+		05A0664F264C7FBD00A64EE5 /* StateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A0664E264C7FBD00A64EE5 /* StateManager.swift */; };
 		05A06651264C854000A64EE5 /* ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05A06650264C854000A64EE5 /* ErrorView.xib */; };
 		05A06653264C85C500A64EE5 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A06652264C85C500A64EE5 /* ErrorView.swift */; };
 		05AD5F3F2624B9B700355F1B /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD5F3E2624B9B700355F1B /* NetworkRequest.swift */; };
@@ -79,7 +79,7 @@
 		0598D6D9262F208D00400A2C /* UIStoryboard+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIStoryboard+Extensions.swift"; path = "zmoney/Models/Extensions/UIStoryboard+Extensions.swift"; sourceTree = SOURCE_ROOT; };
 		0598D6DE262F272900400A2C /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		0598D6EB262F60E600400A2C /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
-		05A0664E264C7FBD00A64EE5 /* StateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateController.swift; sourceTree = "<group>"; };
+		05A0664E264C7FBD00A64EE5 /* StateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateManager.swift; sourceTree = "<group>"; };
 		05A06650264C854000A64EE5 /* ErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorView.xib; sourceTree = "<group>"; };
 		05A06652264C85C500A64EE5 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		05AD5F3E2624B9B700355F1B /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
@@ -216,6 +216,7 @@
 				0598D6F4262F641B00400A2C /* Network */,
 				0598D6F3262F63FD00400A2C /* Extensions */,
 				0559470A2634C0F200CE727C /* ApplicationCoordinator.swift */,
+				05A0664E264C7FBD00A64EE5 /* StateManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -241,7 +242,6 @@
 				05AD5F812628B43500355F1B /* ProfileViewController.swift */,
 				05B93E2725D0442E0089E7A8 /* LoginViewController.swift */,
 				05AD5F6D262755B300355F1B /* TabBarViewController.swift */,
-				05A0664E264C7FBD00A64EE5 /* StateController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -619,7 +619,7 @@
 				0598D6DA262F208D00400A2C /* UIStoryboard+Extensions.swift in Sources */,
 				05AD5F822628B43500355F1B /* ProfileViewController.swift in Sources */,
 				05D3E9B8262A001300E9C234 /* TransactionCell.swift in Sources */,
-				05A0664F264C7FBD00A64EE5 /* StateController.swift in Sources */,
+				05A0664F264C7FBD00A64EE5 /* StateManager.swift in Sources */,
 				05B93E2625D0442E0089E7A8 /* SceneDelegate.swift in Sources */,
 				0559470B2634C0F200CE727C /* ApplicationCoordinator.swift in Sources */,
 				0555FCB02638A28300099E0B /* TransactionDetailViewController.swift in Sources */,

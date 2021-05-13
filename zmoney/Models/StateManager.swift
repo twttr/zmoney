@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct StateController {
+struct StateManager {
     private var loadedView: UIView
     private var loadingView = LoadingView()
     private var emptyView = UIView()
