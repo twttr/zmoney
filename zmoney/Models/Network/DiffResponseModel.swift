@@ -16,7 +16,7 @@ struct DiffResponseModel: Codable, Equatable {
     let company: [Company]
     let user: [User]
     let account: [Account]
-    let tag: [Tag]
+    let tag: [String: Tag]
     let budget: [Budget]?
     let merchant: [Merchant]?
     let reminder: [Reminder]?
@@ -33,7 +33,9 @@ struct DiffResponseModel: Codable, Equatable {
         company = try container.decode([Company].self, forKey: .company)
         user = try container.decode([User].self, forKey: .user)
         account = try container.decode([Account].self, forKey: .account)
-        tag = try container.decode([Tag].self, forKey: .tag)
+        tag = try container.decode([Tag].self, forKey: .tag).reduce(into: [String: Tag]()) {
+            $0[$1.id] = $1
+        }
         budget = try? container.decode([Budget].self, forKey: .budget)
         merchant = try? container.decode([Merchant].self, forKey: .merchant)
         reminder = try? container.decode([Reminder].self, forKey: .reminder)
@@ -47,8 +49,8 @@ struct DiffResponseModel: Codable, Equatable {
             if let categoriesStrings = transactions[index].tag {
                 transactions[index].categories = []
                 for categoryString in categoriesStrings {
-                    if let category = tag.filter({ $0.id == categoryString }).first {
-                        transactions[index].categories?.append(category)
+                    if let unwrappedTag = tag[categoryString] {
+                        transactions[index].categories?.append(unwrappedTag)
                     }
                 }
             }

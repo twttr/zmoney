@@ -22,12 +22,9 @@ extension TransactionCellModel {
     init(transaction: Transaction) {
         isOutcome = transaction.income == 0
         date = transaction.date
-        categories = []
-        if let categoryEntitites = transaction.categories {
-            for categoryEntity in categoryEntitites {
-                categories.append(categoryEntity.title)
-            }
-        }
+        categories = transaction.categories?.reduce(into: [String]()) {
+            $0.append($1.title)
+        } ?? []
 
         if isOutcome {
             amount = "Outcome \(transaction.outcome)"
