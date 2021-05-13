@@ -9,7 +9,7 @@ import Foundation
 
 // swiftlint:disable identifier_name
 // MARK: - DiffResponseModel
-struct DiffResponseModel: Codable {
+struct DiffResponseModel: Codable, Equatable {
     let serverTimestamp: Int
     let instrument: [Int: Instrument]
     let country: [Country]
@@ -17,10 +17,10 @@ struct DiffResponseModel: Codable {
     let user: [User]
     let account: [Account]
     let tag: [Tag]
-    let budget: [Budget]
-    let merchant: [Merchant]
-    let reminder: [Reminder]
-    let reminderMarker: [ReminderMarker]
+    let budget: [Budget]?
+    let merchant: [Merchant]?
+    let reminder: [Reminder]?
+    let reminderMarker: [ReminderMarker]?
     let transaction: [Transaction]
 
     init(from decoder: Decoder) throws {
@@ -34,10 +34,10 @@ struct DiffResponseModel: Codable {
         user = try container.decode([User].self, forKey: .user)
         account = try container.decode([Account].self, forKey: .account)
         tag = try container.decode([Tag].self, forKey: .tag)
-        budget = try container.decode([Budget].self, forKey: .budget)
-        merchant = try container.decode([Merchant].self, forKey: .merchant)
-        reminder = try container.decode([Reminder].self, forKey: .reminder)
-        reminderMarker = try container.decode([ReminderMarker].self, forKey: .reminderMarker)
+        budget = try? container.decode([Budget].self, forKey: .budget)
+        merchant = try? container.decode([Merchant].self, forKey: .merchant)
+        reminder = try? container.decode([Reminder].self, forKey: .reminder)
+        reminderMarker = try? container.decode([ReminderMarker].self, forKey: .reminderMarker)
         var transactions = try container.decode([Transaction].self, forKey: .transaction)
 
         for index in transactions.indices {
@@ -49,37 +49,36 @@ struct DiffResponseModel: Codable {
 }
 
 // MARK: - Account
-struct Account: Codable {
+struct Account: Codable, Equatable {
     let id: String
     let user, instrument: Int
     let type: String
-    let role: Int?
-    let accountPrivate, savings: Bool
+    let role: JSONNull?
+    let accountPrivate: Bool
+    let savings: JSONNull?
     let title: String
     let inBalance: Bool
-    let creditLimit: Int
-    let startBalance, balance: Double
-    let company: Int?
+    let creditLimit, startBalance, balance: Int
+    let company: JSONNull?
     let archive, enableCorrection: Bool
     let startDate, capitalization, percent: JSONNull?
     let changed: Int
-    let syncID: [String]?
+    let syncID: JSONNull?
     let enableSMS: Bool
     let endDateOffset, endDateOffsetInterval, payoffStep, payoffInterval: JSONNull?
 
     enum CodingKeys: String, CodingKey {
         case id, user, instrument, type, role
         case accountPrivate = "private"
-        case savings, title, inBalance, creditLimit,
-             startBalance, balance, company, archive,
-             enableCorrection, startDate, capitalization,
-             percent, changed, syncID, enableSMS, endDateOffset,
-             endDateOffsetInterval, payoffStep, payoffInterval
+        case savings, title, inBalance, creditLimit, startBalance,
+             balance, company, archive, enableCorrection, startDate,
+             capitalization, percent, changed, syncID, enableSMS,
+             endDateOffset, endDateOffsetInterval, payoffStep, payoffInterval
     }
 }
 
 // MARK: - Budget
-struct Budget: Codable {
+struct Budget: Codable, Equatable {
     let user, changed: Int
     let date, tag: String
     let income: Int
@@ -88,7 +87,7 @@ struct Budget: Codable {
 }
 
 // MARK: - Company
-struct Company: Codable {
+struct Company: Codable, Equatable {
     let id: Int
     let title: String
     let www: String?
@@ -100,7 +99,7 @@ struct Company: Codable {
 }
 
 // MARK: - Country
-struct Country: Codable {
+struct Country: Codable, Equatable {
     let id: Int
     let title: String
     let currency: Int
@@ -108,7 +107,7 @@ struct Country: Codable {
 }
 
 // MARK: - Instrument
-struct Instrument: Codable {
+struct Instrument: Codable, Equatable {
     let id: Int
     let title, shortTitle, symbol: String
     let rate: Double
@@ -116,7 +115,7 @@ struct Instrument: Codable {
 }
 
 // MARK: - Merchant
-struct Merchant: Codable {
+struct Merchant: Codable, Equatable {
     let id: String
     let user: Int
     let title: String
@@ -124,7 +123,7 @@ struct Merchant: Codable {
 }
 
 // MARK: - Reminder
-struct Reminder: Codable {
+struct Reminder: Codable, Equatable {
     let id: String
     let user: Int
     let income, outcome: Double
@@ -141,7 +140,7 @@ struct Reminder: Codable {
 }
 
 // MARK: - ReminderMarker
-struct ReminderMarker: Codable {
+struct ReminderMarker: Codable, Equatable {
     let id: String
     let user: Int
     let date: String
@@ -162,7 +161,7 @@ enum State: String, Codable {
 }
 
 // MARK: - Tag
-struct Tag: Codable {
+struct Tag: Codable, Equatable {
     let id: String
     let user, changed: Int
     let icon: String
@@ -181,7 +180,7 @@ struct Tag: Codable {
 }
 
 // MARK: - Transaction
-struct Transaction: Codable {
+struct Transaction: Codable, Equatable {
     let id: String
     let user: Int
     let date: String
@@ -205,14 +204,14 @@ struct Transaction: Codable {
 }
 
 // MARK: - User
-struct User: Codable {
+struct User: Codable, Equatable {
     let id, country: Int
-    let login: String
+    let login: JSONNull?
     let changed, currency, paidTill: Int
-    let parent: Int?
+    let parent: JSONNull?
     let countryCode, email: String
     let monthStartDay: Int
-    let subscription: String
+    let subscription: JSONNull?
 }
 
 // MARK: - Encode/decode helpers
