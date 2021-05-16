@@ -46,12 +46,10 @@ struct DiffResponseModel: Codable, Equatable {
             transactions[index].incomeTransactionInstrument = instrument[transactions[index].incomeInstrument]
             transactions[index].outcomeTransactionInstrument = instrument[transactions[index].outcomeInstrument]
 
-            if let categoriesStrings = transactions[index].tag {
-                transactions[index].categories = []
-                for categoryString in categoriesStrings {
-                    if let unwrappedTag = tag[categoryString] {
-                        transactions[index].categories?.append(unwrappedTag)
-                    }
+            transactions[index].categories = []
+            for stringTag in transactions[index].tag ?? [] {
+                if let unwrappedTag = tag[stringTag] {
+                    transactions[index].categories?.append(unwrappedTag)
                 }
             }
 

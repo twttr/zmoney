@@ -22,9 +22,7 @@ extension TransactionCellModel {
     init(transaction: Transaction) {
         isOutcome = transaction.income == 0
         date = transaction.date
-        categories = transaction.categories?.reduce(into: [String]()) {
-            $0.append($1.title)
-        } ?? []
+        categories = transaction.categories?.map { $0.title } ?? []
 
         if isOutcome {
             amount = "Outcome \(transaction.outcome)"
