@@ -84,7 +84,7 @@ class DiffResponseModelTests: XCTestCase {
             id: "20fcb30a-867a-4cf6-a525-6f7190679231", user: 1399696, instrument: 2, type: "debt",
             role: nil, accountPrivate: false, savings: nil, title: "Долги", inBalance: false,
             creditLimit: 0, startBalance: 0, balance: 0, company: nil, archive: false,
-            enableCorrection: false, startDate: nil, capitalization: nil, percent: nil, changed: 1618781099,
+            enableCorrection: false, startDate: nil, percent: nil, capitalization: nil, changed: 1618781099,
             syncID: nil, enableSMS: false, endDateOffset: nil, endDateOffsetInterval: nil,
             payoffStep: nil, payoffInterval: nil
         )
@@ -174,10 +174,23 @@ class DiffResponseModelTests: XCTestCase {
         XCTAssertEqual(reminderMarker, ReminderMarker(reminderMarkerJson))
     }
 
+    func testPartialJson() throws {
+        // Given
+        let bundle = Bundle(for: type(of: self))
+        guard let path = bundle.path(forResource: "diff_response_partial", ofType: "json") else { return }
+
+        // When
+        let diffResponseJson = try String(contentsOfFile: path)
+        let diffResponseModel = DiffResponseModel(diffResponseJson)
+
+        // Then
+        XCTAssertNotNil(diffResponseModel)
+    }
+
     func testFullJson() throws {
         // Given
         let bundle = Bundle(for: type(of: self))
-        guard let path = bundle.path(forResource: "diff_response", ofType: "json") else { return }
+        guard let path = bundle.path(forResource: "diff_response_full", ofType: "json") else { return }
 
         // When
         let diffResponseJson = try String(contentsOfFile: path)

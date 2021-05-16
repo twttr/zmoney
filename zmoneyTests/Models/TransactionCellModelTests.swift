@@ -38,7 +38,7 @@ class TransactionCellModelTests: XCTestCase {
             id: "0", user: 1, date: "", income: amount, outcome: 0.0, changed: 0, incomeInstrument: 0,
             outcomeInstrument: 0, created: 0, originalPayee: "", deleted: false, viewed: false,
             hold: false, qrCode: "", incomeAccount: "", outcomeAccount: "", tag: nil, comment: "",
-            payee: "", opIncome: 0, opOutcome: 0, opIncomeInstrument: JSONNull(), opOutcomeInstrument: 0,
+            payee: "", opIncome: 0, opOutcome: 0, opIncomeInstrument: nil, opOutcomeInstrument: 0,
             latitude: 0.0, longitude: 0.0, merchant: "", incomeBankID: "", outcomeBankID: "", reminderMarker: "",
             incomeTransactionInstrument: nil, outcomeTransactionInstrument: nil
         )
@@ -57,7 +57,7 @@ class TransactionCellModelTests: XCTestCase {
             id: "0", user: 1, date: "", income: amount, outcome: 0.0, changed: 0, incomeInstrument: 0,
             outcomeInstrument: 0, created: 0, originalPayee: "", deleted: false, viewed: false,
             hold: false, qrCode: "", incomeAccount: "", outcomeAccount: "", tag: nil, comment: "",
-            payee: "", opIncome: 0, opOutcome: 0, opIncomeInstrument: JSONNull(), opOutcomeInstrument: 0,
+            payee: "", opIncome: 0, opOutcome: 0, opIncomeInstrument: nil, opOutcomeInstrument: 0,
             latitude: 0.0, longitude: 0.0, merchant: "", incomeBankID: "", outcomeBankID: "", reminderMarker: "",
             incomeTransactionInstrument: nil, outcomeTransactionInstrument: nil
         )
@@ -76,7 +76,7 @@ class TransactionCellModelTests: XCTestCase {
             id: "0", user: 1, date: testDate, income: 5.0, outcome: 0.0, changed: 0, incomeInstrument: 0,
             outcomeInstrument: 0, created: 0, originalPayee: "", deleted: false, viewed: false,
             hold: false, qrCode: "", incomeAccount: "", outcomeAccount: "", tag: nil, comment: "",
-            payee: "", opIncome: 0, opOutcome: 0, opIncomeInstrument: JSONNull(), opOutcomeInstrument: 0,
+            payee: "", opIncome: 0, opOutcome: 0, opIncomeInstrument: nil, opOutcomeInstrument: 0,
             latitude: 0.0, longitude: 0.0, merchant: "", incomeBankID: "", outcomeBankID: "", reminderMarker: "",
             incomeTransactionInstrument: nil, outcomeTransactionInstrument: nil
         )
@@ -95,7 +95,7 @@ class TransactionCellModelTests: XCTestCase {
             id: "0", user: 1, date: "", income: amount, outcome: amount, changed: 0, incomeInstrument: 0,
             outcomeInstrument: 0, created: 0, originalPayee: "", deleted: false, viewed: false,
             hold: false, qrCode: "", incomeAccount: "", outcomeAccount: "", tag: nil, comment: "",
-            payee: "", opIncome: 0, opOutcome: 0, opIncomeInstrument: JSONNull(), opOutcomeInstrument: 0,
+            payee: "", opIncome: 0, opOutcome: 0, opIncomeInstrument: nil, opOutcomeInstrument: 0,
             latitude: 0.0, longitude: 0.0, merchant: "", incomeBankID: "", outcomeBankID: "", reminderMarker: "",
             incomeTransactionInstrument: nil, outcomeTransactionInstrument: instrument
         )
@@ -115,7 +115,7 @@ class TransactionCellModelTests: XCTestCase {
             id: "0", user: 1, date: "", income: amount, outcome: 0.0, changed: 0, incomeInstrument: 0,
             outcomeInstrument: 0, created: 0, originalPayee: "", deleted: false, viewed: false,
             hold: false, qrCode: "", incomeAccount: "", outcomeAccount: "", tag: nil, comment: "",
-            payee: "", opIncome: 0, opOutcome: 0, opIncomeInstrument: JSONNull(), opOutcomeInstrument: 0,
+            payee: "", opIncome: 0, opOutcome: 0, opIncomeInstrument: nil, opOutcomeInstrument: 0,
             latitude: 0.0, longitude: 0.0, merchant: "", incomeBankID: "", outcomeBankID: "", reminderMarker: "",
             incomeTransactionInstrument: instrument, outcomeTransactionInstrument: nil
         )

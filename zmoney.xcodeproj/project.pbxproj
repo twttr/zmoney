@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0544BE4226518601001AF1B9 /* diff_response_full.json in Resources */ = {isa = PBXBuildFile; fileRef = 0544BE4126518601001AF1B9 /* diff_response_full.json */; };
 		0555FCB02638A28300099E0B /* TransactionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0555FCAF2638A28300099E0B /* TransactionDetailViewController.swift */; };
 		0555FCB3263B385900099E0B /* TransactionCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0555FCB2263B385900099E0B /* TransactionCellModel.swift */; };
 		0559470B2634C0F200CE727C /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0559470A2634C0F200CE727C /* ApplicationCoordinator.swift */; };
 		055ADEF3262E0B62001DCF5A /* TokenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055ADEF2262E0B62001DCF5A /* TokenService.swift */; };
-		055C51B8264D5A63004DCA10 /* diff_response.json in Resources */ = {isa = PBXBuildFile; fileRef = 055C51B7264D5A63004DCA10 /* diff_response.json */; };
+		055C51B8264D5A63004DCA10 /* diff_response_partial.json in Resources */ = {isa = PBXBuildFile; fileRef = 055C51B7264D5A63004DCA10 /* diff_response_partial.json */; };
 		056F8B0E25F6B314009DDFD0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05B93E2925D0442E0089E7A8 /* Main.storyboard */; };
 		0580D23C2645A3B500BEFA25 /* NetworkErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0580D23B2645A3B500BEFA25 /* NetworkErrorTests.swift */; };
 		0580D2422645BBAC00BEFA25 /* TransactionCellModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0580D2412645BBAC00BEFA25 /* TransactionCellModelTests.swift */; };
@@ -39,10 +40,10 @@
 		05B93E3025D0442F0089E7A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05B93E2E25D0442F0089E7A8 /* LaunchScreen.storyboard */; };
 		05B93E3B25D0442F0089E7A8 /* TokenServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B93E3A25D0442F0089E7A8 /* TokenServiceTests.swift */; };
 		05B93E4625D0442F0089E7A8 /* zmoneyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B93E4525D0442F0089E7A8 /* zmoneyUITests.swift */; };
-		05CF4342264CAFE600A1FCAE /* JSONTestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CF4341264CAFE600A1FCAE /* JSONTestable.swift */; };
-		05CF4345264D39C200A1FCAE /* TestConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CF4344264D39C200A1FCAE /* TestConstants.swift */; };
 		05CF433D264C9D5700A1FCAE /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05CF433C264C9D5700A1FCAE /* LoadingView.xib */; };
 		05CF433F264C9DB500A1FCAE /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CF433E264C9DB500A1FCAE /* LoadingView.swift */; };
+		05CF4342264CAFE600A1FCAE /* JSONTestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CF4341264CAFE600A1FCAE /* JSONTestable.swift */; };
+		05CF4345264D39C200A1FCAE /* TestConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CF4344264D39C200A1FCAE /* TestConstants.swift */; };
 		05D3E9B8262A001300E9C234 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D3E9B7262A001300E9C234 /* TransactionCell.swift */; };
 		5442A2E1A16ACDFE3EA473C8 /* Pods_zmoney_zmoneyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA355404053A7CED218A4354 /* Pods_zmoney_zmoneyUITests.framework */; };
 		D36D84F67B18323B33FCDBFB /* Pods_zmoney.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 957310B10DB177304FCD44E9 /* Pods_zmoney.framework */; };
@@ -67,11 +68,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0544BE4126518601001AF1B9 /* diff_response_full.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = diff_response_full.json; sourceTree = "<group>"; };
 		0555FCAF2638A28300099E0B /* TransactionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailViewController.swift; sourceTree = "<group>"; };
 		0555FCB2263B385900099E0B /* TransactionCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCellModel.swift; sourceTree = "<group>"; };
 		0559470A2634C0F200CE727C /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
 		055ADEF2262E0B62001DCF5A /* TokenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenService.swift; sourceTree = "<group>"; };
-		055C51B7264D5A63004DCA10 /* diff_response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = diff_response.json; sourceTree = "<group>"; };
+		055C51B7264D5A63004DCA10 /* diff_response_partial.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = diff_response_partial.json; sourceTree = "<group>"; };
 		0580D23B2645A3B500BEFA25 /* NetworkErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorTests.swift; sourceTree = "<group>"; };
 		0580D2412645BBAC00BEFA25 /* TransactionCellModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCellModelTests.swift; sourceTree = "<group>"; };
 		0580D2432649B95800BEFA25 /* DiffResponseModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffResponseModelTests.swift; sourceTree = "<group>"; };
@@ -105,10 +107,10 @@
 		05B93E4125D0442F0089E7A8 /* zmoneyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = zmoneyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		05B93E4525D0442F0089E7A8 /* zmoneyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = zmoneyUITests.swift; sourceTree = "<group>"; };
 		05B93E4725D0442F0089E7A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		05CF4341264CAFE600A1FCAE /* JSONTestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONTestable.swift; sourceTree = "<group>"; };
-		05CF4344264D39C200A1FCAE /* TestConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestConstants.swift; sourceTree = "<group>"; };
 		05CF433C264C9D5700A1FCAE /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
 		05CF433E264C9DB500A1FCAE /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		05CF4341264CAFE600A1FCAE /* JSONTestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONTestable.swift; sourceTree = "<group>"; };
+		05CF4344264D39C200A1FCAE /* TestConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestConstants.swift; sourceTree = "<group>"; };
 		05D3E9B7262A001300E9C234 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
 		23868946E70FC2287A02AE67 /* Pods_zmoneyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_zmoneyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D1226F424B06A39779B7676 /* Pods-zmoneyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zmoneyTests.debug.xcconfig"; path = "Target Support Files/Pods-zmoneyTests/Pods-zmoneyTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -314,7 +316,8 @@
 		05CF4343264D39AD00A1FCAE /* Fixtures */ = {
 			isa = PBXGroup;
 			children = (
-				055C51B7264D5A63004DCA10 /* diff_response.json */,
+				0544BE4126518601001AF1B9 /* diff_response_full.json */,
+				055C51B7264D5A63004DCA10 /* diff_response_partial.json */,
 				05CF4344264D39C200A1FCAE /* TestConstants.swift */,
 			);
 			path = Fixtures;
@@ -464,7 +467,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				055C51B8264D5A63004DCA10 /* diff_response.json in Resources */,
+				055C51B8264D5A63004DCA10 /* diff_response_partial.json in Resources */,
+				0544BE4226518601001AF1B9 /* diff_response_full.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

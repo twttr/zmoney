@@ -70,21 +70,27 @@ struct DiffResponseModel: Codable, Equatable {
 // MARK: - Account
 struct Account: Codable, Equatable {
     let id: String
-    let user, instrument: Int
+    let user: Int
+    let instrument: Int?
     let type: String
-    let role: JSONNull?
+    let role: Int?
     let accountPrivate: Bool
-    let savings: JSONNull?
+    let savings: Bool?
     let title: String
     let inBalance: Bool
-    let creditLimit, startBalance, balance: Int
-    let company: JSONNull?
+    let creditLimit, startBalance, balance: Double?
+    let company: Int?
     let archive, enableCorrection: Bool
-    let startDate, capitalization, percent: JSONNull?
+    let startDate: String?
+    let percent: Double?
+    let capitalization: Bool?
     let changed: Int
-    let syncID: JSONNull?
+    let syncID: [String]?
     let enableSMS: Bool
-    let endDateOffset, endDateOffsetInterval, payoffStep, payoffInterval: JSONNull?
+    let endDateOffset: Int?
+    let endDateOffsetInterval: String?
+    let payoffStep: Int?
+    let payoffInterval: String?
 
     enum CodingKeys: String, CodingKey {
         case id, user, instrument, type, role
@@ -99,7 +105,8 @@ struct Account: Codable, Equatable {
 // MARK: - Budget
 struct Budget: Codable, Equatable {
     let user, changed: Int
-    let date, tag: String
+    let date: String
+    let tag: String?
     let income: Int
     let outcome: Double
     let incomeLock, outcomeLock: Bool
@@ -147,15 +154,16 @@ struct Reminder: Codable, Equatable {
     let user: Int
     let income, outcome: Double
     let changed, incomeInstrument, outcomeInstrument, step: Int
-    let points: [Int]
-    let tag: [String]
+    let points: [Int]?
+    let tag: [String]?
     let startDate: String
-    let endDate: JSONNull?
+    let endDate: String?
     let notify: Bool
     let interval: String?
     let incomeAccount, outcomeAccount: String
     let comment: String?
-    let payee, merchant: JSONNull?
+    let payee: String?
+    let merchant: String?
 }
 
 // MARK: - ReminderMarker
@@ -168,9 +176,9 @@ struct ReminderMarker: Codable, Equatable {
     let state: State
     let reminder, incomeAccount, outcomeAccount: String
     let comment: String?
-    let payee, merchant: JSONNull?
+    let payee, merchant: String?
     let notify: Bool
-    let tag: [String]
+    let tag: [String]?
 }
 
 enum State: String, Codable {
@@ -182,11 +190,13 @@ enum State: String, Codable {
 // MARK: - Tag
 struct Tag: Codable, Equatable {
     let id: String
-    let user, changed: Int
-    let icon: String
+    let user: Int?
+    let changed: Int
+    let icon: String?
     let budgetIncome, budgetOutcome: Bool
     let tagRequired: Bool?
-    let color, picture: JSONNull?
+    let color: Int?
+    let picture: String?
     let title: String
     let showIncome, showOutcome: Bool
     let parent: String?
@@ -213,9 +223,9 @@ struct Transaction: Codable, Equatable {
     let tag: [String]?
     let comment: String?
     let payee: String?
-    let opIncome: Int?
+    let opIncome: Double?
     let opOutcome: Double?
-    let opIncomeInstrument: JSONNull?
+    let opIncomeInstrument: Int?
     let opOutcomeInstrument: Int?
     let latitude, longitude: Double?
     let merchant, incomeBankID, outcomeBankID, reminderMarker: String?
@@ -228,40 +238,10 @@ struct Transaction: Codable, Equatable {
 // MARK: - User
 struct User: Codable, Equatable {
     let id, country: Int
-    let login: JSONNull?
+    let login: String?
     let changed, currency, paidTill: Int
-    let parent: JSONNull?
+    let parent: Int?
     let countryCode, email: String
     let monthStartDay: Int
-    let subscription: JSONNull?
-}
-
-// MARK: - Encode/decode helpers
-
-class JSONNull: Codable, Hashable {
-
-    public static func == (lhs: JSONNull, rhs: JSONNull) -> Bool {
-        return true
-    }
-
-    public var hashValue: Int {
-        return 0
-    }
-
-    public init() {}
-
-    public required init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        if !container.decodeNil() {
-            throw DecodingError.typeMismatch(
-                JSONNull.self,
-                DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for JSONNull")
-            )
-        }
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.singleValueContainer()
-        try container.encodeNil()
-    }
+    let subscription: String?
 }
