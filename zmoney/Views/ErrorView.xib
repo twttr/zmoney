@@ -19,8 +19,8 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vgt-BY-eU1">
-                    <rect key="frame" x="186" y="437.5" width="42" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vgt-BY-eU1">
+                    <rect key="frame" x="20" y="438" width="374" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -29,10 +29,12 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Vgt-BY-eU1" secondAttribute="trailing" constant="20" id="Znl-Qp-KUl"/>
                 <constraint firstItem="Vgt-BY-eU1" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Zye-EM-OTB"/>
+                <constraint firstItem="Vgt-BY-eU1" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="snx-ny-gNy"/>
                 <constraint firstItem="Vgt-BY-eU1" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="xVQ-jx-P2X"/>
             </constraints>
-            <point key="canvasLocation" x="138" y="90"/>
+            <point key="canvasLocation" x="137.68115942028987" y="89.732142857142847"/>
         </view>
     </objects>
     <resources>

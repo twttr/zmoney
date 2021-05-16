@@ -8,7 +8,7 @@
 import UIKit
 
 class LoadingView: UIView {
-    @IBOutlet var loadingView: UIView!
+    @IBOutlet private var loadingView: UIView!
 
     override init(frame: CGRect) {
         super.init(frame: frame)

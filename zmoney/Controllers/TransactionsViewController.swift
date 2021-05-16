@@ -19,7 +19,7 @@ class TransactionsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        stateController = StateManager(loadedView: tableView)
+        stateController = StateManager(rootView: self.view, loadedView: tableView)
         tableView.delegate = self
         tableView.dataSource = self
 

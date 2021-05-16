@@ -7,9 +7,14 @@
 
 import UIKit
 
-class ErrorView: UIView {
-    @IBOutlet var errorView: UIView!
-    @IBOutlet weak var errorLabel: UILabel!
+class ErrorView: UIView, ErrorPresentable {
+    @IBOutlet private var errorView: UIView!
+    @IBOutlet weak private var errorLabel: UILabel!
+    var errorText: String? {
+        didSet {
+            errorLabel.text = errorText
+        }
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)

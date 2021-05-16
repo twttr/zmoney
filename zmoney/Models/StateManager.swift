@@ -7,21 +7,23 @@
 
 import UIKit
 
-struct StateManager {
-    private var loadedView: UIView
-    private var loadingView = LoadingView()
-    private var emptyView = UIView()
-    private var errorView = ErrorView()
+protocol ErrorPresentable: UIView {
+    var errorText: String? { get set }
+}
 
-    init(loadedView: UIView) {
-        self.loadedView = loadedView
+protocol StateApplicable {
+    associatedtype State
 
-        self.loadedView.isHidden = true
-        errorView.isHidden = true
-        loadingView.isHidden = true
-        emptyView.isHidden = true
-    }
+    func apply(state: State)
+}
 
+protocol StateHolder {
+    associatedtype State
+
+    var state: State { get set }
+}
+
+struct StateManager: StateHolder, StateApplicable {
     enum State {
         case noData
         case loading
@@ -31,39 +33,61 @@ struct StateManager {
 
     var state: State = .noData {
         didSet {
-            switch state {
-            case .noData:
-                addViewAndBringToFront(emptyView)
-                loadedView.isHidden = true
-                errorView.isHidden = true
-                loadingView.isHidden = true
-                emptyView.isHidden = false
-            case .loading:
-                addViewAndBringToFront(loadingView)
-                loadedView.isHidden = true
-                errorView.isHidden = true
-                emptyView.isHidden = true
-                loadingView.isHidden = false
-            case .loaded:
-                addViewAndBringToFront(loadedView)
-                emptyView.isHidden = true
-                loadingView.isHidden = true
-                errorView.isHidden = true
-                loadedView.isHidden = false
-            case .error(let error):
-                addViewAndBringToFront(errorView)
-                errorView.errorLabel.text = error
-                emptyView.isHidden = true
-                loadedView.isHidden = true
-                loadingView.isHidden = true
-                errorView.isHidden = false
-            }
+            self.apply(state: state)
+        }
+    }
+
+    private var loadedView: UIView
+    private var rootView: UIView
+    private var loadingView: UIView
+    private var emptyView: UIView
+    private var errorView: ErrorPresentable
+
+    init(
+        rootView: UIView,
+        loadedView: UIView,
+        loadingView: UIView = LoadingView(),
+        emptyView: UIView = UIView(),
+        errorView: ErrorPresentable = ErrorView()
+    ) {
+        self.rootView = rootView
+        self.loadedView = loadedView
+        self.loadingView = loadingView
+        self.emptyView = emptyView
+        self.errorView = errorView
+
+        self.state = .noData
+    }
+
+    // MARK: StateApplicable
+
+    func apply(state: State) {
+        hideAllViews()
+
+        switch state {
+        case .noData:
+            addViewAndBringToFront(emptyView)
+        case .loading:
+            addViewAndBringToFront(loadingView)
+        case .loaded:
+            addViewAndBringToFront(loadedView)
+        case .error(let error):
+            addViewAndBringToFront(errorView)
+            errorView.errorText = error
         }
     }
 
     private func addViewAndBringToFront(_ view: UIView) {
-        view.frame = loadedView.frame
-        loadedView.superview?.addSubview(view)
-        loadedView.superview?.bringSubviewToFront(view)
+        view.frame = loadedView.bounds
+        rootView.addSubview(view)
+        rootView.bringSubviewToFront(view)
+        view.isHidden = false
+    }
+
+    private func hideAllViews() {
+        loadedView.isHidden = true
+        loadingView.isHidden = true
+        emptyView.isHidden = true
+        errorView.isHidden = false
     }
 }
