@@ -13,8 +13,6 @@ class TransactionsViewController: UIViewController {
     private let zService = Zservice.shared
     private var transactionsModels = [TransactionCellModel]()
     private var refreshControl = UIRefreshControl()
-    private var emptyView = UIView()
-    private var errorView = UIView()
     private var stateController: StateManager?
 
     override func viewDidLoad() {
