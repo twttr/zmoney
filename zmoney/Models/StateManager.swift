@@ -88,6 +88,6 @@ struct StateManager: StateHolder, StateApplicable {
         loadedView.isHidden = true
         loadingView.isHidden = true
         emptyView.isHidden = true
-        errorView.isHidden = false
+        errorView.isHidden = true
     }
 }
