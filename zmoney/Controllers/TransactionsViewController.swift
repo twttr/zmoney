@@ -30,7 +30,10 @@ class TransactionsViewController: UIViewController {
     }
 
     @objc private func refreshTransactionsList() {
-        self.stateController?.state = .loading
+        if firstTimeLoad() {
+            self.stateController?.state = .loading
+        }
+
         zService.getDiff { [weak self] (result) in
             guard let self = self else { return }
             switch result {
@@ -54,6 +57,18 @@ class TransactionsViewController: UIViewController {
     private func makeModels(diffResponse: DiffResponseModel) -> [TransactionCellModel] {
         let transactions = diffResponse.transaction.sorted { $0.created > $1.created }
         return transactions.map { TransactionCellModel(transaction: $0) }
+    }
+
+    private func firstTimeLoad() -> Bool {
+        let defaults = UserDefaults.standard
+        let firstTime = defaults.bool(forKey: "firstTimeLoad")
+
+        if firstTime {
+            return false
+        } else {
+            defaults.set(true, forKey: "firstTimeLoad")
+            return true
+        }
     }
 }
 
