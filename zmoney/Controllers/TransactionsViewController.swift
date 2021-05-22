@@ -30,8 +30,10 @@ class TransactionsViewController: UIViewController {
     }
 
     @objc private func refreshTransactionsList() {
-        if firstTimeLoad() {
-            self.stateController?.state = .loading
+        var state = self.stateController?.state
+
+        if state == .noData {
+            state = .loading
         }
 
         zService.getDiff { [weak self] (result) in
@@ -41,14 +43,14 @@ class TransactionsViewController: UIViewController {
                 self.transactionsModels = self.makeModels(diffResponse: diffResponse)
 
                 DispatchQueue.main.async {
-                    self.stateController?.state = .loaded
+                    state = .loaded
                     self.tableView.reloadData()
                     self.refreshControl.endRefreshing()
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
                     self.refreshControl.endRefreshing()
-                    self.stateController?.state = .error(error.localizedDescription)
+                    state = .error(error.localizedDescription)
                 }
             }
         }
@@ -57,18 +59,6 @@ class TransactionsViewController: UIViewController {
     private func makeModels(diffResponse: DiffResponseModel) -> [TransactionCellModel] {
         let transactions = diffResponse.transaction.sorted { $0.created > $1.created }
         return transactions.map { TransactionCellModel(transaction: $0) }
-    }
-
-    private func firstTimeLoad() -> Bool {
-        let defaults = UserDefaults.standard
-        let firstTime = defaults.bool(forKey: "firstTimeLoad")
-
-        if firstTime {
-            return false
-        } else {
-            defaults.set(true, forKey: "firstTimeLoad")
-            return true
-        }
     }
 }
 

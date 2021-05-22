@@ -24,7 +24,7 @@ protocol StateHolder {
 }
 
 struct StateManager: StateHolder, StateApplicable {
-    enum State {
+    enum State: Equatable {
         case noData
         case loading
         case loaded
