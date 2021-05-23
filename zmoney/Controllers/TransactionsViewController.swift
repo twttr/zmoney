@@ -57,7 +57,12 @@ class TransactionsViewController: UIViewController {
     }
 
     private func makeModels(diffResponse: DiffResponseModel) -> [TransactionCellModel] {
-        let transactions = diffResponse.transaction.sorted { $0.created > $1.created }
+        let transactions = diffResponse.transaction.sorted {
+            guard let firstTransacionDate = $0.transactionDate,
+                  let secondTransactionDate = $1.transactionDate else { return true }
+
+            return firstTransacionDate > secondTransactionDate
+        }
         return transactions.map { TransactionCellModel(transaction: $0) }
     }
 }

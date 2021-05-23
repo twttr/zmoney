@@ -15,23 +15,37 @@ struct TransactionCellModel {
     let isOutcome: Bool
     var categories: [String]
     let account: String
+    let payee: String
 
 }
 
 extension TransactionCellModel {
     init(transaction: Transaction) {
         isOutcome = transaction.income == 0
-        date = transaction.date
+        date = transaction.transactionDate?.formatDateToString() ?? "Unknown Date"
         categories = transaction.categories?.map { $0.title } ?? []
+        payee = transaction.payee ?? ""
 
         if isOutcome {
-            amount = "Outcome \(transaction.outcome)"
-            currency = transaction.outcomeTransactionInstrument?.shortTitle ?? ""
+            amount = "- \(transaction.outcome)"
+            currency = transaction.outcomeTransactionInstrument?.symbol ?? ""
             account = transaction.fromAccount?.title ?? ""
         } else {
-            amount = "Income \(transaction.income)"
-            currency = transaction.incomeTransactionInstrument?.shortTitle ?? ""
+            amount = "+ \(transaction.income)"
+            currency = transaction.incomeTransactionInstrument?.symbol ?? ""
             account = transaction.fromAccount?.title ?? ""
+        }
+    }
+}
+
+extension Date {
+    func formatDateToString() -> String {
+        if Calendar.current.isDateInYesterday(self) {
+            return "Yesterday"
+        } else {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd/MM/yyyy"
+            return dateFormatter.string(from: self)
         }
     }
 }

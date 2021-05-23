@@ -42,6 +42,9 @@ struct DiffResponseModel: Codable, Equatable {
         reminderMarker = try? container.decode([ReminderMarker].self, forKey: .reminderMarker)
         var transactions = try container.decode([Transaction].self, forKey: .transaction)
 
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+
         for index in transactions.indices {
             transactions[index].incomeTransactionInstrument = instrument[transactions[index].incomeInstrument]
             transactions[index].outcomeTransactionInstrument = instrument[transactions[index].outcomeInstrument]
@@ -59,6 +62,10 @@ struct DiffResponseModel: Codable, Equatable {
 
             if let account = account.filter({ $0.id == transactions[index].outcomeAccount }).first {
                 transactions[index].fromAccount = account
+            }
+
+            if let transactionDate = dateFormatter.date(from: transactions[index].date) {
+                transactions[index].transactionDate = transactionDate
             }
         }
         transaction = transactions
@@ -231,6 +238,7 @@ struct Transaction: Codable, Equatable {
     var categories: [Tag]?
     var fromAccount: Account?
     var toAccount: Account?
+    var transactionDate: Date?
 }
 
 // MARK: - User
