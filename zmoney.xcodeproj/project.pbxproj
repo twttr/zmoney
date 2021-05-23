@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		052C4824265A6E3900645DF4 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052C4823265A6E3900645DF4 /* UIImage+Extensions.swift */; };
 		0544BE4226518601001AF1B9 /* diff_response_full.json in Resources */ = {isa = PBXBuildFile; fileRef = 0544BE4126518601001AF1B9 /* diff_response_full.json */; };
 		0555FCB02638A28300099E0B /* TransactionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0555FCAF2638A28300099E0B /* TransactionDetailViewController.swift */; };
 		0555FCB3263B385900099E0B /* TransactionCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0555FCB2263B385900099E0B /* TransactionCellModel.swift */; };
@@ -68,6 +69,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		052C4823265A6E3900645DF4 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		0544BE4126518601001AF1B9 /* diff_response_full.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = diff_response_full.json; sourceTree = "<group>"; };
 		0555FCAF2638A28300099E0B /* TransactionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailViewController.swift; sourceTree = "<group>"; };
 		0555FCB2263B385900099E0B /* TransactionCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCellModel.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 			children = (
 				0598D6D9262F208D00400A2C /* UIStoryboard+Extensions.swift */,
 				0598D6DE262F272900400A2C /* UIViewController+Extensions.swift */,
+				052C4823265A6E3900645DF4 /* UIImage+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -608,6 +611,7 @@
 			files = (
 				0598D6D5262F1DE500400A2C /* Notifications.swift in Sources */,
 				05AD5F6226262CEE00355F1B /* AuthResponseModel.swift in Sources */,
+				052C4824265A6E3900645DF4 /* UIImage+Extensions.swift in Sources */,
 				05AD5F7326275B3D00355F1B /* NetworkError.swift in Sources */,
 				05B93E2825D0442E0089E7A8 /* LoginViewController.swift in Sources */,
 				055ADEF3262E0B62001DCF5A /* TokenService.swift in Sources */,

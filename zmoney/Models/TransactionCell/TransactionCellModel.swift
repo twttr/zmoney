@@ -5,7 +5,7 @@
 //  Created by Pavel Romanishkin on 29.04.21.
 //
 
-import Foundation
+import UIKit
 
 struct TransactionCellModel {
 
@@ -16,6 +16,7 @@ struct TransactionCellModel {
     var categories: [String]
     let account: String
     let payee: String
+    let categorySymbol: UIImage
 
 }
 
@@ -25,6 +26,12 @@ extension TransactionCellModel {
         date = transaction.transactionDate?.formatDateToString() ?? "Unknown Date"
         categories = transaction.categories?.map { $0.title } ?? []
         payee = transaction.payee ?? ""
+        if let categoryIconString = transaction.categories?.first?.icon,
+           let image = UIImage.zmoneyCategory(named: categoryIconString) {
+            categorySymbol = image
+        } else {
+            categorySymbol = UIImage(systemName: "questionmark")!
+        }
 
         if isOutcome {
             amount = "- \(transaction.outcome)"

@@ -13,6 +13,7 @@ class TransactionCell: UITableViewCell {
     @IBOutlet weak private var dateLabel: UILabel!
     @IBOutlet weak private var payeeLabel: UILabel!
     @IBOutlet weak private var accountLabel: UILabel!
+    @IBOutlet weak var categoryImage: UIImageView!
 
     func configureCell(with model: TransactionCellModel) {
         amountLabel.text = model.amount
@@ -20,5 +21,6 @@ class TransactionCell: UITableViewCell {
         dateLabel.text = model.date
         payeeLabel.text = model.payee.isEmpty ? "Payee Missing" : model.payee
         accountLabel.text = model.account
+        categoryImage.image = model.categorySymbol
     }
 }
