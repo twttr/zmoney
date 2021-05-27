@@ -30,11 +30,7 @@ class TransactionsViewController: UIViewController {
     }
 
     @objc private func refreshTransactionsList() {
-        var state = self.stateController?.state
-
-        if state == .noData {
-            state = .loading
-        }
+        self.stateController?.state = .loading
 
         zService.getDiff { [weak self] (result) in
             guard let self = self else { return }
@@ -43,14 +39,14 @@ class TransactionsViewController: UIViewController {
                 self.transactionsModels = self.makeModels(diffResponse: diffResponse)
 
                 DispatchQueue.main.async {
-                    state = .loaded
+                    self.stateController?.state = .loaded
                     self.tableView.reloadData()
                     self.refreshControl.endRefreshing()
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
                     self.refreshControl.endRefreshing()
-                    state = .error(error.localizedDescription)
+                    self.stateController?.state = .error(error.localizedDescription)
                 }
             }
         }
