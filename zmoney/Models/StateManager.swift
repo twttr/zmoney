@@ -32,9 +32,8 @@ struct StateManager: StateHolder, StateApplicable {
     }
 
     var state: State = .noData {
-        didSet {
-            self.apply(state: state)
-            self.currentState = state
+        willSet {
+            self.apply(state: newValue)
         }
     }
 
@@ -43,7 +42,6 @@ struct StateManager: StateHolder, StateApplicable {
     private var loadingView: UIView
     private var emptyView: UIView
     private var errorView: ErrorPresentable
-    private var currentState: State?
 
     init(
         rootView: UIView,
@@ -59,7 +57,6 @@ struct StateManager: StateHolder, StateApplicable {
         self.errorView = errorView
 
         self.state = .noData
-        self.currentState = state
     }
 
     // MARK: StateApplicable
@@ -71,7 +68,7 @@ struct StateManager: StateHolder, StateApplicable {
         case .noData:
             addViewAndBringToFront(emptyView)
         case .loading:
-            guard currentState == .noData else { return }
+            guard self.state == .noData else { return }
 
             addViewAndBringToFront(loadingView)
         case .loaded:
