@@ -60,10 +60,6 @@ struct DiffResponseModel: Codable, Equatable {
             if let account = account.filter({ $0.id == transactions[index].outcomeAccount }).first {
                 transactions[index].fromAccount = account
             }
-
-            if let transactionDate = DateFormatter.dashSeparatorFormatter.date(from: transactions[index].date) {
-                transactions[index].transactionDate = transactionDate
-            }
         }
         transaction = transactions
     }
@@ -214,7 +210,7 @@ struct Tag: Codable, Equatable {
 struct Transaction: Codable, Equatable {
     let id: String
     let user: Int
-    let date: String
+    let date: Date?
     let income, outcome: Double
     let changed, incomeInstrument, outcomeInstrument, created: Int
     let originalPayee: String?
@@ -235,7 +231,44 @@ struct Transaction: Codable, Equatable {
     var categories: [Tag]?
     var fromAccount: Account?
     var toAccount: Account?
-    var transactionDate: Date?
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(String.self, forKey: .id)
+        user = try container.decode(Int.self, forKey: .user)
+        date = DateFormatter.dashSeparatorFormatter.date(from: try container.decode(String.self, forKey: .date))
+        income = try container.decode(Double.self, forKey: .income)
+        outcome = try container.decode(Double.self, forKey: .outcome)
+        changed = try container.decode(Int.self, forKey: .changed)
+        incomeInstrument = try container.decode(Int.self, forKey: .incomeInstrument)
+        outcomeInstrument = try container.decode(Int.self, forKey: .outcomeInstrument)
+        created = try container.decode(Int.self, forKey: .created)
+        originalPayee = try? container.decode(String.self, forKey: .originalPayee)
+        deleted = try container.decode(Bool.self, forKey: .deleted)
+        viewed = try container.decode(Bool.self, forKey: .viewed)
+        hold = try? container.decode(Bool.self, forKey: .hold)
+        qrCode = try? container.decode(String.self, forKey: .qrCode)
+        incomeAccount = try container.decode(String.self, forKey: .incomeAccount)
+        outcomeAccount = try container.decode(String.self, forKey: .outcomeAccount)
+        tag = try? container.decode([String].self, forKey: .tag)
+        comment = try? container.decode(String.self, forKey: .comment)
+        payee = try? container.decode(String.self, forKey: .payee)
+        opIncome = try? container.decode(Double.self, forKey: .opIncome)
+        opOutcome = try? container.decode(Double.self, forKey: .opOutcome)
+        opIncomeInstrument = try? container.decode(Int.self, forKey: .opIncomeInstrument)
+        opOutcomeInstrument = try? container.decode(Int.self, forKey: .opOutcomeInstrument)
+        latitude = try? container.decode(Double.self, forKey: .latitude)
+        longitude = try? container.decode(Double.self, forKey: .longitude)
+        merchant = try? container.decode(String.self, forKey: .merchant)
+        incomeBankID = try? container.decode(String.self, forKey: .incomeBankID)
+        outcomeBankID = try? container.decode(String.self, forKey: .outcomeBankID)
+        reminderMarker = try? container.decode(String.self, forKey: .reminderMarker)
+        incomeTransactionInstrument = try? container.decode(Instrument.self, forKey: .incomeTransactionInstrument)
+        outcomeTransactionInstrument = try? container.decode(Instrument.self, forKey: .outcomeTransactionInstrument)
+        categories = try? container.decode([Tag].self, forKey: .categories)
+        fromAccount = try? container.decode(Account.self, forKey: .fromAccount)
+        toAccount = try? container.decode(Account.self, forKey: .toAccount)
+    }
 }
 
 // MARK: - User

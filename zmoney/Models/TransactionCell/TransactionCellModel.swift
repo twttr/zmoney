@@ -23,7 +23,7 @@ struct TransactionCellModel {
 extension TransactionCellModel {
     init(transaction: Transaction) {
         isOutcome = transaction.income == 0
-        date = transaction.transactionDate?.formatDateToString() ?? "Unknown Date"
+        date = transaction.date?.formatDateToString() ?? "Unknown Date"
         categories = transaction.categories?.map { $0.title } ?? []
         payee = transaction.payee ?? ""
         if let categoryIconString = transaction.categories?.first?.icon,

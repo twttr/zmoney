@@ -58,8 +58,8 @@ class TransactionsViewController: UIViewController {
 
     private func makeModels(diffResponse: DiffResponseModel) -> [TransactionCellModel] {
         let transactions = diffResponse.transaction.sorted {
-            guard let firstTransacionDate = $0.transactionDate,
-                  let secondTransactionDate = $1.transactionDate else { return true }
+            guard let firstTransacionDate = $0.date,
+                  let secondTransactionDate = $1.date else { return true }
 
             return firstTransacionDate > secondTransactionDate
         }
