@@ -17,16 +17,24 @@ class TransactionsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        stateController = StateManager(rootView: self.view, loadedView: tableView)
+
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let sceneDelegate = windowScene.delegate as? SceneDelegate {
+            sceneDelegate.applicationCoordinator.delegate = self
+        }
+
         tableView.delegate = self
         tableView.dataSource = self
 
-        refreshTransactionsList()
+        stateController = StateManager(rootView: self.view, loadedView: tableView)
 
         tableView.refreshControl = refreshControl
-
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: #selector(self.refreshTransactionsList), for: .valueChanged)
+
+        guard stateController?.state == .noData else { return }
+
+        refreshTransactionsList()
     }
 
     @objc private func refreshTransactionsList() {
@@ -85,5 +93,11 @@ extension TransactionsViewController: UITableViewDataSource {
         cell.configureCell(with: transaction)
 
         return cell
+    }
+}
+
+extension TransactionsViewController: ApplicationCoordinatorDelegate {
+    func userLoggedIn() {
+        refreshTransactionsList()
     }
 }
