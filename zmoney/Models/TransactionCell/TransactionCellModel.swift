@@ -50,9 +50,7 @@ extension Date {
         if Calendar.current.isDateInYesterday(self) {
             return "Yesterday"
         } else {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd/MM/yyyy"
-            return dateFormatter.string(from: self)
+            return DateFormatter.slashSeparatorFormatter.string(from: self)
         }
     }
 }

@@ -42,9 +42,6 @@ struct DiffResponseModel: Codable, Equatable {
         reminderMarker = try? container.decode([ReminderMarker].self, forKey: .reminderMarker)
         var transactions = try container.decode([Transaction].self, forKey: .transaction)
 
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-
         for index in transactions.indices {
             transactions[index].incomeTransactionInstrument = instrument[transactions[index].incomeInstrument]
             transactions[index].outcomeTransactionInstrument = instrument[transactions[index].outcomeInstrument]
@@ -64,7 +61,7 @@ struct DiffResponseModel: Codable, Equatable {
                 transactions[index].fromAccount = account
             }
 
-            if let transactionDate = dateFormatter.date(from: transactions[index].date) {
+            if let transactionDate = DateFormatter.dashSeparatorFormatter.date(from: transactions[index].date) {
                 transactions[index].transactionDate = transactionDate
             }
         }
