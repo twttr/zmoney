@@ -27,7 +27,7 @@ class TransactionDetailViewController: UIViewController {
         amountLabel.text = transactionCellModel?.amount
         accountLabel.text = transactionCellModel?.account
         categoryLabel.text = transactionCellModel?.categories.joined(separator: ", ")
-        dateLabel.text = transactionCellModel?.date
+        dateLabel.text = transactionCellModel?.date.formatDateToString()
         payeeLabel.text = transactionCellModel?.payee
         currencyLabel.text = transactionCellModel?.currency
     }

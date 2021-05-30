@@ -10,7 +10,7 @@ import UIKit
 struct TransactionCellModel {
 
     let amount: String
-    let date: String
+    let date: Date
     let currency: String
     let isOutcome: Bool
     var categories: [String]
@@ -23,7 +23,7 @@ struct TransactionCellModel {
 extension TransactionCellModel {
     init(transaction: Transaction) {
         isOutcome = transaction.income == 0
-        date = transaction.date?.formatDateToString() ?? "Unknown Date"
+        date = transaction.date
         categories = transaction.categories?.map { $0.title } ?? []
         payee = transaction.payee ?? ""
         if let categoryIconString = transaction.categories?.first?.icon,

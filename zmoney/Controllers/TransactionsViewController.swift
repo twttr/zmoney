@@ -14,6 +14,7 @@ class TransactionsViewController: UIViewController {
     private var transactionsModels = [TransactionCellModel]()
     private var refreshControl = UIRefreshControl()
     private var stateController: StateManager?
+    private var sectionedTransactions = [[Date: [TransactionCellModel]]]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,7 @@ class TransactionsViewController: UIViewController {
 
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: #selector(self.refreshTransactionsList), for: .valueChanged)
+
     }
 
     @objc private func refreshTransactionsList() {
@@ -41,6 +43,15 @@ class TransactionsViewController: UIViewController {
             switch result {
             case .success(let diffResponse):
                 self.transactionsModels = self.makeModels(diffResponse: diffResponse)
+                self.sectionedTransactions = Dictionary(grouping: self.transactionsModels, by: { $0.date }).map {
+                    [$0.key: $0.value]
+                }.sorted {
+                    if let firstDate = $0.keys.first, let secondDate = $1.keys.first {
+                        return firstDate > secondDate
+                    } else {
+                        return true
+                    }
+                }
 
                 DispatchQueue.main.async {
                     state = .loaded
@@ -58,10 +69,7 @@ class TransactionsViewController: UIViewController {
 
     private func makeModels(diffResponse: DiffResponseModel) -> [TransactionCellModel] {
         let transactions = diffResponse.transaction.sorted {
-            guard let firstTransacionDate = $0.date,
-                  let secondTransactionDate = $1.date else { return true }
-
-            return firstTransacionDate > secondTransactionDate
+            return $0.date > $1.date
         }
         return transactions.map { TransactionCellModel(transaction: $0) }
     }
@@ -82,7 +90,7 @@ extension TransactionsViewController: UITableViewDelegate {
 
 extension TransactionsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return transactionsModels.count
+        return sectionedTransactions[section].values.first?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -94,5 +102,13 @@ extension TransactionsViewController: UITableViewDataSource {
         cell.configureCell(with: transaction)
 
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        sectionedTransactions[section].keys.first?.formatDateToString()
+    }
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sectionedTransactions.count
     }
 }

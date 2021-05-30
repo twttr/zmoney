@@ -18,7 +18,7 @@ class TransactionCell: UITableViewCell {
     func configureCell(with model: TransactionCellModel) {
         amountLabel.text = model.amount
         currencyLabel.text = model.currency
-        dateLabel.text = model.date
+        dateLabel.text = model.date.formatDateToString()
         payeeLabel.text = model.payee.isEmpty ? "Payee Missing" : model.payee
         accountLabel.text = model.account
         categoryImage.image = model.categorySymbol

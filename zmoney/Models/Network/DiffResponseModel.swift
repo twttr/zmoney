@@ -210,7 +210,7 @@ struct Tag: Codable, Equatable {
 struct Transaction: Codable, Equatable {
     let id: String
     let user: Int
-    let date: Date?
+    let date: Date
     let income, outcome: Double
     let changed, incomeInstrument, outcomeInstrument, created: Int
     let originalPayee: String?
@@ -236,7 +236,7 @@ struct Transaction: Codable, Equatable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(String.self, forKey: .id)
         user = try container.decode(Int.self, forKey: .user)
-        date = DateFormatter.dashSeparatorFormatter.date(from: try container.decode(String.self, forKey: .date))
+        date = DateFormatter.dashSeparatorFormatter.date(from: try container.decode(String.self, forKey: .date))!
         income = try container.decode(Double.self, forKey: .income)
         outcome = try container.decode(Double.self, forKey: .outcome)
         changed = try container.decode(Int.self, forKey: .changed)
