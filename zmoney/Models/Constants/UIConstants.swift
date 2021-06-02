@@ -21,4 +21,7 @@ enum Constants {
         public static let loadingView = "LoadingView"
         public static let errorView = "ErrorView"
     }
+    enum Heights {
+        public static let cellHeaderHeight: CGFloat = 35
+    }
 }
