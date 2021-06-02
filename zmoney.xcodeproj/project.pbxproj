@@ -22,6 +22,7 @@
 		0598D6DA262F208D00400A2C /* UIStoryboard+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0598D6D9262F208D00400A2C /* UIStoryboard+Extensions.swift */; };
 		0598D6DF262F272900400A2C /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0598D6DE262F272900400A2C /* UIViewController+Extensions.swift */; };
 		0598D6EC262F60E600400A2C /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0598D6EB262F60E600400A2C /* UIConstants.swift */; };
+		059957E82668352A00C99DBF /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059957E72668352A00C99DBF /* UIImageView+Extensions.swift */; };
 		05A0664F264C7FBD00A64EE5 /* StateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A0664E264C7FBD00A64EE5 /* StateManager.swift */; };
 		05A06651264C854000A64EE5 /* ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05A06650264C854000A64EE5 /* ErrorView.xib */; };
 		05A06653264C85C500A64EE5 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A06652264C85C500A64EE5 /* ErrorView.swift */; };
@@ -84,6 +85,7 @@
 		0598D6D9262F208D00400A2C /* UIStoryboard+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIStoryboard+Extensions.swift"; path = "zmoney/Models/Extensions/UIStoryboard+Extensions.swift"; sourceTree = SOURCE_ROOT; };
 		0598D6DE262F272900400A2C /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		0598D6EB262F60E600400A2C /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
+		059957E72668352A00C99DBF /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		05A0664E264C7FBD00A64EE5 /* StateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateManager.swift; sourceTree = "<group>"; };
 		05A06650264C854000A64EE5 /* ErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorView.xib; sourceTree = "<group>"; };
 		05A06652264C85C500A64EE5 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				0598D6DE262F272900400A2C /* UIViewController+Extensions.swift */,
 				052C4823265A6E3900645DF4 /* UIImage+Extensions.swift */,
 				05D072DA2662AC0F00887A5B /* DateFormatter+Extensions.swift */,
+				059957E72668352A00C99DBF /* UIImageView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -615,6 +618,7 @@
 				0598D6D5262F1DE500400A2C /* Notifications.swift in Sources */,
 				05AD5F6226262CEE00355F1B /* AuthResponseModel.swift in Sources */,
 				052C4824265A6E3900645DF4 /* UIImage+Extensions.swift in Sources */,
+				059957E82668352A00C99DBF /* UIImageView+Extensions.swift in Sources */,
 				05AD5F7326275B3D00355F1B /* NetworkError.swift in Sources */,
 				05B93E2825D0442E0089E7A8 /* LoginViewController.swift in Sources */,
 				055ADEF3262E0B62001DCF5A /* TokenService.swift in Sources */,

@@ -22,13 +22,19 @@ class TransactionDetailViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        amountLabel.text = transactionCellModel?.amount
-        dateLabel.text = transactionCellModel?.date.formatDateToString()
-        currencyLabel.text = transactionCellModel?.currency
-        categoryLabel.text = transactionCellModel?.categories.joined(separator: ",")
-        payeeLabel.text = transactionCellModel?.payee
-        accountLabel.text = transactionCellModel?.account
-        categoryImageView.image = transactionCellModel?.categorySymbol
+        guard let transactionCellModel = transactionCellModel else { return }
+
+        amountLabel.text = transactionCellModel.amount
+        dateLabel.text = transactionCellModel.date.formatDateToString()
+        currencyLabel.text = transactionCellModel.currency
+        categoryLabel.text = transactionCellModel.categories.joined(separator: ",")
+        payeeLabel.text = transactionCellModel.payee
+        accountLabel.text = transactionCellModel.account
+        categoryImageView.prepareCategoryImage(
+            from: transactionCellModel.categorySymbol,
+            backgroundColor: .lightGray,
+            padding: Constants.Buttons.cornerRadius
+        )
 
         setImageGradient(imageView: backgroundImageView)
     }

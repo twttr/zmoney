@@ -19,6 +19,10 @@ class TransactionCell: UITableViewCell {
         currencyLabel.text = model.currency
         payeeLabel.text = model.payee.isEmpty ? "Payee Missing" : model.payee
         accountLabel.text = model.account
-        categoryImage.image = model.categorySymbol
+        categoryImage.prepareCategoryImage(
+            from: model.categorySymbol,
+            backgroundColor: .white,
+            padding: Constants.Buttons.cornerRadius
+        )
     }
 }
