@@ -42,8 +42,8 @@ class TransactionDetailViewController: UITableViewController {
     private func setImageGradient(imageView: UIImageView) {
         let gradient = CAGradientLayer()
         gradient.frame = imageView.bounds
-        let startColor = UIColor.black.withAlphaComponent(0.8).cgColor
-        let endColor = UIColor.black.withAlphaComponent(0.2).cgColor
+        let startColor = UIColor.black.withAlphaComponent(0.2).cgColor
+        let endColor = UIColor.black.withAlphaComponent(0.4).cgColor
         gradient.colors = [startColor, endColor]
         imageView.layer.insertSublayer(gradient, at: 0)
     }
