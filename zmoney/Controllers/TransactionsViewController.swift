@@ -40,6 +40,16 @@ class TransactionsViewController: UIViewController {
         }
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        guard stateController?.state != .loaded else { return }
+
+        DispatchQueue.main.async {
+            self.refreshTransactionsList()
+        }
+    }
+
     @objc private func refreshTransactionsList() {
         self.stateController?.state = .loading
 
