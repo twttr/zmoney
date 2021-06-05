@@ -25,6 +25,8 @@ struct TokenService {
         keychain["expiresIn"] = "\(responseData.expiresIn)"
         keychain["refreshToken"] = responseData.refreshToken
         keychain["tokenType"] = responseData.tokenType
+
+        NotificationCenter.default.post(name: .zMoneyConfigUpdated, object: nil)
     }
 
     func removeToken() {
@@ -33,6 +35,8 @@ struct TokenService {
             try keychain.remove("expiresIn")
             try keychain.remove("refreshToken")
             try keychain.remove("tokenType")
+
+            NotificationCenter.default.post(name: .zMoneyConfigUpdated, object: nil)
         } catch {
             print(error.localizedDescription)
         }

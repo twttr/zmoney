@@ -7,13 +7,8 @@
 
 import UIKit
 
-protocol ApplicationCoordinatorDelegate: AnyObject {
-    func userLoggedIn()
-}
-
 class ApplicationCoordinator {
     var window: UIWindow?
-    weak var delegate: ApplicationCoordinatorDelegate?
     private var storyboard = UIStoryboard(name: "Main", bundle: nil)
     private var loginView: LoginViewController?
     private var tabBarView: TabBarViewController?
@@ -45,7 +40,6 @@ extension ApplicationCoordinator: ZserviceDelegate {
     func didLoggedIn() {
         DispatchQueue.main.async {
             self.loginView?.dismiss(animated: true, completion: nil)
-            self.delegate?.userLoggedIn()
         }
     }
 

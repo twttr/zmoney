@@ -15,13 +15,12 @@ class TransactionsViewController: UIViewController {
     private var refreshControl = UIRefreshControl()
     private var stateController: StateManager?
 
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .zMoneyConfigUpdated, object: nil)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-           let sceneDelegate = windowScene.delegate as? SceneDelegate {
-            sceneDelegate.applicationCoordinator.delegate = self
-        }
 
         tableView.delegate = self
         tableView.dataSource = self
@@ -34,7 +33,11 @@ class TransactionsViewController: UIViewController {
 
         guard stateController?.state == .noData else { return }
 
-        refreshTransactionsList()
+        NotificationCenter.default.addObserver(forName: .zMoneyConfigUpdated, object: nil, queue: nil) { _ in
+            DispatchQueue.main.async {
+                self.refreshTransactionsList()
+            }
+        }
     }
 
     @objc private func refreshTransactionsList() {
@@ -93,11 +96,5 @@ extension TransactionsViewController: UITableViewDataSource {
         cell.configureCell(with: transaction)
 
         return cell
-    }
-}
-
-extension TransactionsViewController: ApplicationCoordinatorDelegate {
-    func userLoggedIn() {
-        refreshTransactionsList()
     }
 }
