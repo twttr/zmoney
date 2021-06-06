@@ -17,6 +17,7 @@ struct TransactionCellModel {
     let account: String
     let payee: String
     let categorySymbol: UIImage
+    let categoryColor: UIColor
 
 }
 
@@ -29,8 +30,10 @@ extension TransactionCellModel {
         if let categoryIconString = transaction.categories?.first?.icon,
            let image = UIImage.zmoneyCategory(named: categoryIconString) {
             categorySymbol = image
+            categoryColor = UIColor.categoryColor(from: categoryIconString)
         } else {
             categorySymbol = UIImage(systemName: "questionmark")!
+            categoryColor = .black
         }
 
         if isOutcome {

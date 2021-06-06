@@ -21,7 +21,7 @@ class TransactionCell: UITableViewCell {
         accountLabel.text = model.account
         categoryImage.image = UIImage.categoryImage(
             from: model.categorySymbol,
-            backgroundColor: .lightGray,
+            backgroundColor: model.categoryColor,
             padding: 2
         )
     }

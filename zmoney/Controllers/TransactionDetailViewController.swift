@@ -32,7 +32,7 @@ class TransactionDetailViewController: UITableViewController {
         accountLabel.text = transactionCellModel.account
         categoryImageView.image = UIImage.categoryImage(
             from: transactionCellModel.categorySymbol,
-            backgroundColor: .lightGray,
+            backgroundColor: transactionCellModel.categoryColor,
             padding: 2
         )
         setImageGradient(imageView: backgroundImageView)

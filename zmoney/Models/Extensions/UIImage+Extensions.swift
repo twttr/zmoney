@@ -100,112 +100,112 @@ extension UIImage {
         case doctorSuitcase = "6501_doctor_suitcase"
 
         var image: UIImage? {
-                switch self {
-                case .train:
-                    return UIImage(systemName: "tram")
-                case .bus:
-                    return UIImage(systemName: "bus")
-                case .question:
-                    return UIImage(systemName: "questionmark")
-                case .dancing:
-                    return UIImage(systemName: "music.quarternote.3")
-                case .tax:
-                    return UIImage(systemName: "building.columns")
-                case .fish:
-                    return UIImage(systemName: "hare")
-                case .safe:
-                    return UIImage(systemName: "lock.circle")
-                case .doctor:
-                    return UIImage(systemName: "heart.text.square")
-                case .carousel:
-                    return UIImage(systemName: "questionmark")
-                case .cars:
-                    return UIImage(systemName: "car.2")
-                case .retroTV:
-                    return UIImage(systemName: "tv")
-                case .wineBottle:
-                    return UIImage(systemName: "crown")
-                case .coat:
-                    return UIImage(systemName: "bag.circle")
-                case .gasStation:
-                    return UIImage(systemName: "bolt.car")
-                case .bath:
-                    return UIImage(systemName: "drop.triangle")
-                case .exterior:
-                    return UIImage(systemName: "building")
-                case .electrical:
-                    return UIImage(systemName: "bolt")
-                case .doughnut:
-                    return UIImage(systemName: "0.circle.fill")
-                case .bunchIngredients:
-                    return UIImage(systemName: "multiply")
-                case .diningRoom:
-                    return UIImage(systemName: "person.3")
-                case .barbersScissors:
-                    return UIImage(systemName: "scissors")
-                case .paintRoller:
-                    return UIImage(systemName: "paintbrush")
-                case .smoking:
-                    return UIImage(systemName: "lungs")
-                case .literature:
-                    return UIImage(systemName: "book")
-                case .bicycle:
-                    return UIImage(systemName: "bicycle")
-                case .work:
-                    return UIImage(systemName: "dollarsign.circle")
-                case .internetExplorer:
-                    return UIImage(systemName: "network")
-                case .moneyBag:
-                    return UIImage(systemName: "bag")
-                case .phone2:
-                    return UIImage(systemName: "phone")
-                case .wallet:
-                    return UIImage(systemName: "wallet.pass")
-                case .broom:
-                    return UIImage(systemName: "clear")
-                case .mobile:
-                    return UIImage(systemName: "iphone")
-                case .stroller:
-                    return UIImage(systemName: "cart")
-                case .laptop:
-                    return UIImage(systemName: "laptopcomputer")
-                case .candy:
-                    return UIImage(systemName: "giftcard")
-                case .theatreMask:
-                    return UIImage(systemName: "person.crop.rectangle")
-                case .campfire:
-                    return UIImage(systemName: "flame")
-                case .woman:
-                    return UIImage(systemName: "mouth")
-                case .bottleOfWater:
-                    return UIImage(systemName: "drop")
-                case .motorcycle:
-                    return UIImage(systemName: "bicycle.circle")
-                case .handshake:
-                    return UIImage(systemName: "hands.sparkles")
-                case .taxi:
-                    return UIImage(systemName: "car.circle")
-                case .airport:
-                    return UIImage(systemName: "airplane")
-                case .goldBars:
-                    return UIImage(systemName: "bitcoinsign.circle")
-                case .pill:
-                    return UIImage(systemName: "pills")
-                case .rottedPlant:
-                    return UIImage(systemName: "leaf")
-                case .globe:
-                    return UIImage(systemName: "globe")
-                case .portraitMode:
-                    return UIImage(systemName: "rectangle.portrait")
-                case .gift:
-                    return UIImage(systemName: "gift")
-                case .children:
-                    return UIImage(systemName: "face.smiling")
-                case .cashReceiving:
-                    return UIImage(systemName: "banknote")
-                case .doctorSuitcase:
-                    return UIImage(systemName: "cross.case")
-                }
+            switch self {
+            case .train:
+                return UIImage(systemName: "tram")
+            case .bus:
+                return UIImage(systemName: "bus")
+            case .question:
+                return UIImage(systemName: "questionmark")
+            case .dancing:
+                return UIImage(systemName: "music.quarternote.3")
+            case .tax:
+                return UIImage(systemName: "building.columns")
+            case .fish:
+                return UIImage(systemName: "hare")
+            case .safe:
+                return UIImage(systemName: "lock.circle")
+            case .doctor:
+                return UIImage(systemName: "heart.text.square")
+            case .carousel:
+                return UIImage(systemName: "questionmark")
+            case .cars:
+                return UIImage(systemName: "car.2")
+            case .retroTV:
+                return UIImage(systemName: "tv")
+            case .wineBottle:
+                return UIImage(systemName: "crown")
+            case .coat:
+                return UIImage(systemName: "bag.circle")
+            case .gasStation:
+                return UIImage(systemName: "bolt.car")
+            case .bath:
+                return UIImage(systemName: "drop.triangle")
+            case .exterior:
+                return UIImage(systemName: "building")
+            case .electrical:
+                return UIImage(systemName: "bolt")
+            case .doughnut:
+                return UIImage(systemName: "0.circle.fill")
+            case .bunchIngredients:
+                return UIImage(systemName: "multiply")
+            case .diningRoom:
+                return UIImage(systemName: "person.3")
+            case .barbersScissors:
+                return UIImage(systemName: "scissors")
+            case .paintRoller:
+                return UIImage(systemName: "paintbrush")
+            case .smoking:
+                return UIImage(systemName: "lungs")
+            case .literature:
+                return UIImage(systemName: "book")
+            case .bicycle:
+                return UIImage(systemName: "bicycle")
+            case .work:
+                return UIImage(systemName: "dollarsign.circle")
+            case .internetExplorer:
+                return UIImage(systemName: "network")
+            case .moneyBag:
+                return UIImage(systemName: "bag")
+            case .phone2:
+                return UIImage(systemName: "phone")
+            case .wallet:
+                return UIImage(systemName: "wallet.pass")
+            case .broom:
+                return UIImage(systemName: "clear")
+            case .mobile:
+                return UIImage(systemName: "iphone")
+            case .stroller:
+                return UIImage(systemName: "cart")
+            case .laptop:
+                return UIImage(systemName: "laptopcomputer")
+            case .candy:
+                return UIImage(systemName: "giftcard")
+            case .theatreMask:
+                return UIImage(systemName: "person.crop.rectangle")
+            case .campfire:
+                return UIImage(systemName: "flame")
+            case .woman:
+                return UIImage(systemName: "mouth")
+            case .bottleOfWater:
+                return UIImage(systemName: "drop")
+            case .motorcycle:
+                return UIImage(systemName: "bicycle.circle")
+            case .handshake:
+                return UIImage(systemName: "hands.sparkles")
+            case .taxi:
+                return UIImage(systemName: "car.circle")
+            case .airport:
+                return UIImage(systemName: "airplane")
+            case .goldBars:
+                return UIImage(systemName: "bitcoinsign.circle")
+            case .pill:
+                return UIImage(systemName: "pills")
+            case .rottedPlant:
+                return UIImage(systemName: "leaf")
+            case .globe:
+                return UIImage(systemName: "globe")
+            case .portraitMode:
+                return UIImage(systemName: "rectangle.portrait")
+            case .gift:
+                return UIImage(systemName: "gift")
+            case .children:
+                return UIImage(systemName: "face.smiling")
+            case .cashReceiving:
+                return UIImage(systemName: "banknote")
+            case .doctorSuitcase:
+                return UIImage(systemName: "cross.case")
             }
+        }
     }
 }

@@ -14,6 +14,7 @@
 		0559470B2634C0F200CE727C /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0559470A2634C0F200CE727C /* ApplicationCoordinator.swift */; };
 		055ADEF3262E0B62001DCF5A /* TokenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055ADEF2262E0B62001DCF5A /* TokenService.swift */; };
 		055C51B8264D5A63004DCA10 /* diff_response_partial.json in Resources */ = {isa = PBXBuildFile; fileRef = 055C51B7264D5A63004DCA10 /* diff_response_partial.json */; };
+		056ED184266CDF710080D09E /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056ED183266CDF710080D09E /* UIColor+Extensions.swift */; };
 		056F8B0E25F6B314009DDFD0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05B93E2925D0442E0089E7A8 /* Main.storyboard */; };
 		0580D23C2645A3B500BEFA25 /* NetworkErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0580D23B2645A3B500BEFA25 /* NetworkErrorTests.swift */; };
 		0580D2422645BBAC00BEFA25 /* TransactionCellModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0580D2412645BBAC00BEFA25 /* TransactionCellModelTests.swift */; };
@@ -77,6 +78,7 @@
 		0559470A2634C0F200CE727C /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
 		055ADEF2262E0B62001DCF5A /* TokenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenService.swift; sourceTree = "<group>"; };
 		055C51B7264D5A63004DCA10 /* diff_response_partial.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = diff_response_partial.json; sourceTree = "<group>"; };
+		056ED183266CDF710080D09E /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		0580D23B2645A3B500BEFA25 /* NetworkErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorTests.swift; sourceTree = "<group>"; };
 		0580D2412645BBAC00BEFA25 /* TransactionCellModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCellModelTests.swift; sourceTree = "<group>"; };
 		0580D2432649B95800BEFA25 /* DiffResponseModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffResponseModelTests.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				0598D6DE262F272900400A2C /* UIViewController+Extensions.swift */,
 				052C4823265A6E3900645DF4 /* UIImage+Extensions.swift */,
 				05D072DA2662AC0F00887A5B /* DateFormatter+Extensions.swift */,
+				056ED183266CDF710080D09E /* UIColor+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -637,6 +640,7 @@
 				05AD5F472624BC6300355F1B /* ZService.swift in Sources */,
 				05AD5FA22628D0CD00355F1B /* DiffResponseModel.swift in Sources */,
 				05D072DB2662AC0F00887A5B /* DateFormatter+Extensions.swift in Sources */,
+				056ED184266CDF710080D09E /* UIColor+Extensions.swift in Sources */,
 				0598D6EC262F60E600400A2C /* UIConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
