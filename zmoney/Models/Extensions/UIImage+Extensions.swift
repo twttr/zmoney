@@ -12,6 +12,39 @@ extension UIImage {
         return Categories.init(rawValue: systemName)?.image
     }
 
+    static func categoryImage(from sourceImage: UIImage, backgroundColor: UIColor, padding: CGFloat) -> UIImage? {
+        let insets = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
+
+        // beginning the context and adding padding to image
+        UIGraphicsBeginImageContextWithOptions(
+            CGSize(
+                width: sourceImage.size.width + insets.left + insets.right,
+                height: sourceImage.size.height + insets.top + insets.bottom
+            ),
+            false,
+            sourceImage.scale
+        )
+        let origin = CGPoint(x: insets.left, y: insets.top)
+        let rect = CGRect(origin: origin, size: sourceImage.size)
+
+        // rounding the corners
+        UIBezierPath(roundedRect: rect, cornerRadius: Constants.Buttons.cornerRadius).addClip()
+
+        // setting bg color
+        guard let context = UIGraphicsGetCurrentContext() else { return nil }
+        backgroundColor.setFill()
+        context.fill(rect)
+
+        // finalizing the image
+        sourceImage.draw(in: rect)
+
+        // getting the image
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        return image
+    }
+
     enum Categories: String {
         case train = "3005_train"
         case bus = "3001_bus2"

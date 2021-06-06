@@ -30,12 +30,11 @@ class TransactionDetailViewController: UITableViewController {
         categoryLabel.text = transactionCellModel.categories.joined(separator: ",")
         payeeLabel.text = transactionCellModel.payee
         accountLabel.text = transactionCellModel.account
-        categoryImageView.prepareCategoryImage(
+        categoryImageView.image = UIImage.categoryImage(
             from: transactionCellModel.categorySymbol,
             backgroundColor: .lightGray,
-            padding: Constants.Buttons.cornerRadius
+            padding: 2
         )
-
         setImageGradient(imageView: backgroundImageView)
     }
 
