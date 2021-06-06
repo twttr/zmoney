@@ -201,7 +201,7 @@
                         <constraints>
                             <constraint firstItem="54X-TW-td8" firstAttribute="leading" secondItem="Xp6-IV-nRC" secondAttribute="leading" id="cBx-Kk-eaB"/>
                             <constraint firstItem="Xp6-IV-nRC" firstAttribute="trailing" secondItem="54X-TW-td8" secondAttribute="trailing" id="n9D-gz-ZPF"/>
-                            <constraint firstItem="54X-TW-td8" firstAttribute="top" secondItem="Xp6-IV-nRC" secondAttribute="top" id="pOC-P7-TjZ"/>
+                            <constraint firstItem="54X-TW-td8" firstAttribute="top" secondItem="dCO-ae-iZR" secondAttribute="top" constant="88" id="pOC-P7-TjZ"/>
                             <constraint firstItem="Xp6-IV-nRC" firstAttribute="bottom" secondItem="54X-TW-td8" secondAttribute="bottom" id="pgj-qQ-1jh"/>
                         </constraints>
                     </view>
