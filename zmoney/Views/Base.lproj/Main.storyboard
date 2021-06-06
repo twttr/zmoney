@@ -300,9 +300,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yO0-7E-fYq">
-                                                    <rect key="frame" x="284.5" y="15" width="60" height="17"/>
+                                                    <rect key="frame" x="244.5" y="15" width="100" height="17"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="60" id="epf-PW-KE2"/>
+                                                        <constraint firstAttribute="width" constant="100" id="epf-PW-KE2"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                     <nil key="textColor"/>
@@ -321,6 +321,45 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="Uji-Om-cVt">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="5" rowHeight="60" id="RZM-9o-9B1">
+                                        <rect key="frame" x="20" y="339" width="374" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RZM-9o-9B1" id="WG5-2i-sCq">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comment:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rji-7V-hw2">
+                                                    <rect key="frame" x="15" y="15" width="100" height="17"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="ufk-2N-Lmt"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test Comment" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vqa-Xw-VeV">
+                                                    <rect key="frame" x="130" y="15" width="236" height="17"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="236" id="OIh-XF-bdZ"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Vqa-Xw-VeV" firstAttribute="leading" secondItem="Rji-7V-hw2" secondAttribute="trailing" constant="15" id="IP0-l8-d1e"/>
+                                                <constraint firstItem="Rji-7V-hw2" firstAttribute="leading" secondItem="WG5-2i-sCq" secondAttribute="leading" constant="15" id="JxS-qK-pI0"/>
+                                                <constraint firstItem="Vqa-Xw-VeV" firstAttribute="top" secondItem="WG5-2i-sCq" secondAttribute="top" constant="15" id="MAS-dr-M7q"/>
+                                                <constraint firstItem="Rji-7V-hw2" firstAttribute="top" secondItem="WG5-2i-sCq" secondAttribute="top" constant="15" id="U49-va-ZRX"/>
+                                                <constraint firstAttribute="trailing" secondItem="Vqa-Xw-VeV" secondAttribute="trailing" constant="15" id="pdV-dQ-yBB"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="bhA-PJ-3xc" id="Ccf-Ir-72u"/>
@@ -333,6 +372,7 @@
                         <outlet property="backgroundImageView" destination="dCv-pC-G9R" id="na9-N3-aMc"/>
                         <outlet property="categoryImageView" destination="AXC-Fa-nEY" id="TUM-GU-xce"/>
                         <outlet property="categoryLabel" destination="1Lz-hD-RwD" id="MHE-mb-hl7"/>
+                        <outlet property="commentTextLabel" destination="Vqa-Xw-VeV" id="ao5-Dn-xlW"/>
                         <outlet property="currencyLabel" destination="VTe-0Y-srq" id="4Ja-hr-oYe"/>
                         <outlet property="dateLabel" destination="klo-UG-pjo" id="ZfK-dy-2c9"/>
                         <outlet property="payeeLabel" destination="6gg-vE-rb3" id="MQ2-7Y-RQb"/>

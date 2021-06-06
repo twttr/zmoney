@@ -16,6 +16,7 @@ class TransactionDetailViewController: UITableViewController {
     @IBOutlet weak private var accountLabel: UILabel!
     @IBOutlet weak private var categoryImageView: UIImageView!
     @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var commentTextLabel: UILabel!
 
     var transactionCellModel: TransactionCellModel?
 
@@ -30,6 +31,7 @@ class TransactionDetailViewController: UITableViewController {
         categoryLabel.text = transactionCellModel.categories.joined(separator: ",")
         payeeLabel.text = transactionCellModel.payee
         accountLabel.text = transactionCellModel.account
+        commentTextLabel.text = transactionCellModel.comment
         categoryImageView.image = UIImage.categoryImage(
             from: transactionCellModel.categorySymbol,
             backgroundColor: transactionCellModel.categoryColor,

@@ -18,6 +18,7 @@ struct TransactionCellModel {
     let payee: String
     let categorySymbol: UIImage
     let categoryColor: UIColor
+    let comment: String
 
 }
 
@@ -27,6 +28,7 @@ extension TransactionCellModel {
         date = transaction.date
         categories = transaction.categories?.map { $0.title } ?? []
         payee = transaction.payee ?? ""
+        comment = transaction.comment ?? ""
         if let categoryIconString = transaction.categories?.first?.icon,
            let image = UIImage.zmoneyCategory(named: categoryIconString) {
             categorySymbol = image
