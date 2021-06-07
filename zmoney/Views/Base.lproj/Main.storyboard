@@ -310,9 +310,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yesterday" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="klo-UG-pjo">
-                                                    <rect key="frame" x="15" y="15" width="80" height="17"/>
+                                                    <rect key="frame" x="15" y="15" width="120" height="17"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="Vdn-JT-9Oc"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="Vdn-JT-9Oc"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                     <nil key="textColor"/>
@@ -329,11 +329,11 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="yO0-7E-fYq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="klo-UG-pjo" secondAttribute="trailing" constant="104" id="Bdf-p0-OCK"/>
                                                 <constraint firstItem="VTe-0Y-srq" firstAttribute="leading" secondItem="yO0-7E-fYq" secondAttribute="trailing" constant="5" id="LHS-bi-mex"/>
                                                 <constraint firstAttribute="trailing" secondItem="VTe-0Y-srq" secondAttribute="trailing" constant="15" id="LQq-aZ-XG0"/>
                                                 <constraint firstItem="klo-UG-pjo" firstAttribute="top" secondItem="cBh-gO-cVN" secondAttribute="top" constant="15" id="aU8-Dx-QBy"/>
                                                 <constraint firstItem="klo-UG-pjo" firstAttribute="leading" secondItem="cBh-gO-cVN" secondAttribute="leading" constant="15" id="b7d-ua-TDs"/>
-                                                <constraint firstItem="yO0-7E-fYq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="klo-UG-pjo" secondAttribute="trailing" constant="144" id="bbC-PK-HYK"/>
                                                 <constraint firstItem="VTe-0Y-srq" firstAttribute="top" secondItem="cBh-gO-cVN" secondAttribute="top" constant="15" id="rOk-9V-Pya"/>
                                                 <constraint firstItem="yO0-7E-fYq" firstAttribute="top" secondItem="cBh-gO-cVN" secondAttribute="top" constant="15" id="waG-Mf-RVZ"/>
                                             </constraints>

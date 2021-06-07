@@ -62,7 +62,7 @@ extension Date {
         if Calendar.current.isDateInYesterday(self) {
             return "Yesterday"
         } else {
-            return DateFormatter.slashSeparatorFormatter.string(from: self)
+            return DateFormatter.dashSeparatorFormatter.string(from: self)
         }
     }
 }
