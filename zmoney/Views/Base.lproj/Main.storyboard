@@ -380,6 +380,29 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="KwC-1l-DvR">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="5" rowHeight="250" id="yQP-Dl-Jlj">
+                                        <rect key="frame" x="20" y="435" width="374" height="250"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yQP-Dl-Jlj" id="qZb-Nv-P0e">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="250"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ny2-Jg-pLY">
+                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="250"/>
+                                                </mapView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ny2-Jg-pLY" firstAttribute="leading" secondItem="qZb-Nv-P0e" secondAttribute="leading" id="AMH-0d-fSI"/>
+                                                <constraint firstItem="ny2-Jg-pLY" firstAttribute="top" secondItem="qZb-Nv-P0e" secondAttribute="top" id="Dur-Pe-oW6"/>
+                                                <constraint firstAttribute="trailing" secondItem="ny2-Jg-pLY" secondAttribute="trailing" id="XUg-LL-MDp"/>
+                                                <constraint firstAttribute="bottom" secondItem="ny2-Jg-pLY" secondAttribute="bottom" id="ckX-Jh-hSj"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="bhA-PJ-3xc" id="Ccf-Ir-72u"/>
@@ -396,6 +419,7 @@
                         <outlet property="currencyLabel" destination="VTe-0Y-srq" id="4Ja-hr-oYe"/>
                         <outlet property="dateLabel" destination="klo-UG-pjo" id="ZfK-dy-2c9"/>
                         <outlet property="payeeLabel" destination="6gg-vE-rb3" id="MQ2-7Y-RQb"/>
+                        <outlet property="transactionPlace" destination="ny2-Jg-pLY" id="8JX-YD-goU"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Wi-oY-uXa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

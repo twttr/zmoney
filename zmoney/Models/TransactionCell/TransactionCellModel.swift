@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MapKit
 
 struct TransactionCellModel {
 
@@ -19,6 +20,7 @@ struct TransactionCellModel {
     let categorySymbol: UIImage
     let categoryColor: UIColor
     let comment: String
+    let coordinates: CLLocationCoordinate2D?
 
 }
 
@@ -29,6 +31,11 @@ extension TransactionCellModel {
         categories = transaction.categories?.map { $0.title } ?? []
         payee = transaction.payee ?? ""
         comment = transaction.comment ?? ""
+        if let latitude = transaction.latitude, let longitude = transaction.longitude {
+            coordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        } else {
+            coordinates = nil
+        }
         if let categoryIconString = transaction.categories?.first?.icon,
            let image = UIImage.zmoneyCategory(named: categoryIconString) {
             categorySymbol = image

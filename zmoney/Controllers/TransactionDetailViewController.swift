@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MapKit
 
 class TransactionDetailViewController: UITableViewController {
     @IBOutlet weak private var amountLabel: UILabel!
@@ -15,8 +16,9 @@ class TransactionDetailViewController: UITableViewController {
     @IBOutlet weak private var payeeLabel: UILabel!
     @IBOutlet weak private var accountLabel: UILabel!
     @IBOutlet weak private var categoryImageView: UIImageView!
-    @IBOutlet weak var backgroundImageView: UIImageView!
-    @IBOutlet weak var commentTextLabel: UILabel!
+    @IBOutlet weak private var backgroundImageView: UIImageView!
+    @IBOutlet weak private var commentTextLabel: UILabel!
+    @IBOutlet weak private var transactionPlace: MKMapView!
 
     var transactionCellModel: TransactionCellModel?
 
@@ -38,6 +40,20 @@ class TransactionDetailViewController: UITableViewController {
             padding: 2
         )
         setImageGradient(imageView: backgroundImageView)
+        if let coordinates = transactionCellModel.coordinates {
+            let coordinateRegion = MKCoordinateRegion(
+                center: coordinates,
+                latitudinalMeters: 150,
+                longitudinalMeters: 150
+            )
+            transactionPlace.setRegion(coordinateRegion, animated: false)
+            let annotation = MKPointAnnotation()
+            annotation.title = transactionCellModel.payee
+            annotation.coordinate = coordinates
+            transactionPlace.addAnnotation(annotation)
+        } else {
+            transactionPlace.isHidden = true
+        }
     }
 
     private func setImageGradient(imageView: UIImageView) {
