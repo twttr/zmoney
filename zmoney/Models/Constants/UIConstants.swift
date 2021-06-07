@@ -13,6 +13,9 @@ enum Constants {
     }
     enum Cells {
         public static let transactionCellIdentifier = "TransactionCell"
+        public static let transactionDetailInfoCellIdentifier = "TransactionDetailInfoCell"
+        public static let transactionCommentCellIdentifier = "TransactionCommentCell"
+        public static let transactionMapCellIdentifier = "TransactionMapCell"
     }
     enum Segues {
         public static let transactionsToTransactionDetail = "ShowTransactionDetail"
@@ -23,5 +26,8 @@ enum Constants {
     }
     enum Heights {
         public static let cellHeaderHeight: CGFloat = 35
+        public static let transactionDetailInfoCellHeight: CGFloat = 60
+        public static let transactionCommentCellHeight: CGFloat = 60
+        public static let ttransactionMapCellHeight: CGFloat = 250
     }
 }

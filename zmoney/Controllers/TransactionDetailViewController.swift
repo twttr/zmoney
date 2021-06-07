@@ -6,19 +6,19 @@
 //
 
 import UIKit
-import MapKit
+
+enum DetailCell: Int {
+    case transactionDetailInfoCell = 0
+    case transactionCommentCell = 1
+    case transactionMapCell = 2
+}
 
 class TransactionDetailViewController: UITableViewController {
-    @IBOutlet weak private var amountLabel: UILabel!
-    @IBOutlet weak private var dateLabel: UILabel!
-    @IBOutlet weak private var currencyLabel: UILabel!
     @IBOutlet weak private var categoryLabel: UILabel!
     @IBOutlet weak private var payeeLabel: UILabel!
     @IBOutlet weak private var accountLabel: UILabel!
     @IBOutlet weak private var categoryImageView: UIImageView!
     @IBOutlet weak private var backgroundImageView: UIImageView!
-    @IBOutlet weak private var commentTextLabel: UILabel!
-    @IBOutlet weak private var transactionPlace: MKMapView!
 
     var transactionCellModel: TransactionCellModel?
 
@@ -27,33 +27,15 @@ class TransactionDetailViewController: UITableViewController {
 
         guard let transactionCellModel = transactionCellModel else { return }
 
-        amountLabel.text = transactionCellModel.amount
-        dateLabel.text = transactionCellModel.date.formatDateToString()
-        currencyLabel.text = transactionCellModel.currency
         categoryLabel.text = transactionCellModel.categories.joined(separator: ",")
         payeeLabel.text = transactionCellModel.payee
         accountLabel.text = transactionCellModel.account
-        commentTextLabel.text = transactionCellModel.comment
         categoryImageView.image = UIImage.categoryImage(
             from: transactionCellModel.categorySymbol,
             backgroundColor: transactionCellModel.categoryColor,
             padding: 2
         )
         setImageGradient(imageView: backgroundImageView)
-        if let coordinates = transactionCellModel.coordinates {
-            let coordinateRegion = MKCoordinateRegion(
-                center: coordinates,
-                latitudinalMeters: 150,
-                longitudinalMeters: 150
-            )
-            transactionPlace.setRegion(coordinateRegion, animated: false)
-            let annotation = MKPointAnnotation()
-            annotation.title = transactionCellModel.payee
-            annotation.coordinate = coordinates
-            transactionPlace.addAnnotation(annotation)
-        } else {
-            transactionPlace.isHidden = true
-        }
     }
 
     private func setImageGradient(imageView: UIImageView) {
@@ -67,5 +49,61 @@ class TransactionDetailViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return Constants.Heights.cellHeaderHeight
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let transactionCellModel = transactionCellModel else { return UITableViewCell() }
+
+        switch indexPath.row {
+        case DetailCell.transactionDetailInfoCell.rawValue:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: Constants.Cells.transactionDetailInfoCellIdentifier,
+                for: indexPath
+            ) as? TransactionDetailInfoCell else { return UITableViewCell() }
+            cell.configureCell(with: transactionCellModel)
+
+            return cell
+        case DetailCell.transactionCommentCell.rawValue:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: Constants.Cells.transactionCommentCellIdentifier,
+                for: indexPath
+            ) as? TransactionCommentCell else { return UITableViewCell() }
+            cell.configureCell(with: transactionCellModel)
+
+            return cell
+        case DetailCell.transactionMapCell.rawValue:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: Constants.Cells.transactionMapCellIdentifier,
+                for: indexPath
+            ) as? TransactionMapCell else { return UITableViewCell() }
+            cell.configureCell(with: transactionCellModel)
+
+            return cell
+        default:
+            return UITableViewCell()
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        guard let transactionCellModel = transactionCellModel else { return 0 }
+
+        switch indexPath.row {
+        case DetailCell.transactionDetailInfoCell.rawValue:
+            return Constants.Heights.transactionDetailInfoCellHeight
+        case DetailCell.transactionCommentCell.rawValue:
+            guard !transactionCellModel.comment.isEmpty else { return 0 }
+
+            return Constants.Heights.transactionCommentCellHeight
+        case DetailCell.transactionMapCell.rawValue:
+            guard transactionCellModel.coordinates != nil else { return 0 }
+
+            return Constants.Heights.ttransactionMapCellHeight
+        default:
+            return 0
+        }
     }
 }
