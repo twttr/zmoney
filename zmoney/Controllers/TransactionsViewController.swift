@@ -15,10 +15,6 @@ class TransactionsViewController: UIViewController {
     private var refreshControl = UIRefreshControl()
     private var stateController: StateManager?
 
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: .zMoneyConfigUpdated, object: nil)
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
