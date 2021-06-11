@@ -13,34 +13,57 @@ class TransactionsViewController: UIViewController {
     private let zService = Zservice.shared
     private var transactionsModels = [TransactionCellModel]()
     private var refreshControl = UIRefreshControl()
+    private var stateController: StateManager?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         tableView.delegate = self
         tableView.dataSource = self
 
-        refreshTransactionsList()
+        stateController = StateManager(rootView: self.view, loadedView: tableView)
 
         tableView.refreshControl = refreshControl
-
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: #selector(self.refreshTransactionsList), for: .valueChanged)
+
+        guard stateController?.state == .noData else { return }
+
+        NotificationCenter.default.addObserver(forName: .zMoneyConfigUpdated, object: nil, queue: nil) { _ in
+            DispatchQueue.main.async {
+                self.refreshTransactionsList()
+            }
+        }
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        guard stateController?.state != .loaded else { return }
+
+        DispatchQueue.main.async {
+            self.refreshTransactionsList()
+        }
     }
 
     @objc private func refreshTransactionsList() {
-        DispatchQueue.main.async { [weak self] in
+        self.stateController?.state = .loading
+
+        zService.getDiff { [weak self] (result) in
             guard let self = self else { return }
+            switch result {
+            case .success(let diffResponse):
+                self.transactionsModels = self.makeModels(diffResponse: diffResponse)
 
-            self.zService.getDiff { (result) in
-                switch result {
-                case .success(let diffResponse):
-                    self.transactionsModels = self.makeModels(diffResponse: diffResponse)
-
+                DispatchQueue.main.async {
+                    self.stateController?.state = .loaded
                     self.tableView.reloadData()
                     self.refreshControl.endRefreshing()
-                case .failure(let error):
-                    print(error)
+                }
+            case .failure(let error):
+                DispatchQueue.main.async {
                     self.refreshControl.endRefreshing()
+                    self.stateController?.state = .error(error.localizedDescription)
                 }
             }
         }
@@ -53,6 +76,16 @@ class TransactionsViewController: UIViewController {
 }
 
 extension TransactionsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: Constants.Segues.transactionsToTransactionDetail, sender: self)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destinationVC = segue.destination as? TransactionDetailViewController else { return }
+        guard let indexPath = tableView.indexPathForSelectedRow else { return }
+
+        destinationVC.transactionCellModel = transactionsModels[indexPath.row]
+    }
 }
 
 extension TransactionsViewController: UITableViewDataSource {

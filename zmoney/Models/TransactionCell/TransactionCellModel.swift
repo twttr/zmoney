@@ -13,6 +13,8 @@ struct TransactionCellModel {
     let date: String
     let currency: String
     let isOutcome: Bool
+    var categories: [String]
+    let account: String
 
 }
 
@@ -20,13 +22,16 @@ extension TransactionCellModel {
     init(transaction: Transaction) {
         isOutcome = transaction.income == 0
         date = transaction.date
+        categories = transaction.categories?.map { $0.title } ?? []
 
         if isOutcome {
             amount = "Outcome \(transaction.outcome)"
             currency = transaction.outcomeTransactionInstrument?.shortTitle ?? ""
+            account = transaction.fromAccount?.title ?? ""
         } else {
             amount = "Income \(transaction.income)"
             currency = transaction.incomeTransactionInstrument?.shortTitle ?? ""
+            account = transaction.fromAccount?.title ?? ""
         }
     }
 }

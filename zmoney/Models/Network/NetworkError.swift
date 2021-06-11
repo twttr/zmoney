@@ -31,12 +31,12 @@ extension HttpStatus: LocalizedError {
         switch self {
         case .badRequest:
             return """
-            Server cannot or will not process the request\
+            Server cannot or will not process the request \
             due to something that is perceived to be a client error
             """
         case .unauthorized:
             return """
-            The request has not been applied because it lacks\
+            The request has not been applied because it lacks \
             valid authentication credentials for the target resource
             """
         case .undefined:
