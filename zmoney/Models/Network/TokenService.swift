@@ -8,6 +8,8 @@
 import Foundation
 import KeychainAccess
 
+// TODO: Refactor
+
 struct TokenService {
     public var accessToken: String {
         do {
