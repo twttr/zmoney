@@ -22,25 +22,37 @@ class TransactionsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        stateController = StateManager(rootView: self.view, loadedView: tableView)
+
         tableView.delegate = self
         tableView.dataSource = self
 
-        refreshTransactionsList()
+        stateController = StateManager(rootView: self.view, loadedView: tableView)
 
         tableView.refreshControl = refreshControl
-
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: #selector(self.refreshTransactionsList), for: .valueChanged)
 
+        guard stateController?.state == .noData else { return }
+
+        NotificationCenter.default.addObserver(forName: .zMoneyConfigUpdated, object: nil, queue: nil) { _ in
+            DispatchQueue.main.async {
+                self.refreshTransactionsList()
+            }
+        }
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        guard stateController?.state != .loaded else { return }
+
+        DispatchQueue.main.async {
+            self.refreshTransactionsList()
+        }
     }
 
     @objc private func refreshTransactionsList() {
-        var state = self.stateController?.state
-
-        if state == .noData {
-            state = .loading
-        }
+        self.stateController?.state = .loading
 
         zService.getDiff { [weak self] (result) in
             guard let self = self else { return }
@@ -53,14 +65,14 @@ class TransactionsViewController: UIViewController {
                     return $0.date > $1.date
                 }
                 DispatchQueue.main.async {
-                    state = .loaded
+                    self.stateController?.state = .loaded
                     self.tableView.reloadData()
                     self.refreshControl.endRefreshing()
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
                     self.refreshControl.endRefreshing()
-                    state = .error(error.localizedDescription)
+                    self.stateController?.state = .error(error.localizedDescription)
                 }
             }
         }

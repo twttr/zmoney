@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol ZserviceDelegate: class {
+protocol ZserviceDelegate: AnyObject {
     func didLoggedIn()
     func didLoggedOff()
 }

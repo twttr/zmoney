@@ -32,8 +32,8 @@ struct StateManager: StateHolder, StateApplicable {
     }
 
     var state: State = .noData {
-        didSet {
-            self.apply(state: state)
+        willSet {
+            self.apply(state: newValue)
         }
     }
 
@@ -68,6 +68,8 @@ struct StateManager: StateHolder, StateApplicable {
         case .noData:
             addViewAndBringToFront(emptyView)
         case .loading:
+            guard self.state == .noData else { return }
+
             addViewAndBringToFront(loadingView)
         case .loaded:
             addViewAndBringToFront(loadedView)
