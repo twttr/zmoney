@@ -62,18 +62,20 @@ struct StateManager: StateHolder, StateApplicable {
     // MARK: StateApplicable
 
     func apply(state: State) {
-        hideAllViews()
-
         switch state {
         case .noData:
+            hideAllViews()
             addViewAndBringToFront(emptyView)
         case .loading:
             guard self.state == .noData else { return }
 
+            hideAllViews()
             addViewAndBringToFront(loadingView)
         case .loaded:
+            hideAllViews()
             addViewAndBringToFront(loadedView)
         case .error(let error):
+            hideAllViews()
             addViewAndBringToFront(errorView)
             errorView.errorText = error
         }
