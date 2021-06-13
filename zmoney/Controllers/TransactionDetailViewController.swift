@@ -52,13 +52,17 @@ class TransactionDetailViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let transactionCellModel = transactionCellModel else { return UITableViewCell() }
 
-        switch indexPath.row {
+        switch indexPath.section {
         case DetailCell.transactionDetailInfoCell.rawValue:
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: Constants.Cells.transactionDetailInfoCellIdentifier,
@@ -91,7 +95,7 @@ class TransactionDetailViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         guard let transactionCellModel = transactionCellModel else { return 0 }
 
-        switch indexPath.row {
+        switch indexPath.section {
         case DetailCell.transactionDetailInfoCell.rawValue:
             return Constants.Heights.transactionDetailInfoCellHeight
         case DetailCell.transactionCommentCell.rawValue:

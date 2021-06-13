@@ -12,11 +12,9 @@ import UIKit
 class TransactionDetailInfoCell: UITableViewCell {
     @IBOutlet weak private var dateLabel: UILabel!
     @IBOutlet weak private var amountLabel: UILabel!
-    @IBOutlet weak private var currencyLabel: UILabel!
 
     func configureCell(with model: TransactionCellModel) {
-        amountLabel.text = model.amount
-        currencyLabel.text = model.currency
+        amountLabel.text = "\(model.amount) \(model.currency)"
         dateLabel.text = model.date.formatDateToString()
     }
 }
