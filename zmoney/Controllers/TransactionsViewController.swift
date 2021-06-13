@@ -23,6 +23,8 @@ class TransactionsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.tableView.rowHeight = Constants.Heights.transactionCellHeight
+
         tableView.delegate = self
         tableView.dataSource = self
 

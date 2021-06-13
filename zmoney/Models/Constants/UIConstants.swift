@@ -29,5 +29,6 @@ enum Constants {
         public static let transactionDetailInfoCellHeight: CGFloat = 60
         public static let transactionCommentCellHeight: CGFloat = 60
         public static let ttransactionMapCellHeight: CGFloat = 250
+        public static let transactionCellHeight: CGFloat = 75
     }
 }
