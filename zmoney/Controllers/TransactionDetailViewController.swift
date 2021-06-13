@@ -101,7 +101,7 @@ class TransactionDetailViewController: UITableViewController {
         case DetailCell.transactionMapCell.rawValue:
             guard transactionCellModel.coordinates != nil else { return 0 }
 
-            return Constants.Heights.ttransactionMapCellHeight
+            return Constants.Heights.transactionMapCellHeight
         default:
             return 0
         }
