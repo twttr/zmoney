@@ -14,18 +14,22 @@ extension UIImage {
 
     static func categoryImage(from sourceImage: UIImage, backgroundColor: UIColor, padding: CGFloat) -> UIImage? {
         let insets = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
+        let newSize = CGSize(width: 55, height: 55)
 
-        // beginning the context and adding padding to image
-        UIGraphicsBeginImageContextWithOptions(
-            CGSize(
-                width: sourceImage.size.width + insets.left + insets.right,
-                height: sourceImage.size.height + insets.top + insets.bottom
-            ),
-            false,
-            sourceImage.scale
-        )
-        let origin = CGPoint(x: insets.left, y: insets.top)
-        let rect = CGRect(origin: origin, size: sourceImage.size)
+        // rect for image
+        var scaledImageRect = CGRect.zero
+        let aspectWidth = newSize.width / sourceImage.size.width
+        let aspectHeight = newSize.height / sourceImage.size.height
+        let aspectRatio = min(aspectWidth, aspectHeight)
+        scaledImageRect.size.width = (sourceImage.size.width - insets.left - insets.right) * aspectRatio
+        scaledImageRect.size.height = (sourceImage.size.height - insets.top - insets.bottom) * aspectRatio
+        scaledImageRect.origin.x = (newSize.width - scaledImageRect.size.width) / 2.0
+        scaledImageRect.origin.y = (newSize.height - scaledImageRect.size.height) / 2.0
+
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0)
+
+        // rect for background color and rounded corners
+        let rect = CGRect(origin: CGPoint.zero, size: newSize)
 
         // rounding the corners
         UIBezierPath(roundedRect: rect, cornerRadius: Constants.Buttons.cornerRadius).addClip()
@@ -35,14 +39,12 @@ extension UIImage {
         backgroundColor.setFill()
         context.fill(rect)
 
-        // finalizing the image
-        sourceImage.draw(in: rect)
+        sourceImage.draw(in: scaledImageRect)
 
-        // getting the image
-        let image = UIGraphicsGetImageFromCurrentImageContext()
+        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
 
-        return image
+        return scaledImage
     }
 
     enum Categories: String {
