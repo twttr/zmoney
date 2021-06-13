@@ -18,6 +18,9 @@ class TransactionMapCell: UITableViewCell {
                 latitudinalMeters: 150,
                 longitudinalMeters: 150
             )
+            transactionMapView.isZoomEnabled = false
+            transactionMapView.isScrollEnabled = false
+            transactionMapView.isUserInteractionEnabled = false
             transactionMapView.setRegion(coordinateRegion, animated: false)
             let annotation = MKPointAnnotation()
             annotation.title = model.payee
