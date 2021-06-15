@@ -23,6 +23,11 @@ class TransactionsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithOpaqueBackground()
+        self.navigationController?.navigationBar.standardAppearance = navBarAppearance
+        self.navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+
         self.tableView.rowHeight = Constants.Heights.transactionCellHeight
 
         tableView.delegate = self
