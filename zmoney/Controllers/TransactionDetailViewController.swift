@@ -7,10 +7,38 @@
 
 import UIKit
 
-enum DetailCell: Int {
-    case transactionDetailInfoCell = 0
-    case transactionCommentCell = 1
-    case transactionMapCell = 2
+enum DetailCellType {
+    case info
+    case comment
+    case map
+}
+
+extension DetailCellType: RawRepresentable {
+    typealias RawValue = UITableViewCell
+
+    init?(rawValue: UITableViewCell) {
+        switch rawValue {
+        case is TransactionDetailInfoCell:
+            self = .info
+        case is TransactionCommentCell:
+            self = .comment
+        case is TransactionMapCell:
+            self = .map
+        default:
+            return nil
+        }
+    }
+
+    var rawValue: UITableViewCell {
+        switch self {
+        case .info:
+            return TransactionDetailInfoCell()
+        case .comment:
+            return TransactionCommentCell()
+        case .map:
+            return TransactionMapCell()
+        }
+    }
 }
 
 class TransactionDetailViewController: UITableViewController {
@@ -19,6 +47,8 @@ class TransactionDetailViewController: UITableViewController {
     @IBOutlet weak private var accountLabel: UILabel!
     @IBOutlet weak private var categoryImageView: UIImageView!
     @IBOutlet weak private var backgroundImageView: UIImageView!
+
+    private var cells = [DetailCellType]()
 
     var transactionCellModel: TransactionCellModel?
 
@@ -36,6 +66,8 @@ class TransactionDetailViewController: UITableViewController {
             padding: 2
         )
         setImageGradient(imageView: backgroundImageView)
+
+        cells = self.makeCells(from: transactionCellModel)
     }
 
     private func setImageGradient(imageView: UIImageView) {
@@ -47,23 +79,42 @@ class TransactionDetailViewController: UITableViewController {
         imageView.layer.insertSublayer(gradient, at: 0)
     }
 
+    private func makeCells(from model: TransactionCellModel) -> [DetailCellType] {
+        guard let transactionCellModel = transactionCellModel else { return [] }
+
+        var arrayOfCells = [DetailCellType]()
+        let infoCell = TransactionDetailInfoCell()
+        if let infoCell = DetailCellType(rawValue: infoCell) {
+            arrayOfCells.append(infoCell)
+        }
+        if !transactionCellModel.comment.isEmpty {
+            let commentCell = TransactionCommentCell()
+            if let commentCell = DetailCellType(rawValue: commentCell) {
+                arrayOfCells.append(commentCell)
+            }
+        }
+        if transactionCellModel.coordinates != nil {
+            let mapCell = TransactionMapCell()
+            if let mapCell = DetailCellType(rawValue: mapCell) {
+                arrayOfCells.append(mapCell)
+            }
+        }
+        return arrayOfCells
+    }
+
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return Constants.Heights.cellHeaderHeight
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return cells.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let transactionCellModel = transactionCellModel else { return UITableViewCell() }
 
-        switch indexPath.section {
-        case DetailCell.transactionDetailInfoCell.rawValue:
+        switch cells[indexPath.row] {
+        case .info:
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: Constants.Cells.transactionDetailInfoCellIdentifier,
                 for: indexPath
@@ -71,7 +122,7 @@ class TransactionDetailViewController: UITableViewController {
             cell.configureCell(with: transactionCellModel)
 
             return cell
-        case DetailCell.transactionCommentCell.rawValue:
+        case .comment:
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: Constants.Cells.transactionCommentCellIdentifier,
                 for: indexPath
@@ -79,7 +130,7 @@ class TransactionDetailViewController: UITableViewController {
             cell.configureCell(with: transactionCellModel)
 
             return cell
-        case DetailCell.transactionMapCell.rawValue:
+        case .map:
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: Constants.Cells.transactionMapCellIdentifier,
                 for: indexPath
@@ -87,27 +138,23 @@ class TransactionDetailViewController: UITableViewController {
             cell.configureCell(with: transactionCellModel)
 
             return cell
-        default:
-            return UITableViewCell()
         }
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         guard let transactionCellModel = transactionCellModel else { return 0 }
 
-        switch indexPath.section {
-        case DetailCell.transactionDetailInfoCell.rawValue:
+        switch cells[indexPath.row] {
+        case .info:
             return Constants.Heights.transactionDetailInfoCellHeight
-        case DetailCell.transactionCommentCell.rawValue:
+        case .comment:
             guard !transactionCellModel.comment.isEmpty else { return 0 }
 
             return Constants.Heights.transactionCommentCellHeight
-        case DetailCell.transactionMapCell.rawValue:
+        case .map:
             guard transactionCellModel.coordinates != nil else { return 0 }
 
             return Constants.Heights.transactionMapCellHeight
-        default:
-            return 0
         }
     }
 }
