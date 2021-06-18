@@ -19,6 +19,8 @@ class TransactionsViewController: UIViewController {
     private var refreshControl = UIRefreshControl()
     private var stateController: StateManager?
     private var sectionedTransactions = [Section]()
+    var canTransitionToLarge = false
+    var canTransitionToSmall = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +37,7 @@ class TransactionsViewController: UIViewController {
 
         stateController = StateManager(rootView: self.view, loadedView: tableView)
 
-        tableView.refreshControl = refreshControl
+        tableView.addSubview(refreshControl)
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: #selector(self.refreshTransactionsList), for: .valueChanged)
 
@@ -129,5 +131,23 @@ extension TransactionsViewController: UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return sectionedTransactions.count
+    }
+}
+
+extension TransactionsViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if canTransitionToLarge && scrollView.contentOffset.y <= 0 {
+            UIView.animate(withDuration: 2.0) {
+                self.navigationItem.largeTitleDisplayMode = .always
+            }
+            canTransitionToLarge = false
+            canTransitionToSmall = true
+        } else if canTransitionToSmall && scrollView.contentOffset.y > 0 {
+            UIView.animate(withDuration: 2.0) {
+                self.navigationItem.largeTitleDisplayMode = .never
+            }
+            canTransitionToLarge = true
+            canTransitionToSmall = false
+        }
     }
 }
