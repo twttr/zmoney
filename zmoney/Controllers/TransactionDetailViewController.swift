@@ -144,4 +144,8 @@ class TransactionDetailViewController: UITableViewController {
             return cell
         }
     }
+
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        return nil
+    }
 }
