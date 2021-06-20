@@ -30,5 +30,12 @@ enum Constants {
         public static let transactionCommentCellHeight: CGFloat = 60
         public static let transactionMapCellHeight: CGFloat = 250
         public static let transactionCellHeight: CGFloat = 75
+        public static let categoryImageHeight: CGFloat = 55
+    }
+    enum Widths {
+        public static let categoryImageWidth: CGFloat = 55
+    }
+    enum Paddings {
+        public static let categoryImagePadding: CGFloat = 2
     }
 }

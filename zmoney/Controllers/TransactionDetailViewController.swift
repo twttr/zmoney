@@ -62,8 +62,12 @@ class TransactionDetailViewController: UITableViewController {
         accountLabel.text = transactionCellModel.account
         categoryImageView.image = UIImage.categoryImage(
             from: transactionCellModel.categorySymbol,
+            targetSize: CGSize(
+                width: Constants.Widths.categoryImageWidth,
+                height: Constants.Heights.categoryImageHeight
+            ),
             backgroundColor: transactionCellModel.categoryColor,
-            padding: 2
+            padding: Constants.Paddings.categoryImagePadding
         )
         setImageGradient(imageView: backgroundImageView)
 

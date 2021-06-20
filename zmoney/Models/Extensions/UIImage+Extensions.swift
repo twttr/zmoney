@@ -12,24 +12,28 @@ extension UIImage {
         return Categories.init(rawValue: systemName)?.image
     }
 
-    static func categoryImage(from sourceImage: UIImage, backgroundColor: UIColor, padding: CGFloat) -> UIImage? {
+    static func categoryImage(
+        from sourceImage: UIImage,
+        targetSize: CGSize,
+        backgroundColor: UIColor,
+        padding: CGFloat
+    ) -> UIImage? {
         let insets = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
-        let newSize = CGSize(width: 55, height: 55)
 
         // rect for image
         var scaledImageRect = CGRect.zero
-        let aspectWidth = newSize.width / sourceImage.size.width
-        let aspectHeight = newSize.height / sourceImage.size.height
+        let aspectWidth = targetSize.width / sourceImage.size.width
+        let aspectHeight = targetSize.height / sourceImage.size.height
         let aspectRatio = min(aspectWidth, aspectHeight)
         scaledImageRect.size.width = (sourceImage.size.width - insets.left - insets.right) * aspectRatio
         scaledImageRect.size.height = (sourceImage.size.height - insets.top - insets.bottom) * aspectRatio
-        scaledImageRect.origin.x = (newSize.width - scaledImageRect.size.width) / 2.0
-        scaledImageRect.origin.y = (newSize.height - scaledImageRect.size.height) / 2.0
+        scaledImageRect.origin.x = (targetSize.width - scaledImageRect.size.width) / 2.0
+        scaledImageRect.origin.y = (targetSize.height - scaledImageRect.size.height) / 2.0
 
-        UIGraphicsBeginImageContextWithOptions(newSize, false, 0)
+        UIGraphicsBeginImageContextWithOptions(targetSize, false, 0)
 
         // rect for background color and rounded corners
-        let rect = CGRect(origin: CGPoint.zero, size: newSize)
+        let rect = CGRect(origin: CGPoint.zero, size: targetSize)
 
         // rounding the corners
         UIBezierPath(roundedRect: rect, cornerRadius: Constants.Buttons.cornerRadius).addClip()
