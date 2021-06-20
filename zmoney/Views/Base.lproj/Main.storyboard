@@ -344,8 +344,10 @@
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Vqa-Xw-VeV" secondAttribute="bottom" constant="5" id="0GR-rj-5Vp"/>
                                         <constraint firstItem="Vqa-Xw-VeV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Rji-7V-hw2" secondAttribute="trailing" constant="20" id="7vT-gr-Ye9"/>
                                         <constraint firstItem="Rji-7V-hw2" firstAttribute="leading" secondItem="WG5-2i-sCq" secondAttribute="leading" constant="15" id="JxS-qK-pI0"/>
+                                        <constraint firstItem="Vqa-Xw-VeV" firstAttribute="top" relation="greaterThanOrEqual" secondItem="WG5-2i-sCq" secondAttribute="top" constant="5" id="Nex-N2-64D"/>
                                         <constraint firstItem="Rji-7V-hw2" firstAttribute="centerY" secondItem="WG5-2i-sCq" secondAttribute="centerY" id="SFM-Ld-327"/>
                                         <constraint firstItem="Vqa-Xw-VeV" firstAttribute="centerY" secondItem="WG5-2i-sCq" secondAttribute="centerY" id="T27-99-7xB"/>
                                         <constraint firstAttribute="trailing" secondItem="Vqa-Xw-VeV" secondAttribute="trailing" constant="15" id="pdV-dQ-yBB"/>
