@@ -144,21 +144,4 @@ class TransactionDetailViewController: UITableViewController {
             return cell
         }
     }
-
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        guard let transactionCellModel = transactionCellModel else { return 0 }
-
-        switch cells[indexPath.row] {
-        case .info:
-            return Constants.Heights.transactionDetailInfoCellHeight
-        case .comment:
-            guard !transactionCellModel.comment.isEmpty else { return 0 }
-
-            return Constants.Heights.transactionCommentCellHeight
-        case .map:
-            guard transactionCellModel.coordinates != nil else { return 0 }
-
-            return Constants.Heights.transactionMapCellHeight
-        }
-    }
 }

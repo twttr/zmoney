@@ -308,6 +308,8 @@
                                         <constraint firstItem="klo-UG-pjo" firstAttribute="centerY" secondItem="cBh-gO-cVN" secondAttribute="centerY" id="Ifj-kd-UsF"/>
                                         <constraint firstItem="yO0-7E-fYq" firstAttribute="centerY" secondItem="cBh-gO-cVN" secondAttribute="centerY" id="JtR-mH-Iat"/>
                                         <constraint firstItem="klo-UG-pjo" firstAttribute="leading" secondItem="cBh-gO-cVN" secondAttribute="leading" constant="15" id="b7d-ua-TDs"/>
+                                        <constraint firstItem="klo-UG-pjo" firstAttribute="top" secondItem="cBh-gO-cVN" secondAttribute="top" constant="21.5" id="dtE-ya-sAz"/>
+                                        <constraint firstAttribute="bottom" secondItem="klo-UG-pjo" secondAttribute="bottom" constant="21.5" id="r7d-RQ-jlt"/>
                                         <constraint firstAttribute="trailing" secondItem="yO0-7E-fYq" secondAttribute="trailing" constant="15" id="rdy-EK-352"/>
                                         <constraint firstItem="yO0-7E-fYq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="klo-UG-pjo" secondAttribute="trailing" constant="10" id="tXb-LY-Epw"/>
                                     </constraints>
@@ -350,6 +352,8 @@
                                         <constraint firstItem="Vqa-Xw-VeV" firstAttribute="top" relation="greaterThanOrEqual" secondItem="WG5-2i-sCq" secondAttribute="top" constant="5" id="Nex-N2-64D"/>
                                         <constraint firstItem="Rji-7V-hw2" firstAttribute="centerY" secondItem="WG5-2i-sCq" secondAttribute="centerY" id="SFM-Ld-327"/>
                                         <constraint firstItem="Vqa-Xw-VeV" firstAttribute="centerY" secondItem="WG5-2i-sCq" secondAttribute="centerY" id="T27-99-7xB"/>
+                                        <constraint firstItem="Rji-7V-hw2" firstAttribute="top" secondItem="WG5-2i-sCq" secondAttribute="top" constant="21.5" id="W6l-Mq-Eru"/>
+                                        <constraint firstAttribute="bottom" secondItem="Rji-7V-hw2" secondAttribute="bottom" constant="21.5" id="fzV-UX-Lma"/>
                                         <constraint firstAttribute="trailing" secondItem="Vqa-Xw-VeV" secondAttribute="trailing" constant="15" id="pdV-dQ-yBB"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -366,6 +370,9 @@
                                     <subviews>
                                         <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ny2-Jg-pLY">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="250"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="250" id="4OR-Jz-XxD"/>
+                                            </constraints>
                                         </mapView>
                                     </subviews>
                                     <constraints>
