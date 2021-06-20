@@ -8,35 +8,42 @@
 import UIKit
 
 enum DetailCellType {
-    case info
-    case comment
-    case map
+    case info(model: TransactionCellModel)
+    case comment(model: TransactionCellModel)
+    case map(model: TransactionCellModel)
 }
 
-extension DetailCellType: RawRepresentable {
-    typealias RawValue = UITableViewCell
-
-    init?(rawValue: UITableViewCell) {
-        switch rawValue {
-        case is TransactionDetailInfoCell:
-            self = .info
-        case is TransactionCommentCell:
-            self = .comment
-        case is TransactionMapCell:
-            self = .map
-        default:
-            return nil
+extension DetailCellType {
+    var cellType: UITableViewCell.Type {
+        switch self {
+        case .info:
+            return TransactionDetailInfoCell.self
+        case .comment:
+            return TransactionCommentCell.self
+        case .map:
+            return TransactionMapCell.self
         }
     }
 
-    var rawValue: UITableViewCell {
+    func dequeueReusableCell(tableView: UITableView, for indexPath: IndexPath) -> UITableViewCell? {
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: String(describing: self.cellType),
+            for: indexPath
+        )
+
         switch self {
-        case .info:
-            return TransactionDetailInfoCell()
-        case .comment:
-            return TransactionCommentCell()
-        case .map:
-            return TransactionMapCell()
+        case let .info(model):
+            guard let cell = cell as? TransactionDetailInfoCell else { return nil }
+            cell.configureCell(with: model)
+            return cell
+        case let .comment(model):
+            guard let cell = cell as? TransactionCommentCell else { return nil }
+            cell.configureCell(with: model)
+            return cell
+        case let .map(model):
+            guard let cell = cell as? TransactionMapCell else { return nil }
+            cell.configureCell(with: model)
+            return cell
         }
     }
 }
@@ -86,23 +93,16 @@ class TransactionDetailViewController: UITableViewController {
     private func makeCells(from model: TransactionCellModel) -> [DetailCellType] {
         guard let transactionCellModel = transactionCellModel else { return [] }
 
-        var arrayOfCells = [DetailCellType]()
-        let infoCell = TransactionDetailInfoCell()
-        if let infoCell = DetailCellType(rawValue: infoCell) {
-            arrayOfCells.append(infoCell)
-        }
+        var arrayOfCells: [DetailCellType] = [.info(model: transactionCellModel)]
+
         if !transactionCellModel.comment.isEmpty {
-            let commentCell = TransactionCommentCell()
-            if let commentCell = DetailCellType(rawValue: commentCell) {
-                arrayOfCells.append(commentCell)
-            }
+            arrayOfCells.append(.comment(model: transactionCellModel))
         }
+
         if transactionCellModel.coordinates != nil {
-            let mapCell = TransactionMapCell()
-            if let mapCell = DetailCellType(rawValue: mapCell) {
-                arrayOfCells.append(mapCell)
-            }
+            arrayOfCells.append(.map(model: transactionCellModel))
         }
+
         return arrayOfCells
     }
 
@@ -115,34 +115,11 @@ class TransactionDetailViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let transactionCellModel = transactionCellModel else { return UITableViewCell() }
-
-        switch cells[indexPath.row] {
-        case .info:
-            guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: Constants.Cells.transactionDetailInfoCellIdentifier,
-                for: indexPath
-            ) as? TransactionDetailInfoCell else { return UITableViewCell() }
-            cell.configureCell(with: transactionCellModel)
-
-            return cell
-        case .comment:
-            guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: Constants.Cells.transactionCommentCellIdentifier,
-                for: indexPath
-            ) as? TransactionCommentCell else { return UITableViewCell() }
-            cell.configureCell(with: transactionCellModel)
-
-            return cell
-        case .map:
-            guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: Constants.Cells.transactionMapCellIdentifier,
-                for: indexPath
-            ) as? TransactionMapCell else { return UITableViewCell() }
-            cell.configureCell(with: transactionCellModel)
-
-            return cell
+        guard let cell = cells[indexPath.row].dequeueReusableCell(tableView: tableView, for: indexPath) else {
+            return UITableViewCell()
         }
+
+        return cell
     }
 
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
