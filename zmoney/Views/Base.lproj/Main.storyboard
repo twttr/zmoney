@@ -129,10 +129,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="N26" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPO-gV-ZGe">
-                                                    <rect key="frame" x="75" y="32" width="24" height="14.5"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="24" id="3Ow-sW-W1S"/>
-                                                    </constraints>
+                                                    <rect key="frame" x="75" y="32" width="93" height="14.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -170,7 +167,7 @@
                                                 <constraint firstItem="aPO-gV-ZGe" firstAttribute="leading" secondItem="6gd-az-Gyl" secondAttribute="trailing" constant="10" id="PU0-kh-ECm"/>
                                                 <constraint firstItem="LGw-Ga-j14" firstAttribute="top" secondItem="9Gg-Fd-D9k" secondAttribute="top" constant="10" id="Qq4-ta-axe"/>
                                                 <constraint firstItem="LGw-Ga-j14" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="e4X-Vc-cfE" secondAttribute="trailing" constant="10" id="ZJc-V7-4d0"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="aPO-gV-ZGe" secondAttribute="trailing" constant="40" id="ceo-wq-5ik"/>
+                                                <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="aPO-gV-ZGe" secondAttribute="trailing" constant="206" id="ceo-wq-5ik"/>
                                                 <constraint firstItem="e4X-Vc-cfE" firstAttribute="top" secondItem="9Gg-Fd-D9k" secondAttribute="top" constant="10" id="dbA-Ej-WeI"/>
                                                 <constraint firstItem="8Ff-8o-vkq" firstAttribute="top" secondItem="9Gg-Fd-D9k" secondAttribute="top" constant="10" id="eq4-ye-7oe"/>
                                                 <constraint firstItem="aPO-gV-ZGe" firstAttribute="top" secondItem="e4X-Vc-cfE" secondAttribute="bottom" constant="5" id="iw9-pt-410"/>
