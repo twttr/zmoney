@@ -79,6 +79,8 @@ class TransactionDetailViewController: UITableViewController {
         setImageGradient(imageView: backgroundImageView)
 
         cells = self.makeCells(from: transactionCellModel)
+
+        tableView.allowsSelection = false
     }
 
     private func setImageGradient(imageView: UIImageView) {
@@ -120,9 +122,5 @@ class TransactionDetailViewController: UITableViewController {
         }
 
         return cell
-    }
-
-    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        return nil
     }
 }
