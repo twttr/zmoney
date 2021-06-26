@@ -336,7 +336,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test Comment" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vqa-Xw-VeV">
-                                            <rect key="frame" x="259" y="21.5" width="100" height="17"/>
+                                            <rect key="frame" x="259" y="5" width="100" height="50"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="OIh-XF-bdZ"/>
                                             </constraints>
@@ -346,10 +346,10 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Vqa-Xw-VeV" secondAttribute="bottom" constant="5" id="0GR-rj-5Vp"/>
+                                        <constraint firstAttribute="bottom" secondItem="Vqa-Xw-VeV" secondAttribute="bottom" constant="5" id="0GR-rj-5Vp"/>
                                         <constraint firstItem="Vqa-Xw-VeV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Rji-7V-hw2" secondAttribute="trailing" constant="20" id="7vT-gr-Ye9"/>
                                         <constraint firstItem="Rji-7V-hw2" firstAttribute="leading" secondItem="WG5-2i-sCq" secondAttribute="leading" constant="15" id="JxS-qK-pI0"/>
-                                        <constraint firstItem="Vqa-Xw-VeV" firstAttribute="top" relation="greaterThanOrEqual" secondItem="WG5-2i-sCq" secondAttribute="top" constant="5" id="Nex-N2-64D"/>
+                                        <constraint firstItem="Vqa-Xw-VeV" firstAttribute="top" secondItem="WG5-2i-sCq" secondAttribute="top" constant="5" id="Nex-N2-64D"/>
                                         <constraint firstItem="Rji-7V-hw2" firstAttribute="centerY" secondItem="WG5-2i-sCq" secondAttribute="centerY" id="SFM-Ld-327"/>
                                         <constraint firstItem="Vqa-Xw-VeV" firstAttribute="centerY" secondItem="WG5-2i-sCq" secondAttribute="centerY" id="T27-99-7xB"/>
                                         <constraint firstItem="Rji-7V-hw2" firstAttribute="top" secondItem="WG5-2i-sCq" secondAttribute="top" constant="21.5" id="W6l-Mq-Eru"/>
