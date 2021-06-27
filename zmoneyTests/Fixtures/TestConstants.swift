@@ -100,41 +100,6 @@ enum TestConstants {
               "parent": null
             }
             """
-        public static let transactionJson = """
-            {
-              "id": "388fab00-9787-4c77-9e8a-61860bb2ab63",
-              "user": 1399696,
-              "date": "2021-04-18",
-              "income": 0,
-              "outcome": 1450,
-              "changed": 1618781099,
-              "incomeInstrument": 2,
-              "outcomeInstrument": 2,
-              "created": 1618781438,
-              "originalPayee": null,
-              "deleted": false,
-              "viewed": true,
-              "hold": null,
-              "qrCode": null,
-              "incomeAccount": "94b1a868-4fdc-4412-924d-5fd8beb5cd05",
-              "outcomeAccount": "94b1a868-4fdc-4412-924d-5fd8beb5cd05",
-              "tag": [
-                "c3b5d78b-ef6f-4f29-bd11-4b4a7475b80e"
-              ],
-              "comment": "Это демо-операция. Удалите её, когда посмотрите отчёты.",
-              "payee": "Пятерочка",
-              "opIncome": null,
-              "opOutcome": null,
-              "opIncomeInstrument": null,
-              "opOutcomeInstrument": null,
-              "latitude": null,
-              "longitude": null,
-              "merchant": null,
-              "incomeBankID": null,
-              "outcomeBankID": null,
-              "reminderMarker": null
-            }
-            """
         public static let budgetJson = """
             {
               "user": 123,
