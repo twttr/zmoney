@@ -86,7 +86,7 @@
 		0580D2412645BBAC00BEFA25 /* TransactionCellModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCellModelTests.swift; sourceTree = "<group>"; };
 		0580D2432649B95800BEFA25 /* DiffResponseModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffResponseModelTests.swift; sourceTree = "<group>"; };
 		0598D6D4262F1DE500400A2C /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
-		0598D6D9262F208D00400A2C /* UIStoryboard+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIStoryboard+Extensions.swift"; path = "zmoney/Models/Extensions/UIStoryboard+Extensions.swift"; sourceTree = SOURCE_ROOT; };
+		0598D6D9262F208D00400A2C /* UIStoryboard+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIStoryboard+Extensions.swift"; path = "zmoney/Utils/Extensions/UIStoryboard+Extensions.swift"; sourceTree = SOURCE_ROOT; };
 		0598D6DE262F272900400A2C /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		0598D6EB262F60E600400A2C /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
 		059E6CB5266E7C88003562CD /* TransactionDetailInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailInfoCell.swift; sourceTree = "<group>"; };
@@ -163,16 +163,185 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0555FCB1263B383200099E0B /* TransactionCell */ = {
+		055B6D242688AF130073498F /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				05D3E9B7262A001300E9C234 /* TransactionCell.swift */,
-				0555FCB2263B385900099E0B /* TransactionCellModel.swift */,
+				05B93E2E25D0442F0089E7A8 /* LaunchScreen.storyboard */,
+				05B93E2925D0442E0089E7A8 /* Main.storyboard */,
+				05AD5F6D262755B300355F1B /* TabBarViewController.swift */,
+				055B6D332688B1FC0073498F /* Common */,
+				055B6D322688B1D30073498F /* Login */,
+				055B6D2B2688B05C0073498F /* TransactionsList */,
+				055B6D292688B00C0073498F /* Profile */,
+				055B6D252688AF250073498F /* TransactionDetail */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		055B6D252688AF250073498F /* TransactionDetail */ = {
+			isa = PBXGroup;
+			children = (
+				055B6D282688AFF60073498F /* Controllers */,
+				055B6D272688AF6F0073498F /* Models */,
+			);
+			path = TransactionDetail;
+			sourceTree = "<group>";
+		};
+		055B6D272688AF6F0073498F /* Models */ = {
+			isa = PBXGroup;
+			children = (
 				059E6CB5266E7C88003562CD /* TransactionDetailInfoCell.swift */,
 				059E6CB7266E7CA0003562CD /* TransactionCommentCell.swift */,
 				059E6CB9266E7CAF003562CD /* TransactionMapCell.swift */,
 			);
-			path = TransactionCell;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		055B6D282688AFF60073498F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0555FCAF2638A28300099E0B /* TransactionDetailViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		055B6D292688B00C0073498F /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				055B6D2A2688B0190073498F /* Controllers */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		055B6D2A2688B0190073498F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				05AD5F812628B43500355F1B /* ProfileViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		055B6D2B2688B05C0073498F /* TransactionsList */ = {
+			isa = PBXGroup;
+			children = (
+				055B6D2C2688B06C0073498F /* Controllers */,
+			);
+			path = TransactionsList;
+			sourceTree = "<group>";
+		};
+		055B6D2C2688B06C0073498F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				05AD5F862628B48300355F1B /* TransactionsViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		055B6D2D2688B0CC0073498F /* StateManager */ = {
+			isa = PBXGroup;
+			children = (
+				05A0664E264C7FBD00A64EE5 /* StateManager.swift */,
+				055B6D2E2688B0DD0073498F /* Views */,
+			);
+			path = StateManager;
+			sourceTree = "<group>";
+		};
+		055B6D2E2688B0DD0073498F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				05A06652264C85C500A64EE5 /* ErrorView.swift */,
+				05A06650264C854000A64EE5 /* ErrorView.xib */,
+				05CF433E264C9DB500A1FCAE /* LoadingView.swift */,
+				05CF433C264C9D5700A1FCAE /* LoadingView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		055B6D2F2688B11F0073498F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				055B6D352688B2850073498F /* Network */,
+				055B6D302688B1250073498F /* Extensions */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		055B6D302688B1250073498F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0598D6D9262F208D00400A2C /* UIStoryboard+Extensions.swift */,
+				0598D6DE262F272900400A2C /* UIViewController+Extensions.swift */,
+				052C4823265A6E3900645DF4 /* UIImage+Extensions.swift */,
+				05D072DA2662AC0F00887A5B /* DateFormatter+Extensions.swift */,
+				056ED183266CDF710080D09E /* UIColor+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		055B6D312688B1860073498F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				055ADEF2262E0B62001DCF5A /* TokenService.swift */,
+				05AD5F462624BC6300355F1B /* ZService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		055B6D322688B1D30073498F /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				055B6D372688B2E20073498F /* Models */,
+				055B6D362688B2DB0073498F /* Controllers */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		055B6D332688B1FC0073498F /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				05D3E9B7262A001300E9C234 /* TransactionCell.swift */,
+				0555FCB2263B385900099E0B /* TransactionCellModel.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		055B6D342688B2250073498F /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				05B93E2325D0442E0089E7A8 /* AppDelegate.swift */,
+				05B93E2525D0442E0089E7A8 /* SceneDelegate.swift */,
+				0598D6EB262F60E600400A2C /* UIConstants.swift */,
+				0598D6D4262F1DE500400A2C /* Notifications.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		055B6D352688B2850073498F /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				05AD5F3E2624B9B700355F1B /* NetworkRequest.swift */,
+				05AD5F6126262CEE00355F1B /* AuthResponseModel.swift */,
+				05AD5F7226275B3D00355F1B /* NetworkError.swift */,
+				05AD5F9C2628CBDD00355F1B /* DiffRequestModel.swift */,
+				05AD5FA12628D0CD00355F1B /* DiffResponseModel.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		055B6D362688B2DB0073498F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				05B93E2725D0442E0089E7A8 /* LoginViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		055B6D372688B2E20073498F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0559470A2634C0F200CE727C /* ApplicationCoordinator.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		0580D23F2645ABA600BEFA25 /* Models */ = {
@@ -189,79 +358,6 @@
 		0580D2402645ABB100BEFA25 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		0598D6F3262F63FD00400A2C /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				0598D6D9262F208D00400A2C /* UIStoryboard+Extensions.swift */,
-				0598D6DE262F272900400A2C /* UIViewController+Extensions.swift */,
-				052C4823265A6E3900645DF4 /* UIImage+Extensions.swift */,
-				05D072DA2662AC0F00887A5B /* DateFormatter+Extensions.swift */,
-				056ED183266CDF710080D09E /* UIColor+Extensions.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		0598D6F4262F641B00400A2C /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				05AD5F3E2624B9B700355F1B /* NetworkRequest.swift */,
-				055ADEF2262E0B62001DCF5A /* TokenService.swift */,
-				05AD5F6126262CEE00355F1B /* AuthResponseModel.swift */,
-				05AD5F7226275B3D00355F1B /* NetworkError.swift */,
-				05AD5F9C2628CBDD00355F1B /* DiffRequestModel.swift */,
-				05AD5FA12628D0CD00355F1B /* DiffResponseModel.swift */,
-				05AD5F462624BC6300355F1B /* ZService.swift */,
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
-		0598D6F5262F645C00400A2C /* Constants */ = {
-			isa = PBXGroup;
-			children = (
-				0598D6D4262F1DE500400A2C /* Notifications.swift */,
-				0598D6EB262F60E600400A2C /* UIConstants.swift */,
-			);
-			path = Constants;
-			sourceTree = "<group>";
-		};
-		05AD5F392624B5EB00355F1B /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				0555FCB1263B383200099E0B /* TransactionCell */,
-				0598D6F5262F645C00400A2C /* Constants */,
-				0598D6F4262F641B00400A2C /* Network */,
-				0598D6F3262F63FD00400A2C /* Extensions */,
-				0559470A2634C0F200CE727C /* ApplicationCoordinator.swift */,
-				05A0664E264C7FBD00A64EE5 /* StateManager.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		05AD5F3A2624B5F300355F1B /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				05B93E2925D0442E0089E7A8 /* Main.storyboard */,
-				05B93E2E25D0442F0089E7A8 /* LaunchScreen.storyboard */,
-				05A06652264C85C500A64EE5 /* ErrorView.swift */,
-				05A06650264C854000A64EE5 /* ErrorView.xib */,
-				05CF433E264C9DB500A1FCAE /* LoadingView.swift */,
-				05CF433C264C9D5700A1FCAE /* LoadingView.xib */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		05AD5F3B2624B5FF00355F1B /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				05AD5F862628B48300355F1B /* TransactionsViewController.swift */,
-				0555FCAF2638A28300099E0B /* TransactionDetailViewController.swift */,
-				05AD5F812628B43500355F1B /* ProfileViewController.swift */,
-				05B93E2725D0442E0089E7A8 /* LoginViewController.swift */,
-				05AD5F6D262755B300355F1B /* TabBarViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -291,11 +387,11 @@
 		05B93E2225D0442E0089E7A8 /* zmoney */ = {
 			isa = PBXGroup;
 			children = (
-				05AD5F392624B5EB00355F1B /* Models */,
-				05AD5F3A2624B5F300355F1B /* Views */,
-				05AD5F3B2624B5FF00355F1B /* Controllers */,
-				05B93E2325D0442E0089E7A8 /* AppDelegate.swift */,
-				05B93E2525D0442E0089E7A8 /* SceneDelegate.swift */,
+				055B6D342688B2250073498F /* Common */,
+				055B6D312688B1860073498F /* Services */,
+				055B6D2F2688B11F0073498F /* Utils */,
+				055B6D2D2688B0CC0073498F /* StateManager */,
+				055B6D242688AF130073498F /* Scenes */,
 				05B93E2C25D0442F0089E7A8 /* Assets.xcassets */,
 				05B93E3125D0442F0089E7A8 /* Info.plist */,
 			);
