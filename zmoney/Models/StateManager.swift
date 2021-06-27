@@ -62,18 +62,20 @@ struct StateManager: StateHolder, StateApplicable {
     // MARK: StateApplicable
 
     func apply(state: State) {
-        hideAllViews()
-
         switch state {
         case .noData:
+            hideAllViews()
             addViewAndBringToFront(emptyView)
         case .loading:
             guard self.state == .noData else { return }
 
+            hideAllViews()
             addViewAndBringToFront(loadingView)
         case .loaded:
+            hideAllViews()
             addViewAndBringToFront(loadedView)
         case .error(let error):
+            hideAllViews()
             addViewAndBringToFront(errorView)
             errorView.errorText = error
         }
@@ -81,8 +83,11 @@ struct StateManager: StateHolder, StateApplicable {
 
     private func addViewAndBringToFront(_ view: UIView) {
         view.frame = rootView.bounds
-        rootView.addSubview(view)
-        rootView.bringSubviewToFront(view)
+
+        if !rootView.subviews.contains(view) {
+            rootView.addSubview(view)
+        }
+
         view.isHidden = false
     }
 

@@ -5,16 +5,22 @@
 //  Created by Pavel Romanishkin on 29.04.21.
 //
 
-import Foundation
+import UIKit
+import MapKit
 
 struct TransactionCellModel {
 
     let amount: String
-    let date: String
+    let date: Date
     let currency: String
     let isOutcome: Bool
     var categories: [String]
     let account: String
+    let payee: String
+    let categorySymbol: UIImage
+    let categoryColor: UIColor
+    let comment: String
+    let coordinates: CLLocationCoordinate2D?
 
 }
 
@@ -23,15 +29,40 @@ extension TransactionCellModel {
         isOutcome = transaction.income == 0
         date = transaction.date
         categories = transaction.categories?.map { $0.title } ?? []
+        payee = transaction.payee ?? ""
+        comment = transaction.comment ?? ""
+        if let latitude = transaction.latitude, let longitude = transaction.longitude {
+            coordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        } else {
+            coordinates = nil
+        }
+        if let categoryIconString = transaction.categories?.first?.icon,
+           let image = UIImage.zmoneyCategory(named: categoryIconString) {
+            categorySymbol = image
+            categoryColor = UIColor.categoryColor(from: categoryIconString)
+        } else {
+            categorySymbol = UIImage(systemName: "questionmark")!
+            categoryColor = .black
+        }
 
         if isOutcome {
-            amount = "Outcome \(transaction.outcome)"
-            currency = transaction.outcomeTransactionInstrument?.shortTitle ?? ""
+            amount = "- \(transaction.outcome)"
+            currency = transaction.outcomeTransactionInstrument?.symbol ?? ""
             account = transaction.fromAccount?.title ?? ""
         } else {
-            amount = "Income \(transaction.income)"
-            currency = transaction.incomeTransactionInstrument?.shortTitle ?? ""
+            amount = "+ \(transaction.income)"
+            currency = transaction.incomeTransactionInstrument?.symbol ?? ""
             account = transaction.fromAccount?.title ?? ""
+        }
+    }
+}
+
+extension Date {
+    func formatDateToString() -> String {
+        if Calendar.current.isDateInYesterday(self) {
+            return "Yesterday"
+        } else {
+            return DateFormatter.dashSeparatorFormatter.string(from: self)
         }
     }
 }

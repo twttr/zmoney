@@ -34,13 +34,24 @@ class TransactionCellModelTests: XCTestCase {
     func testTransactionIsOutcome() throws {
         // Given
         amount = 0.0
-        transaction = Transaction(
-            id: "0", user: 1, date: "", income: amount, outcome: 0.0, changed: 0, incomeInstrument: 0,
-            outcomeInstrument: 0, created: 0, originalPayee: "", deleted: false, viewed: false,
-            hold: false, qrCode: "", incomeAccount: "", outcomeAccount: "", tag: nil, comment: "",
-            payee: "", opIncome: 0, opOutcome: 0, opIncomeInstrument: nil, opOutcomeInstrument: 0,
-            latitude: 0.0, longitude: 0.0, merchant: "", incomeBankID: "", outcomeBankID: "", reminderMarker: "",
-            incomeTransactionInstrument: nil, outcomeTransactionInstrument: nil
+        transaction = Transaction.init(
+        """
+            {
+              "id": "2c5ded99-6e39-4ba0-88a1-0d2ef227f58b",
+              "user": 688453,
+              "date": "2019-05-07",
+              "income": \(amount as Double),
+              "outcome": 5000,
+              "changed": 1559373979,
+              "incomeInstrument": 2,
+              "outcomeInstrument": 2,
+              "created": 1557500136,
+              "deleted": true,
+              "viewed": true,
+              "incomeAccount": "4530b5e7-9011-49cc-abfa-d5f3ec3354f0",
+              "outcomeAccount": "32ab2492-7af6-4fdb-bae9-bf2e05cd3207"
+            }
+        """
         )
 
         // When
@@ -53,13 +64,24 @@ class TransactionCellModelTests: XCTestCase {
     func testTransactionIsNotOutcome() throws {
         // Given
         amount = 5.0
-        transaction = Transaction(
-            id: "0", user: 1, date: "", income: amount, outcome: 0.0, changed: 0, incomeInstrument: 0,
-            outcomeInstrument: 0, created: 0, originalPayee: "", deleted: false, viewed: false,
-            hold: false, qrCode: "", incomeAccount: "", outcomeAccount: "", tag: nil, comment: "",
-            payee: "", opIncome: 0, opOutcome: 0, opIncomeInstrument: nil, opOutcomeInstrument: 0,
-            latitude: 0.0, longitude: 0.0, merchant: "", incomeBankID: "", outcomeBankID: "", reminderMarker: "",
-            incomeTransactionInstrument: nil, outcomeTransactionInstrument: nil
+        transaction = Transaction.init(
+        """
+            {
+              "id": "2c5ded99-6e39-4ba0-88a1-0d2ef227f58b",
+              "user": 688453,
+              "date": "2019-05-07",
+              "income": \(amount as Double),
+              "outcome": 5000,
+              "changed": 1559373979,
+              "incomeInstrument": 2,
+              "outcomeInstrument": 2,
+              "created": 1557500136,
+              "deleted": true,
+              "viewed": true,
+              "incomeAccount": "4530b5e7-9011-49cc-abfa-d5f3ec3354f0",
+              "outcomeAccount": "32ab2492-7af6-4fdb-bae9-bf2e05cd3207"
+            }
+        """
         )
 
         // When
@@ -71,60 +93,91 @@ class TransactionCellModelTests: XCTestCase {
 
     func testTransactionDate() throws {
         // Given
-        testDate = "testDate"
-        transaction = Transaction(
-            id: "0", user: 1, date: testDate, income: 5.0, outcome: 0.0, changed: 0, incomeInstrument: 0,
-            outcomeInstrument: 0, created: 0, originalPayee: "", deleted: false, viewed: false,
-            hold: false, qrCode: "", incomeAccount: "", outcomeAccount: "", tag: nil, comment: "",
-            payee: "", opIncome: 0, opOutcome: 0, opIncomeInstrument: nil, opOutcomeInstrument: 0,
-            latitude: 0.0, longitude: 0.0, merchant: "", incomeBankID: "", outcomeBankID: "", reminderMarker: "",
-            incomeTransactionInstrument: nil, outcomeTransactionInstrument: nil
+        testDate = "2019-05-07"
+        transaction = Transaction.init(
+        """
+            {
+              "id": "2c5ded99-6e39-4ba0-88a1-0d2ef227f58b",
+              "user": 688453,
+              "date": "\(testDate as String)",
+              "income": 5000,
+              "outcome": 5000,
+              "changed": 1559373979,
+              "incomeInstrument": 2,
+              "outcomeInstrument": 2,
+              "created": 1557500136,
+              "deleted": true,
+              "viewed": true,
+              "incomeAccount": "4530b5e7-9011-49cc-abfa-d5f3ec3354f0",
+              "outcomeAccount": "32ab2492-7af6-4fdb-bae9-bf2e05cd3207"
+            }
+        """
         )
 
         // When
         transactionCellModel = TransactionCellModel(transaction: transaction)
 
         // Then
-        XCTAssertEqual(transactionCellModel.date, testDate)
+        XCTAssertEqual(transactionCellModel.date, DateFormatter.dashSeparatorFormatter.date(from: testDate))
     }
 
     func testOutcomeTransactionOutput() throws {
         // Given
         amount = 0.0
-        transaction = Transaction(
-            id: "0", user: 1, date: "", income: amount, outcome: amount, changed: 0, incomeInstrument: 0,
-            outcomeInstrument: 0, created: 0, originalPayee: "", deleted: false, viewed: false,
-            hold: false, qrCode: "", incomeAccount: "", outcomeAccount: "", tag: nil, comment: "",
-            payee: "", opIncome: 0, opOutcome: 0, opIncomeInstrument: nil, opOutcomeInstrument: 0,
-            latitude: 0.0, longitude: 0.0, merchant: "", incomeBankID: "", outcomeBankID: "", reminderMarker: "",
-            incomeTransactionInstrument: nil, outcomeTransactionInstrument: instrument
+        transaction = Transaction.init(
+        """
+            {
+              "id": "2c5ded99-6e39-4ba0-88a1-0d2ef227f58b",
+              "user": 688453,
+              "date": "2019-05-07",
+              "income": \(amount as Double),
+              "outcome": \(amount as Double),
+              "changed": 1559373979,
+              "incomeInstrument": 2,
+              "outcomeInstrument": 2,
+              "created": 1557500136,
+              "deleted": true,
+              "viewed": true,
+              "incomeAccount": "4530b5e7-9011-49cc-abfa-d5f3ec3354f0",
+              "outcomeAccount": "32ab2492-7af6-4fdb-bae9-bf2e05cd3207"
+            }
+        """
         )
 
         // When
         transactionCellModel = TransactionCellModel(transaction: transaction)
 
         // Then
-        XCTAssertEqual(transactionCellModel.amount, "Outcome \(transaction.outcome)")
-        XCTAssertEqual(transactionCellModel.currency, instrument.shortTitle)
+        XCTAssertEqual(transactionCellModel.amount, "- \(transaction.outcome)")
     }
 
     func testNotOutcomeTransactionOutput() throws {
         // Given
         amount = 5.0
-        transaction = Transaction(
-            id: "0", user: 1, date: "", income: amount, outcome: 0.0, changed: 0, incomeInstrument: 0,
-            outcomeInstrument: 0, created: 0, originalPayee: "", deleted: false, viewed: false,
-            hold: false, qrCode: "", incomeAccount: "", outcomeAccount: "", tag: nil, comment: "",
-            payee: "", opIncome: 0, opOutcome: 0, opIncomeInstrument: nil, opOutcomeInstrument: 0,
-            latitude: 0.0, longitude: 0.0, merchant: "", incomeBankID: "", outcomeBankID: "", reminderMarker: "",
-            incomeTransactionInstrument: instrument, outcomeTransactionInstrument: nil
+        transaction = Transaction.init(
+        """
+            {
+              "id": "2c5ded99-6e39-4ba0-88a1-0d2ef227f58b",
+              "user": 688453,
+              "date": "2019-05-07",
+              "income": \(amount as Double),
+              "outcome": \(amount as Double),
+              "changed": 1559373979,
+              "incomeInstrument": 2,
+              "outcomeInstrument": 2,
+              "created": 1557500136,
+              "deleted": true,
+              "viewed": true,
+              "incomeAccount": "4530b5e7-9011-49cc-abfa-d5f3ec3354f0",
+              "outcomeAccount": "32ab2492-7af6-4fdb-bae9-bf2e05cd3207"
+            }
+        """
         )
 
         // When
         transactionCellModel = TransactionCellModel(transaction: transaction)
 
         // Then
-        XCTAssertEqual(transactionCellModel.amount, "Income \(transaction.income)")
-        XCTAssertEqual(transactionCellModel.currency, instrument.shortTitle)
+        XCTAssertEqual(transactionCellModel.amount, "+ \(transaction.income)")
     }
 }
