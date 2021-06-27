@@ -19,11 +19,11 @@ class TransactionsViewController: UIViewController {
     private var refreshControl = UIRefreshControl()
     private var stateController: StateManager?
     private var sectionedTransactions = [Section]()
-    var canTransitionToLarge = false
-    var canTransitionToSmall = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        navigationController?.navigationItem.largeTitleDisplayMode = .automatic
 
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.configureWithOpaqueBackground()
@@ -37,8 +37,7 @@ class TransactionsViewController: UIViewController {
 
         stateController = StateManager(rootView: self.view, loadedView: tableView)
 
-        tableView.addSubview(refreshControl)
-        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        tableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(self.refreshTransactionsList), for: .valueChanged)
 
         guard stateController?.state == .noData else { return }
@@ -131,23 +130,5 @@ extension TransactionsViewController: UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return sectionedTransactions.count
-    }
-}
-
-extension TransactionsViewController: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if canTransitionToLarge && scrollView.contentOffset.y <= 0 {
-            UIView.animate(withDuration: 2.0) {
-                self.navigationItem.largeTitleDisplayMode = .always
-            }
-            canTransitionToLarge = false
-            canTransitionToSmall = true
-        } else if canTransitionToSmall && scrollView.contentOffset.y > 0 {
-            UIView.animate(withDuration: 2.0) {
-                self.navigationItem.largeTitleDisplayMode = .never
-            }
-            canTransitionToLarge = true
-            canTransitionToSmall = false
-        }
     }
 }

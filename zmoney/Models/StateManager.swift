@@ -83,8 +83,11 @@ struct StateManager: StateHolder, StateApplicable {
 
     private func addViewAndBringToFront(_ view: UIView) {
         view.frame = rootView.bounds
-        rootView.addSubview(view)
-        rootView.bringSubviewToFront(view)
+
+        if !rootView.subviews.contains(view) {
+            rootView.addSubview(view)
+        }
+
         view.isHidden = false
     }
 
