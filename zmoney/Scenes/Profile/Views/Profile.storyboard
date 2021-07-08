@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ywk-PG-yRo">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Profile-->
+        <scene sceneID="NhH-mD-otg">
+            <objects>
+                <viewController id="Ywk-PG-yRo" customClass="ProfileViewController" customModule="zmoney" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lD5-fG-saR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="twttr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0mg-Oe-UAG">
+                                <rect key="frame" x="20" y="160" width="374" height="25.5"/>
+                                <fontDescription key="fontDescription" name="NotoSansOriya-Bold" family="Noto Sans Oriya" pointSize="18"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="me@twttr.io" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gsH-6m-hsE">
+                                <rect key="frame" x="20" y="205.5" width="374" height="25.5"/>
+                                <fontDescription key="fontDescription" name="NotoSansOriya-Bold" family="Noto Sans Oriya" pointSize="18"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Fin-3s-sDA"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Fin-3s-sDA" firstAttribute="trailing" secondItem="0mg-Oe-UAG" secondAttribute="trailing" constant="20" id="0nq-sW-IhE"/>
+                            <constraint firstItem="0mg-Oe-UAG" firstAttribute="leading" secondItem="Fin-3s-sDA" secondAttribute="leading" constant="20" id="5Ld-we-99h"/>
+                            <constraint firstItem="0mg-Oe-UAG" firstAttribute="top" secondItem="Fin-3s-sDA" secondAttribute="top" constant="20" id="Bj6-nT-4Ip"/>
+                            <constraint firstItem="Fin-3s-sDA" firstAttribute="trailing" secondItem="gsH-6m-hsE" secondAttribute="trailing" constant="20" id="GDb-EQ-fKM"/>
+                            <constraint firstItem="gsH-6m-hsE" firstAttribute="leading" secondItem="Fin-3s-sDA" secondAttribute="leading" constant="20" id="Thk-Wr-vSq"/>
+                            <constraint firstItem="Fin-3s-sDA" firstAttribute="trailing" secondItem="gsH-6m-hsE" secondAttribute="trailing" constant="20" id="elR-Ro-sF9"/>
+                            <constraint firstItem="gsH-6m-hsE" firstAttribute="leading" secondItem="Fin-3s-sDA" secondAttribute="leading" constant="20" id="hq6-d4-36V"/>
+                            <constraint firstItem="gsH-6m-hsE" firstAttribute="top" secondItem="0mg-Oe-UAG" secondAttribute="bottom" constant="20" id="quu-Ex-xgF"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Profile" id="RFg-iS-Aim">
+                        <barButtonItem key="rightBarButtonItem" title="Log Out" id="4PE-Vi-mDd">
+                            <connections>
+                                <action selector="logOutButtonTapped:" destination="Ywk-PG-yRo" id="4W8-gy-sqB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="emailLabel" destination="gsH-6m-hsE" id="TdP-v1-8ut"/>
+                        <outlet property="nickLabel" destination="0mg-Oe-UAG" id="bE9-Ph-cvV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nHD-kc-rTQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3208.6956521739135" y="441.96428571428572"/>
+        </scene>
+    </scenes>
+</document>
