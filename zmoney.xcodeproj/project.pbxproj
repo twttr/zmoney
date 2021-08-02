@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		051242E326B70D400058E48F /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051242E226B70D400058E48F /* CacheService.swift */; };
+		05192BA726B7254D00FD4F5D /* TransactionEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05192BA526B7254D00FD4F5D /* TransactionEntity+CoreDataClass.swift */; };
 		05409C072691B4670013F504 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05409C062691B4670013F504 /* Profile.storyboard */; };
 		0544BE4226518601001AF1B9 /* diff_response_full.json in Resources */ = {isa = PBXBuildFile; fileRef = 0544BE4126518601001AF1B9 /* diff_response_full.json */; };
 		0555FCB02638A28300099E0B /* TransactionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0555FCAF2638A28300099E0B /* TransactionDetailViewController.swift */; };
@@ -26,6 +28,7 @@
 		05A0664F264C7FBD00A64EE5 /* StateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A0664E264C7FBD00A64EE5 /* StateManager.swift */; };
 		05A06651264C854000A64EE5 /* ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05A06650264C854000A64EE5 /* ErrorView.xib */; };
 		05A06653264C85C500A64EE5 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A06652264C85C500A64EE5 /* ErrorView.swift */; };
+		05A7BC5A269B152000EFF5E0 /* TransactionEntity.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 05A7BC58269B152000EFF5E0 /* TransactionEntity.xcdatamodeld */; };
 		05AD5F3F2624B9B700355F1B /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD5F3E2624B9B700355F1B /* NetworkRequest.swift */; };
 		05AD5F472624BC6300355F1B /* ZService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD5F462624BC6300355F1B /* ZService.swift */; };
 		05AD5F6226262CEE00355F1B /* AuthResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD5F6126262CEE00355F1B /* AuthResponseModel.swift */; };
@@ -78,6 +81,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		051242E226B70D400058E48F /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
+		05192BA526B7254D00FD4F5D /* TransactionEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransactionEntity+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		05409C062691B4670013F504 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Profile.storyboard; path = zmoney/Scenes/Profile/Views/Profile.storyboard; sourceTree = SOURCE_ROOT; };
 		0544BE4126518601001AF1B9 /* diff_response_full.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = diff_response_full.json; sourceTree = "<group>"; };
 		0555FCAF2638A28300099E0B /* TransactionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +101,7 @@
 		05A0664E264C7FBD00A64EE5 /* StateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateManager.swift; sourceTree = "<group>"; };
 		05A06650264C854000A64EE5 /* ErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorView.xib; sourceTree = "<group>"; };
 		05A06652264C85C500A64EE5 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		05A7BC59269B152000EFF5E0 /* main.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = main.xcdatamodel; sourceTree = "<group>"; };
 		05AD5F3E2624B9B700355F1B /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		05AD5F462624BC6300355F1B /* ZService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZService.swift; sourceTree = "<group>"; };
 		05AD5F6126262CEE00355F1B /* AuthResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponseModel.swift; sourceTree = "<group>"; };
@@ -370,8 +376,10 @@
 		055B6D312688B1860073498F /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				05192BA526B7254D00FD4F5D /* TransactionEntity+CoreDataClass.swift */,
 				055ADEF2262E0B62001DCF5A /* TokenService.swift */,
 				05AD5F462624BC6300355F1B /* ZService.swift */,
+				051242E226B70D400058E48F /* CacheService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -454,6 +462,7 @@
 				05409C132691B69E0013F504 /* Library */,
 				055B6D312688B1860073498F /* Services */,
 				055B6D242688AF130073498F /* Scenes */,
+				05A7BC58269B152000EFF5E0 /* TransactionEntity.xcdatamodeld */,
 			);
 			path = zmoney;
 			sourceTree = "<group>";
@@ -800,7 +809,9 @@
 				059E6CB8266E7CA0003562CD /* TransactionCommentCell.swift in Sources */,
 				05AD5F3F2624B9B700355F1B /* NetworkRequest.swift in Sources */,
 				05AD5F6E262755B300355F1B /* TabBarViewController.swift in Sources */,
+				05A7BC5A269B152000EFF5E0 /* TransactionEntity.xcdatamodeld in Sources */,
 				0555FCB3263B385900099E0B /* TransactionCellModel.swift in Sources */,
+				051242E326B70D400058E48F /* CacheService.swift in Sources */,
 				05AD5F822628B43500355F1B /* ProfileViewController.swift in Sources */,
 				05E934352691B84D00C8A29D /* DateFormatter+Extensions.swift in Sources */,
 				05D3E9B8262A001300E9C234 /* TransactionCell.swift in Sources */,
@@ -810,6 +821,7 @@
 				05E934392691B84D00C8A29D /* UIImage+Extensions.swift in Sources */,
 				0559470B2634C0F200CE727C /* ApplicationCoordinator.swift in Sources */,
 				0555FCB02638A28300099E0B /* TransactionDetailViewController.swift in Sources */,
+				05192BA726B7254D00FD4F5D /* TransactionEntity+CoreDataClass.swift in Sources */,
 				05AD5F472624BC6300355F1B /* ZService.swift in Sources */,
 				05AD5FA22628D0CD00355F1B /* DiffResponseModel.swift in Sources */,
 				059E6CBA266E7CAF003562CD /* TransactionMapCell.swift in Sources */,
@@ -1167,6 +1179,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		05A7BC58269B152000EFF5E0 /* TransactionEntity.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				05A7BC59269B152000EFF5E0 /* main.xcdatamodel */,
+			);
+			currentVersion = 05A7BC59269B152000EFF5E0 /* main.xcdatamodel */;
+			path = TransactionEntity.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 05B93E1825D0442E0089E7A8 /* Project object */;
 }

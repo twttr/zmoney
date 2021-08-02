@@ -16,6 +16,7 @@ class TransactionsViewController: UIViewController {
     }
 
     private let zService = Zservice.shared
+    private let cacheService = CacheService.shared
     private var refreshControl = UIRefreshControl()
     private var stateController: StateManager?
     private var sectionedTransactions = [Section]()
@@ -87,9 +88,12 @@ class TransactionsViewController: UIViewController {
     }
 
     private func makeModels(diffResponse: DiffResponseModel) -> [TransactionCellModel] {
-        let transactions = diffResponse.transaction.sorted {
-            return $0.date > $1.date
+        var transactions: [TransactionEntity] = []
+        if cacheService.loadEntities().isEmpty {
+            cacheService.saveEntities(from: diffResponse)
         }
+        transactions = cacheService.loadEntities()
+
         return transactions.map { TransactionCellModel(transaction: $0) }
     }
 }

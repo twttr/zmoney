@@ -13,7 +13,6 @@ struct TransactionCellModel {
     let amount: String
     let date: Date
     let currency: String
-    let isOutcome: Bool
     var categories: [String]
     let account: String
     let payee: String
@@ -25,35 +24,17 @@ struct TransactionCellModel {
 }
 
 extension TransactionCellModel {
-    init(transaction: Transaction) {
-        isOutcome = transaction.income == 0
-        date = transaction.date
-        categories = transaction.categories?.map { $0.title } ?? []
+    init(transaction: TransactionEntity) {
+        date = transaction.date ?? Date.init()
+        categories = transaction.categories ?? []
         payee = transaction.payee ?? ""
         comment = transaction.comment ?? ""
-        if let latitude = transaction.latitude, let longitude = transaction.longitude {
-            coordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        } else {
-            coordinates = nil
-        }
-        if let categoryIconString = transaction.categories?.first?.icon,
-           let image = UIImage.zmoneyCategory(named: categoryIconString) {
-            categorySymbol = image
-            categoryColor = UIColor.categoryColor(from: categoryIconString)
-        } else {
-            categorySymbol = UIImage(systemName: "questionmark")!
-            categoryColor = .black
-        }
-
-        if isOutcome {
-            amount = "- \(transaction.outcome)"
-            currency = transaction.outcomeTransactionInstrument?.symbol ?? ""
-            account = transaction.fromAccount?.title ?? ""
-        } else {
-            amount = "+ \(transaction.income)"
-            currency = transaction.incomeTransactionInstrument?.symbol ?? ""
-            account = transaction.fromAccount?.title ?? ""
-        }
+        coordinates = CLLocationCoordinate2D(latitude: transaction.latitude, longitude: transaction.longitude)
+        categorySymbol = UIImage.zmoneyCategory(named: transaction.categorySymbolString ?? "")
+        categoryColor = UIColor.categoryColor(from: transaction.categorySymbolString ?? "")
+        amount = transaction.amount ?? ""
+        currency = transaction.currency ?? ""
+        account = transaction.account ?? ""
     }
 }
 

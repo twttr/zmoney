@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="TransactionEntity" representedClassName="TransactionEntity" syncable="YES" codeGenerationType="category">
+        <attribute name="account" attributeType="String"/>
+        <attribute name="amount" attributeType="String"/>
+        <attribute name="categories" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
+        <attribute name="categorySymbolString" optional="YES" attributeType="String"/>
+        <attribute name="comment" optional="YES" attributeType="String"/>
+        <attribute name="currency" attributeType="String"/>
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isOutcome" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" usesScalarValueType="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" usesScalarValueType="YES"/>
+        <attribute name="payee" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="TransactionEntity" positionX="-63" positionY="-108" width="128" height="194"/>
+    </elements>
+</model>

@@ -8,8 +8,8 @@
 import UIKit
 
 extension UIImage {
-    static func zmoneyCategory(named systemName: String) -> UIImage? {
-        return Categories.init(rawValue: systemName)?.image
+    static func zmoneyCategory(named systemName: String) -> UIImage {
+        return Categories.init(rawValue: systemName)?.image ?? UIImage(systemName: "questionmark")!
     }
 
     static func categoryImage(
