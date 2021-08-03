@@ -45,7 +45,7 @@ class TransactionsViewController: UIViewController {
 
         NotificationCenter.default.addObserver(forName: .zMoneyConfigUpdated, object: nil, queue: nil) { _ in
             DispatchQueue.main.async {
-                self.refreshTransactionsList()
+                self.loadTransactionsList()
             }
         }
     }
@@ -56,18 +56,64 @@ class TransactionsViewController: UIViewController {
         guard stateController?.state != .loaded else { return }
 
         DispatchQueue.main.async {
-            self.refreshTransactionsList()
+            self.loadTransactionsList()
+        }
+    }
+
+    private func loadTransactionsList() {
+        self.stateController?.state = .loading
+
+        if cacheService.loadEntities().isEmpty {
+            zService.getDiff(sinceLastTime: false) { [weak self] (result) in
+                guard let self = self else { return }
+                switch result {
+                case .success(let diffResponse):
+                    self.cacheService.saveEntities(from: diffResponse)
+                    let transactions = self.cacheService.loadEntities()
+                    let transactionsModels = self.makeModels(transactionEntities: transactions)
+
+                    self.sectionedTransactions = Dictionary(grouping: transactionsModels, by: { $0.date }).map {
+                        Section(date: $0.key, items: $0.value)
+                    }.sorted {
+                        return $0.date > $1.date
+                    }
+                    DispatchQueue.main.async {
+                        self.stateController?.state = .loaded
+                        self.tableView.reloadData()
+                    }
+                case .failure(let error):
+                    DispatchQueue.main.async {
+                        self.stateController?.state = .error(error.localizedDescription)
+                    }
+                }
+            }
+        } else {
+            let transactions = self.cacheService.loadEntities()
+            let transactionsModels = self.makeModels(transactionEntities: transactions)
+
+            self.sectionedTransactions = Dictionary(grouping: transactionsModels, by: { $0.date }).map {
+                Section(date: $0.key, items: $0.value)
+            }.sorted {
+                return $0.date > $1.date
+            }
+            DispatchQueue.main.async {
+                self.stateController?.state = .loaded
+                self.tableView.reloadData()
+            }
         }
     }
 
     @objc private func refreshTransactionsList() {
         self.stateController?.state = .loading
 
-        zService.getDiff { [weak self] (result) in
+        zService.getDiff(sinceLastTime: true) { [weak self] (result) in
             guard let self = self else { return }
             switch result {
             case .success(let diffResponse):
-                let transactionsModels = self.makeModels(diffResponse: diffResponse)
+                self.cacheService.saveEntities(from: diffResponse)
+                let transactions = self.cacheService.loadEntities()
+                let transactionsModels = self.makeModels(transactionEntities: transactions)
+
                 self.sectionedTransactions = Dictionary(grouping: transactionsModels, by: { $0.date }).map {
                     Section(date: $0.key, items: $0.value)
                 }.sorted {
@@ -81,20 +127,14 @@ class TransactionsViewController: UIViewController {
             case .failure(let error):
                 DispatchQueue.main.async {
                     self.refreshControl.endRefreshing()
-                    self.stateController?.state = .error(error.localizedDescription)
+//                    self.stateController?.state = .error(error.localizedDescription)
                 }
             }
         }
     }
 
-    private func makeModels(diffResponse: DiffResponseModel) -> [TransactionCellModel] {
-        var transactions: [TransactionEntity] = []
-        if cacheService.loadEntities().isEmpty {
-            cacheService.saveEntities(from: diffResponse)
-        }
-        transactions = cacheService.loadEntities()
-
-        return transactions.map { TransactionCellModel(transaction: $0) }
+    private func makeModels(transactionEntities: [TransactionEntity]) -> [TransactionCellModel] {
+        return transactionEntities.map { TransactionCellModel(transaction: $0) }
     }
 }
 
