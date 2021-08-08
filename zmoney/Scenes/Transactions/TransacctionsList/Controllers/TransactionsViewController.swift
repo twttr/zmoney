@@ -16,7 +16,7 @@ class TransactionsViewController: UIViewController {
     }
 
     private let zService = Zservice.shared
-    private let cacheService = CacheService.shared
+    private var cacheService = CacheService.shared
     private var refreshControl = UIRefreshControl()
     private var stateController: StateManager?
     private var sectionedTransactions = [Section]()

@@ -12,17 +12,24 @@ struct CacheService {
 
     static var shared = CacheService()
 
-    // swiftlint:disable force_cast
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "TransactionEntity")
+        container.loadPersistentStores(completionHandler: { (_, error) in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }()
 
-    func saveEntities(from responseModel: DiffResponseModel) {
+    mutating func saveEntities(from responseModel: DiffResponseModel) {
         let transactions = responseModel.transaction.sorted {
             return $0.date > $1.date
         }
 
         transactions.forEach { transaction in
             let isOutcome = transaction.income == 0
-            let transactionEntity = TransactionEntity(context: context)
+            let transactionEntity = TransactionEntity(context: persistentContainer.viewContext)
             transactionEntity.comment = transaction.comment
             transactionEntity.payee = transaction.payee
             transactionEntity.date = transaction.date
@@ -45,20 +52,32 @@ struct CacheService {
         }
 
         do {
-            try context.save()
+            try persistentContainer.viewContext.save()
         } catch {
             print(error)
         }
     }
 
-    func loadEntities() -> [TransactionEntity] {
+    mutating func loadEntities() -> [TransactionEntity] {
         let request = NSFetchRequest<TransactionEntity>(entityName: "TransactionEntity")
         var out: [TransactionEntity] = []
         do {
-            out = try context.fetch(request)
+            out = try persistentContainer.viewContext.fetch(request)
         } catch {
             print(error)
         }
         return out
+    }
+
+    private mutating func saveContext () {
+        let context = persistentContainer.viewContext
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
     }
 }
