@@ -1,22 +1,17 @@
-zmoney iOS App
-==================
+# zMoney
 
-## How to build the project
-1. Install RVM
-2. Install Ruby
-2. Install cocoapods gem
-2. Run `pod install` in the repository root
-3. Open the project using .xcworkspace file
+An alternative iOS client for zenmoney.ru expense tracker. 
 
-Sample app for tracking expenses.
+<img src="https://user-images.githubusercontent.com/8419535/128626309-b3922876-8ee7-40ee-a5e5-c8ce5257109c.gif" width="250">
 
-## Use Cases
-1. List of all transactions - income, expenses, etc.
-2. Feature: Add Expense
- 2.1 Control expense category: backend predefined
- 2.2 Control expense category: Add/Remove own categories
-3. Feature: Add Income
- 3.1 Control income category: backend predefined
- 3.2 Control income category: Add/Remove own categories
-4. Feature:  Bank accounts sync
-5. Feature: Transfer money between accounts
+## Dependencies
+
+CocoaPods are used to manage the dependencies - install them using the following command:
+
+```
+$ pod install
+```
+## Building
+### Development
+
+Deploying and testing on the Simulator requires no certificate. Simply build and run as normal.
