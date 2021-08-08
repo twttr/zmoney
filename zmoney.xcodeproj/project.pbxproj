@@ -82,7 +82,7 @@
 
 /* Begin PBXFileReference section */
 		051242E226B70D400058E48F /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
-		05192BA526B7254D00FD4F5D /* TransactionEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransactionEntity+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		05192BA526B7254D00FD4F5D /* TransactionEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "TransactionEntity+CoreDataClass.swift"; path = "zmoney/Services/CacheService/TransactionEntity+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		05409C062691B4670013F504 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Profile.storyboard; path = zmoney/Scenes/Profile/Views/Profile.storyboard; sourceTree = SOURCE_ROOT; };
 		0544BE4126518601001AF1B9 /* diff_response_full.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = diff_response_full.json; sourceTree = "<group>"; };
 		0555FCAF2638A28300099E0B /* TransactionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailViewController.swift; sourceTree = "<group>"; };
@@ -376,10 +376,9 @@
 		055B6D312688B1860073498F /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				05192BA526B7254D00FD4F5D /* TransactionEntity+CoreDataClass.swift */,
+				05A85FD526C056DE00FFAC1E /* CacheService */,
 				055ADEF2262E0B62001DCF5A /* TokenService.swift */,
 				05AD5F462624BC6300355F1B /* ZService.swift */,
-				051242E226B70D400058E48F /* CacheService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -431,6 +430,16 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		05A85FD526C056DE00FFAC1E /* CacheService */ = {
+			isa = PBXGroup;
+			children = (
+				051242E226B70D400058E48F /* CacheService.swift */,
+				05192BA526B7254D00FD4F5D /* TransactionEntity+CoreDataClass.swift */,
+				05A7BC58269B152000EFF5E0 /* TransactionEntity.xcdatamodeld */,
+			);
+			path = CacheService;
+			sourceTree = "<group>";
+		};
 		05B93E1725D0442E0089E7A8 = {
 			isa = PBXGroup;
 			children = (
@@ -462,7 +471,6 @@
 				05409C132691B69E0013F504 /* Library */,
 				055B6D312688B1860073498F /* Services */,
 				055B6D242688AF130073498F /* Scenes */,
-				05A7BC58269B152000EFF5E0 /* TransactionEntity.xcdatamodeld */,
 			);
 			path = zmoney;
 			sourceTree = "<group>";
