@@ -41,14 +41,12 @@ struct Zservice {
         delegate?.didLoggedOff()
     }
 
-    func getDiff(sinceLastTime: Bool, withCompletion completion: @escaping (Result<DiffResponseModel, Error>) -> Void) {
+    func getDiff(since lastTime: Int, withCompletion completion: @escaping (Result<DiffResponseModel, Error>) -> Void) {
         guard isLoggedIn else { return }
         let urlString = apiUrl + "v8/diff/"
 
-        let lastSyncTimeStamp = sinceLastTime ? UserDefaults.standard.integer(forKey: "lastSyncTimeStamp") : 0
-
         let currentTimestamp = Int(Date().timeIntervalSince1970)
-        let diff = DiffRequestModel(currentClientTimestamp: currentTimestamp, serverTimestamp: lastSyncTimeStamp)
+        let diff = DiffRequestModel(currentClientTimestamp: currentTimestamp, serverTimestamp: lastTime)
         do {
             let encoder = JSONEncoder()
             let diffData = try encoder.encode(diff)
