@@ -5,7 +5,6 @@
 //  Created by Pavel Romanishkin on 01.08.21.
 //
 
-import UIKit
 import CoreData
 
 struct CacheService {
@@ -67,17 +66,5 @@ struct CacheService {
             print(error)
         }
         return out
-    }
-
-    private mutating func saveContext () {
-        let context = persistentContainer.viewContext
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-            }
-        }
     }
 }
