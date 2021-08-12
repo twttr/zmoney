@@ -12,7 +12,7 @@ struct CacheService {
     static var shared = CacheService()
 
     var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "TransactionEntity")
+        let container = NSPersistentContainer(name: "ZenmoneyModel")
         container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
