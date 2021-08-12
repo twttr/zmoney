@@ -11,7 +11,7 @@ struct CacheService {
 
     static var shared = CacheService()
 
-    lazy var persistentContainer: NSPersistentContainer = {
+    var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "TransactionEntity")
         container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error as NSError? {
@@ -21,7 +21,7 @@ struct CacheService {
         return container
     }()
 
-    mutating func saveEntities(from responseModel: DiffResponseModel) {
+    func saveEntities(from responseModel: DiffResponseModel) {
         let transactions = responseModel.transaction.sorted {
             return $0.date > $1.date
         }
@@ -57,7 +57,7 @@ struct CacheService {
         }
     }
 
-    mutating func loadEntities() -> [TransactionEntity] {
+    func loadEntities() -> [TransactionEntity] {
         let request = NSFetchRequest<TransactionEntity>(entityName: "TransactionEntity")
         var out: [TransactionEntity] = []
         do {
