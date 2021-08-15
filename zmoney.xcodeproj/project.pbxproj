@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		051242E326B70D400058E48F /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051242E226B70D400058E48F /* CacheService.swift */; };
 		05192BA726B7254D00FD4F5D /* TransactionEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05192BA526B7254D00FD4F5D /* TransactionEntity+CoreDataClass.swift */; };
+		0525028126C700EC00E5D1D6 /* Transaction+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0525028026C700EC00E5D1D6 /* Transaction+Extensions.swift */; };
+		0525028326C9149300E5D1D6 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0525028226C9149300E5D1D6 /* Array+Extensions.swift */; };
 		05409C072691B4670013F504 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05409C062691B4670013F504 /* Profile.storyboard */; };
 		0544BE4226518601001AF1B9 /* diff_response_full.json in Resources */ = {isa = PBXBuildFile; fileRef = 0544BE4126518601001AF1B9 /* diff_response_full.json */; };
 		0555FCB02638A28300099E0B /* TransactionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0555FCAF2638A28300099E0B /* TransactionDetailViewController.swift */; };
@@ -84,6 +86,8 @@
 /* Begin PBXFileReference section */
 		051242E226B70D400058E48F /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
 		05192BA526B7254D00FD4F5D /* TransactionEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "TransactionEntity+CoreDataClass.swift"; path = "zmoney/Services/CacheService/TransactionEntity+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		0525028026C700EC00E5D1D6 /* Transaction+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transaction+Extensions.swift"; sourceTree = "<group>"; };
+		0525028226C9149300E5D1D6 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		05409C062691B4670013F504 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Profile.storyboard; path = zmoney/Scenes/Profile/Views/Profile.storyboard; sourceTree = SOURCE_ROOT; };
 		0544BE4126518601001AF1B9 /* diff_response_full.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = diff_response_full.json; sourceTree = "<group>"; };
 		0555FCAF2638A28300099E0B /* TransactionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailViewController.swift; sourceTree = "<group>"; };
@@ -372,6 +376,8 @@
 				05E934312691B84D00C8A29D /* UIImage+Extensions.swift */,
 				05E934322691B84D00C8A29D /* UIStoryboard+Extensions.swift */,
 				05E934332691B84D00C8A29D /* UIViewController+Extensions.swift */,
+				0525028026C700EC00E5D1D6 /* Transaction+Extensions.swift */,
+				0525028226C9149300E5D1D6 /* Array+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -831,6 +837,7 @@
 				05A7BC5A269B152000EFF5E0 /* ZenmoneyModel.xcdatamodeld in Sources */,
 				0555FCB3263B385900099E0B /* TransactionCellModel.swift in Sources */,
 				051242E326B70D400058E48F /* CacheService.swift in Sources */,
+				0525028326C9149300E5D1D6 /* Array+Extensions.swift in Sources */,
 				05AD5F822628B43500355F1B /* ProfileViewController.swift in Sources */,
 				05E934352691B84D00C8A29D /* DateFormatter+Extensions.swift in Sources */,
 				05D3E9B8262A001300E9C234 /* TransactionCell.swift in Sources */,
@@ -841,6 +848,7 @@
 				0559470B2634C0F200CE727C /* ApplicationCoordinator.swift in Sources */,
 				0555FCB02638A28300099E0B /* TransactionDetailViewController.swift in Sources */,
 				05192BA726B7254D00FD4F5D /* TransactionEntity+CoreDataClass.swift in Sources */,
+				0525028126C700EC00E5D1D6 /* Transaction+Extensions.swift in Sources */,
 				05AD5F472624BC6300355F1B /* ZService.swift in Sources */,
 				05AD5FA22628D0CD00355F1B /* DiffResponseModel.swift in Sources */,
 				059E6CBA266E7CAF003562CD /* TransactionMapCell.swift in Sources */,

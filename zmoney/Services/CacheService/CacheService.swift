@@ -11,7 +11,7 @@ struct CacheService {
 
     static var shared = CacheService()
 
-    var persistentContainer: NSPersistentContainer = {
+    private var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "ZenmoneyModel")
         container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error as NSError? {
@@ -21,50 +21,17 @@ struct CacheService {
         return container
     }()
 
-    func saveEntities(from responseModel: DiffResponseModel) {
-        let transactions = responseModel.transaction.sorted {
-            return $0.date > $1.date
-        }
-
-        transactions.forEach { transaction in
-            let isOutcome = transaction.income == 0
-            let transactionEntity = TransactionEntity(context: persistentContainer.viewContext)
-            transactionEntity.comment = transaction.comment
-            transactionEntity.payee = transaction.payee
-            transactionEntity.date = transaction.date
-            transactionEntity.categories = transaction.categories?.map { $0.title } ?? []
-            transactionEntity.categorySymbolString = transaction.categories?.first?.icon
-            if let latitude = transaction.latitude, let longitude = transaction.longitude {
-                transactionEntity.latitude = latitude
-                transactionEntity.longitude = longitude
-            }
-
-            if isOutcome {
-                transactionEntity.amount = "- \(transaction.outcome)"
-                transactionEntity.currency = transaction.outcomeTransactionInstrument?.symbol
-                transactionEntity.account = transaction.fromAccount?.title
-            } else {
-                transactionEntity.amount = "+ \(transaction.income)"
-                transactionEntity.currency = transaction.incomeTransactionInstrument?.symbol
-                transactionEntity.account = transaction.fromAccount?.title
-            }
-        }
-
-        do {
-            try persistentContainer.viewContext.save()
-        } catch {
-            print(error)
-        }
+    public func save<T: Storable>(_ storableItems: [T]) throws {
+        storableItems.makeEntities(context: persistentContainer.viewContext)
+        try persistentContainer.viewContext.save()
     }
 
-    func loadEntities() -> [TransactionEntity] {
-        let request = NSFetchRequest<TransactionEntity>(entityName: "TransactionEntity")
-        var out: [TransactionEntity] = []
-        do {
-            out = try persistentContainer.viewContext.fetch(request)
-        } catch {
-            print(error)
+    public func load<T: Storable>() throws -> [T] {
+        guard let entities = try persistentContainer.viewContext.fetch(
+                T.StoreEntity.fetchRequest()
+        ) as? [T.StoreEntity] else {
+            return []
         }
-        return out
+        return entities.map { T(entity: $0) }
     }
 }

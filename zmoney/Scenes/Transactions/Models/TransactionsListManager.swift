@@ -14,40 +14,60 @@ class TransactionsListManager {
     private let lastSyncTimeStamp = UserDefaults.standard.integer(forKey: "lastSyncTimeStamp")
 
     func prepareTransactionsList(withCompletion completion: @escaping (Result<[TransactionCellModel], Error>) -> Void) {
-        if cacheService.loadEntities().isEmpty {
-            zService.getDiff(since: 0) { (result) in
+        do {
+            let transactions: [Transaction] = try self.cacheService.load()
+
+            guard transactions.isEmpty else {
+                let transactionsModels = self.makeModels(transactionEntities: transactions)
+                completion(.success(transactionsModels))
+                return
+            }
+
+            getDiff(sinceLast: false) { result in
                 switch result {
-                case .success(let diffResponse):
-                    self.cacheService.saveEntities(from: diffResponse)
-                    let transactions = self.cacheService.loadEntities()
-                    let transactionsModels = self.makeModels(transactionEntities: transactions)
-                    completion(.success(transactionsModels))
+                case .success(let transactionModels):
+                    completion(.success(transactionModels))
                 case .failure(let error):
                     completion(.failure(error))
                 }
             }
-        } else {
-            let transactions = self.cacheService.loadEntities()
-            let transactionsModels = self.makeModels(transactionEntities: transactions)
-            completion(.success(transactionsModels))
+        } catch let error {
+            completion(.failure(error))
         }
     }
 
     func refreshTransactionsList(withCompletion completion: @escaping (Result<[TransactionCellModel], Error>) -> Void) {
-        zService.getDiff(since: lastSyncTimeStamp) { (result) in
+        getDiff(sinceLast: true) { result in
             switch result {
-            case .success(let diffResponse):
-                self.cacheService.saveEntities(from: diffResponse)
-                let transactions = self.cacheService.loadEntities()
-                let transactionsModels = self.makeModels(transactionEntities: transactions)
-                completion(.success(transactionsModels))
+            case .success(let transactionModels):
+                completion(.success(transactionModels))
             case .failure(let error):
                 completion(.failure(error))
             }
         }
     }
 
-    private func makeModels(transactionEntities: [TransactionEntity]) -> [TransactionCellModel] {
+    private func getDiff(sinceLast: Bool, completion: @escaping (Result<[TransactionCellModel], Error>) -> Void) {
+        let timestamp = sinceLast ? lastSyncTimeStamp : 0
+
+        zService.getDiff(since: timestamp) { (result) in
+            switch result {
+            case .success(let diffResponse):
+                do {
+                    try self.cacheService.save(diffResponse.transaction)
+                    let transactions: [Transaction] = try self.cacheService.load()
+                    let transactionsModels = self.makeModels(transactionEntities: transactions)
+                    completion(.success(transactionsModels))
+                } catch let error {
+                    completion(.failure(error))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+
+    private func makeModels(transactionEntities: [Transaction]) -> [TransactionCellModel] {
         return transactionEntities.map { TransactionCellModel(transaction: $0) }
     }
 }

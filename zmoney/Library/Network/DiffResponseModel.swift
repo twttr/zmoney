@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 // swiftlint:disable identifier_name
 // MARK: - DiffResponseModel
@@ -66,7 +67,11 @@ struct DiffResponseModel: Codable, Equatable {
 }
 
 // MARK: - Account
-struct Account: Codable, Equatable {
+public class Account: NSObject, Codable {
+    static func isEqual (lhs: Account, rhs: Account) -> Bool {
+        return lhs.id == rhs.id
+    }
+
     let id: String
     let user: Int
     let instrument: Int?
@@ -131,11 +136,33 @@ struct Country: Codable, Equatable {
 }
 
 // MARK: - Instrument
-struct Instrument: Codable, Equatable {
+public class Instrument: NSObject, Codable, NSCoding {
+    public func encode(with coder: NSCoder) {
+        coder.encode(id, forKey: CodingKeys.id.rawValue)
+        coder.encode(title, forKey: CodingKeys.title.rawValue)
+        coder.encode(shortTitle, forKey: CodingKeys.shortTitle.rawValue)
+        coder.encode(symbol, forKey: CodingKeys.symbol.rawValue)
+        coder.encode(rate, forKey: CodingKeys.rate.rawValue)
+        coder.encode(changed, forKey: CodingKeys.changed.rawValue)
+    }
+
+    public required init?(coder: NSCoder) {
+        self.id = coder.decodeInteger(forKey: CodingKeys.id.rawValue)
+        self.title = coder.decodeObject(forKey: CodingKeys.title.rawValue) as? String ?? ""
+        self.shortTitle = coder.decodeObject(forKey: CodingKeys.shortTitle.rawValue) as? String ?? ""
+        self.symbol = coder.decodeObject(forKey: CodingKeys.symbol.rawValue) as? String ?? ""
+        self.rate = coder.decodeDouble(forKey: CodingKeys.rate.rawValue)
+        self.changed = coder.decodeInteger(forKey: CodingKeys.changed.rawValue)
+    }
+
     let id: Int
     let title, shortTitle, symbol: String
     let rate: Double
     let changed: Int
+
+    enum CodingKeys: String, CodingKey {
+        case id, title, shortTitle, symbol, rate, changed
+    }
 }
 
 // MARK: - Merchant
@@ -186,7 +213,39 @@ enum State: String, Codable {
 }
 
 // MARK: - Tag
-struct Tag: Codable, Equatable {
+public class Tag: NSObject, Codable, NSCoding {
+    public func encode(with coder: NSCoder) {
+        coder.encode(id, forKey: CodingKeys.id.rawValue)
+        coder.encode(user!, forKey: CodingKeys.user.rawValue)
+        coder.encode(changed, forKey: CodingKeys.changed.rawValue)
+        coder.encode(icon, forKey: CodingKeys.icon.rawValue)
+        coder.encode(budgetIncome, forKey: CodingKeys.budgetIncome.rawValue)
+        coder.encode(budgetOutcome, forKey: CodingKeys.budgetOutcome.rawValue)
+        coder.encode(tagRequired, forKey: CodingKeys.tagRequired.rawValue)
+        coder.encode(color, forKey: CodingKeys.color.rawValue)
+        coder.encode(picture, forKey: CodingKeys.picture.rawValue)
+        coder.encode(title, forKey: CodingKeys.title.rawValue)
+        coder.encode(showIncome, forKey: CodingKeys.showIncome.rawValue)
+        coder.encode(showOutcome, forKey: CodingKeys.showOutcome.rawValue)
+        coder.encode(parent, forKey: CodingKeys.parent.rawValue)
+    }
+
+    public required init?(coder: NSCoder) {
+        self.id = coder.decodeObject(forKey: CodingKeys.id.rawValue) as? String ?? ""
+        self.user = coder.decodeInteger(forKey: CodingKeys.user.rawValue)
+        self.changed = coder.decodeInteger(forKey: CodingKeys.changed.rawValue)
+        self.icon = coder.decodeObject(forKey: CodingKeys.icon.rawValue) as? String
+        self.budgetIncome = coder.decodeBool(forKey: CodingKeys.budgetIncome.rawValue)
+        self.budgetOutcome = coder.decodeBool(forKey: CodingKeys.budgetOutcome.rawValue)
+        self.tagRequired = coder.decodeObject(forKey: CodingKeys.tagRequired.rawValue) as? Bool
+        self.color = coder.decodeObject(forKey: CodingKeys.color.rawValue) as? Int
+        self.picture = coder.decodeObject(forKey: CodingKeys.picture.rawValue) as? String
+        self.title = coder.decodeObject(forKey: CodingKeys.title.rawValue) as? String ?? ""
+        self.showIncome = coder.decodeBool(forKey: CodingKeys.showIncome.rawValue)
+        self.showOutcome = coder.decodeBool(forKey: CodingKeys.showOutcome.rawValue)
+        self.parent = coder.decodeObject(forKey: CodingKeys.parent.rawValue) as? String
+    }
+
     let id: String
     let user: Int?
     let changed: Int

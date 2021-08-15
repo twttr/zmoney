@@ -9,6 +9,4 @@
 import UIKit
 import CoreData
 @objc(TransactionEntity)
-public class TransactionEntity: NSManagedObject {
-
-}
+public class TransactionEntity: NSManagedObject {}
