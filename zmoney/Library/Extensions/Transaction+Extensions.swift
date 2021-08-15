@@ -23,8 +23,10 @@ extension Transaction: Storable {
         transactionEntity.outcomeInstrument = Int32(self.outcomeInstrument)
         transactionEntity.comment = self.comment
         transactionEntity.date = self.date
-        transactionEntity.latitude = Double(self.latitude ?? 0.0)
-        transactionEntity.longitude = Double(self.longitude ?? 0.0)
+        if let latitude = self.latitude, let longitude = self.longitude {
+            transactionEntity.latitude = NSNumber(value: latitude)
+            transactionEntity.longitude = NSNumber(value: longitude)
+        }
         transactionEntity.payee = self.payee
         transactionEntity.id = self.id
         transactionEntity.user = Int32(self.user)
@@ -58,8 +60,13 @@ extension Transaction: Storable {
         } else {
             self.date = Date()
         }
-        self.latitude = entity.latitude
-        self.longitude = entity.longitude
+        if let latitude = entity.latitude, let longitude = entity.longitude {
+            self.latitude = Double(truncating: latitude)
+            self.longitude = Double(truncating: longitude)
+        } else {
+            self.latitude = nil
+            self.longitude = nil
+        }
         self.payee = entity.payee
         self.id = entity.id ?? ""
         self.user = Int(entity.user)

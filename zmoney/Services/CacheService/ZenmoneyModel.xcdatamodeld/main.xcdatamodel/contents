@@ -13,8 +13,8 @@
         <attribute name="incomeBankID" optional="YES" attributeType="String"/>
         <attribute name="incomeInstrument" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="incomeTransactionInstrument" optional="YES" attributeType="Transformable" valueTransformerName="" customClassName="Instrument"/>
-        <attribute name="latitude" optional="YES" attributeType="Double" usesScalarValueType="YES"/>
-        <attribute name="longitude" optional="YES" attributeType="Double" usesScalarValueType="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" usesScalarValueType="NO"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" usesScalarValueType="NO"/>
         <attribute name="merchant" optional="YES" attributeType="String"/>
         <attribute name="opIncome" optional="YES" attributeType="Double" usesScalarValueType="YES"/>
         <attribute name="opIncomeInstrument" optional="YES" attributeType="Integer 32" usesScalarValueType="YES"/>
