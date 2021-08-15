@@ -38,13 +38,17 @@ class TransactionsViewController: UIViewController {
         stateController = StateManager(rootView: self.view, loadedView: tableView)
 
         tableView.refreshControl = refreshControl
-        refreshControl.addTarget(self, action: #selector(self.refreshTransactionsList), for: .valueChanged)
+        refreshControl.addTarget(
+            self,
+            action: #selector(refreshTransactionsList),
+            for: .valueChanged
+        )
 
         guard stateController?.state == .noData else { return }
 
         NotificationCenter.default.addObserver(forName: .zMoneyConfigUpdated, object: nil, queue: nil) { _ in
             DispatchQueue.main.async {
-                self.loadTransactionsList()
+                self.refreshTransactionsList(initial: true)
             }
         }
     }
@@ -55,38 +59,14 @@ class TransactionsViewController: UIViewController {
         guard stateController?.state != .loaded else { return }
 
         DispatchQueue.main.async {
-            self.loadTransactionsList()
+            self.refreshTransactionsList(initial: true)
         }
     }
 
-    private func loadTransactionsList() {
+    @objc private func refreshTransactionsList(initial: Bool = false) {
         self.stateController?.state = .loading
 
-        transactionsListManager.prepareTransactionsList { [weak self] (result) in
-            guard let self = self else { return }
-            switch result {
-            case .success(let model):
-                self.sectionedTransactions = Dictionary(grouping: model, by: { $0.date }).map {
-                    Section(date: $0.key, items: $0.value)
-                }.sorted {
-                    return $0.date > $1.date
-                }
-                DispatchQueue.main.async {
-                    self.stateController?.state = .loaded
-                    self.tableView.reloadData()
-                }
-            case .failure(let error):
-                DispatchQueue.main.async {
-                    self.stateController?.state = .error(error.localizedDescription)
-                }
-            }
-        }
-    }
-
-    @objc private func refreshTransactionsList() {
-        self.stateController?.state = .loading
-
-        transactionsListManager.refreshTransactionsList { [weak self] (result) in
+        transactionsListManager.refreshTransactionsList(initial: initial) { [weak self] (result) in
             guard let self = self else { return }
 
             switch result {
@@ -101,10 +81,13 @@ class TransactionsViewController: UIViewController {
                    self.tableView.reloadData()
                    self.refreshControl.endRefreshing()
                 }
-            case .failure(_):
+            case .failure(let error):
                 DispatchQueue.main.async {
-                   self.stateController?.state = .loaded
-                   self.refreshControl.endRefreshing()
+                    self.stateController?.state = .loaded
+                    self.refreshControl.endRefreshing()
+                    if initial {
+                        self.stateController?.state = .error(error.localizedDescription)
+                    }
                 }
             }
         }

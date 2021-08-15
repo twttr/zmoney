@@ -13,36 +13,36 @@ class TransactionsListManager {
     private let zService = Zservice.shared
     private let lastSyncTimeStamp = UserDefaults.standard.integer(forKey: "lastSyncTimeStamp")
 
-    func prepareTransactionsList(withCompletion completion: @escaping (Result<[TransactionCellModel], Error>) -> Void) {
-        do {
-            let transactions: [Transaction] = try self.cacheService.load()
+    func refreshTransactionsList(initial: Bool, withCompletion completion: @escaping (Result<[TransactionCellModel], Error>) -> Void) {
+        if initial {
+            do {
+                let transactions: [Transaction] = try self.cacheService.load()
 
-            guard transactions.isEmpty else {
-                let transactionsModels = self.makeModels(transactionEntities: transactions)
-                completion(.success(transactionsModels))
-                return
+                guard transactions.isEmpty else {
+                    let transactionsModels = self.makeModels(transactionEntities: transactions)
+                    completion(.success(transactionsModels))
+                    return
+                }
+
+                getDiff(sinceLast: false) { result in
+                    switch result {
+                    case .success(let transactionModels):
+                        completion(.success(transactionModels))
+                    case .failure(let error):
+                        completion(.failure(error))
+                    }
+                }
+            } catch let error {
+                completion(.failure(error))
             }
-
-            getDiff(sinceLast: false) { result in
+        } else {
+            getDiff(sinceLast: true) { result in
                 switch result {
                 case .success(let transactionModels):
                     completion(.success(transactionModels))
                 case .failure(let error):
                     completion(.failure(error))
                 }
-            }
-        } catch let error {
-            completion(.failure(error))
-        }
-    }
-
-    func refreshTransactionsList(withCompletion completion: @escaping (Result<[TransactionCellModel], Error>) -> Void) {
-        getDiff(sinceLast: true) { result in
-            switch result {
-            case .success(let transactionModels):
-                completion(.success(transactionModels))
-            case .failure(let error):
-                completion(.failure(error))
             }
         }
     }
