@@ -58,9 +58,7 @@ class TransactionsViewController: UIViewController {
 
         guard stateController?.state != .loaded else { return }
 
-        DispatchQueue.main.async {
-            self.refreshTransactionsList(initial: true)
-        }
+        self.refreshTransactionsList(initial: true)
     }
 
     @objc private func refreshTransactionsList(initial: Bool = false) {
@@ -68,6 +66,16 @@ class TransactionsViewController: UIViewController {
 
         transactionsListManager.refreshTransactionsList(initial: initial) { [weak self] (result) in
             guard let self = self else { return }
+
+            DispatchQueue.main.async {
+                self.stateController?.state = .loaded
+            }
+
+            defer {
+                DispatchQueue.main.async {
+                    self.refreshControl.endRefreshing()
+                }
+            }
 
             switch result {
             case .success(let model):
@@ -77,14 +85,10 @@ class TransactionsViewController: UIViewController {
                     return $0.date > $1.date
                 }
                 DispatchQueue.main.async {
-                   self.stateController?.state = .loaded
                    self.tableView.reloadData()
-                   self.refreshControl.endRefreshing()
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
-                    self.stateController?.state = .loaded
-                    self.refreshControl.endRefreshing()
                     if initial {
                         self.stateController?.state = .error(error.localizedDescription)
                     }
