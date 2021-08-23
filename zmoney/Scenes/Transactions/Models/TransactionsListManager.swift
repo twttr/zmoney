@@ -11,9 +11,11 @@ class TransactionsListManager {
 
     private var cacheService = CacheService.shared
     private let zService = Zservice.shared
-    private let lastSyncTimeStamp = UserDefaults.standard.integer(forKey: "lastSyncTimeStamp")
 
-    func refreshTransactionsList(initial: Bool, withCompletion completion: @escaping (Result<[TransactionCellModel], Error>) -> Void) {
+    func refreshTransactionsList(
+        initial: Bool,
+        withCompletion completion: @escaping (Result<[TransactionCellModel], Error>
+        ) -> Void) {
         if initial {
             do {
                 let transactions: [Transaction] = try self.cacheService.load()
@@ -48,9 +50,7 @@ class TransactionsListManager {
     }
 
     private func getDiff(sinceLast: Bool, completion: @escaping (Result<[TransactionCellModel], Error>) -> Void) {
-        let timestamp = sinceLast ? lastSyncTimeStamp : 0
-
-        zService.getDiff(since: timestamp) { (result) in
+        zService.getDiff(sinceLast: sinceLast) { (result) in
             switch result {
             case .success(let diffResponse):
                 do {
