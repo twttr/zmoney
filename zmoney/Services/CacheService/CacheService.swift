@@ -13,6 +13,12 @@ struct CacheService {
 
     private var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "ZenmoneyModel")
+
+        let description = NSPersistentStoreDescription()
+        description.shouldInferMappingModelAutomatically = true
+        description.shouldMigrateStoreAutomatically = true
+        container.persistentStoreDescriptions = [description]
+
         container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")

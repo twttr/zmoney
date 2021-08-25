@@ -135,7 +135,7 @@ struct Country: Codable, Equatable {
 }
 
 // MARK: - Instrument
-public class Instrument: NSObject, Codable, NSCoding {
+struct Instrument: Codable, Equatable {
     public func encode(with coder: NSCoder) {
         coder.encode(id, forKey: CodingKeys.id.rawValue)
         coder.encode(title, forKey: CodingKeys.title.rawValue)
@@ -145,7 +145,7 @@ public class Instrument: NSObject, Codable, NSCoding {
         coder.encode(changed, forKey: CodingKeys.changed.rawValue)
     }
 
-    public required init?(coder: NSCoder) {
+    init?(coder: NSCoder) {
         self.id = coder.decodeInteger(forKey: CodingKeys.id.rawValue)
         self.title = coder.decodeObject(forKey: CodingKeys.title.rawValue) as? String ?? ""
         self.shortTitle = coder.decodeObject(forKey: CodingKeys.shortTitle.rawValue) as? String ?? ""
@@ -212,7 +212,7 @@ enum State: String, Codable {
 }
 
 // MARK: - Tag
-public class Tag: NSObject, Codable, NSCoding {
+struct Tag: Codable, Equatable {
     public func encode(with coder: NSCoder) {
         coder.encode(id, forKey: CodingKeys.id.rawValue)
         coder.encode(user!, forKey: CodingKeys.user.rawValue)
@@ -229,7 +229,7 @@ public class Tag: NSObject, Codable, NSCoding {
         coder.encode(parent, forKey: CodingKeys.parent.rawValue)
     }
 
-    public required init?(coder: NSCoder) {
+    init(coder: NSCoder) {
         self.id = coder.decodeObject(forKey: CodingKeys.id.rawValue) as? String ?? ""
         self.user = coder.decodeInteger(forKey: CodingKeys.user.rawValue)
         self.changed = coder.decodeInteger(forKey: CodingKeys.changed.rawValue)

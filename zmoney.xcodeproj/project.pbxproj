@@ -32,6 +32,10 @@
 		05A06653264C85C500A64EE5 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A06652264C85C500A64EE5 /* ErrorView.swift */; };
 		05A7BC5A269B152000EFF5E0 /* ZenmoneyModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 05A7BC58269B152000EFF5E0 /* ZenmoneyModel.xcdatamodeld */; };
 		05A85FD726C05A9F00FFAC1E /* TransactionsListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A85FD626C05A9F00FFAC1E /* TransactionsListManager.swift */; };
+		05A9B8E426D56A9100F7F366 /* Tag+Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A9B8E326D56A9100F7F366 /* Tag+Storable.swift */; };
+		05A9B8E626D56AA000F7F366 /* Instrument+Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A9B8E526D56AA000F7F366 /* Instrument+Storable.swift */; };
+		05A9B8E826D56B6E00F7F366 /* TagEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A9B8E726D56B6E00F7F366 /* TagEntity+CoreDataClass.swift */; };
+		05A9B8EA26D56DFA00F7F366 /* InstrumentEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A9B8E926D56DFA00F7F366 /* InstrumentEntity+CoreDataClass.swift */; };
 		05AD5F3F2624B9B700355F1B /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD5F3E2624B9B700355F1B /* NetworkRequest.swift */; };
 		05AD5F472624BC6300355F1B /* ZService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD5F462624BC6300355F1B /* ZService.swift */; };
 		05AD5F6226262CEE00355F1B /* AuthResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD5F6126262CEE00355F1B /* AuthResponseModel.swift */; };
@@ -108,6 +112,11 @@
 		05A06652264C85C500A64EE5 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		05A7BC59269B152000EFF5E0 /* main.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = main.xcdatamodel; sourceTree = "<group>"; };
 		05A85FD626C05A9F00FFAC1E /* TransactionsListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsListManager.swift; sourceTree = "<group>"; };
+		05A9B8E226D4FB0300F7F366 /* main 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "main 2.xcdatamodel"; sourceTree = "<group>"; };
+		05A9B8E326D56A9100F7F366 /* Tag+Storable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag+Storable.swift"; sourceTree = "<group>"; };
+		05A9B8E526D56AA000F7F366 /* Instrument+Storable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Instrument+Storable.swift"; sourceTree = "<group>"; };
+		05A9B8E726D56B6E00F7F366 /* TagEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TagEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		05A9B8E926D56DFA00F7F366 /* InstrumentEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InstrumentEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		05AD5F3E2624B9B700355F1B /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		05AD5F462624BC6300355F1B /* ZService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZService.swift; sourceTree = "<group>"; };
 		05AD5F6126262CEE00355F1B /* AuthResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponseModel.swift; sourceTree = "<group>"; };
@@ -187,6 +196,8 @@
 			isa = PBXGroup;
 			children = (
 				0525028026C700EC00E5D1D6 /* Transaction+Storable.swift */,
+				05A9B8E326D56A9100F7F366 /* Tag+Storable.swift */,
+				05A9B8E526D56AA000F7F366 /* Instrument+Storable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -460,6 +471,8 @@
 				0510CBBB26D4302A00CAA61B /* Extensions */,
 				051242E226B70D400058E48F /* CacheService.swift */,
 				05192BA526B7254D00FD4F5D /* TransactionEntity+CoreDataClass.swift */,
+				05A9B8E726D56B6E00F7F366 /* TagEntity+CoreDataClass.swift */,
+				05A9B8E926D56DFA00F7F366 /* InstrumentEntity+CoreDataClass.swift */,
 				05A7BC58269B152000EFF5E0 /* ZenmoneyModel.xcdatamodeld */,
 			);
 			path = CacheService;
@@ -843,6 +856,7 @@
 				059E6CB6266E7C88003562CD /* TransactionDetailInfoCell.swift in Sources */,
 				05B93E2425D0442E0089E7A8 /* AppDelegate.swift in Sources */,
 				05AD5F872628B48300355F1B /* TransactionsViewController.swift in Sources */,
+				05A9B8EA26D56DFA00F7F366 /* InstrumentEntity+CoreDataClass.swift in Sources */,
 				05A06653264C85C500A64EE5 /* ErrorView.swift in Sources */,
 				05AD5F9D2628CBDD00355F1B /* DiffRequestModel.swift in Sources */,
 				05E934372691B84D00C8A29D /* UIStoryboard+Extensions.swift in Sources */,
@@ -853,8 +867,10 @@
 				05A7BC5A269B152000EFF5E0 /* ZenmoneyModel.xcdatamodeld in Sources */,
 				0555FCB3263B385900099E0B /* TransactionCellModel.swift in Sources */,
 				051242E326B70D400058E48F /* CacheService.swift in Sources */,
+				05A9B8E826D56B6E00F7F366 /* TagEntity+CoreDataClass.swift in Sources */,
 				0525028326C9149300E5D1D6 /* Storable.swift in Sources */,
 				05AD5F822628B43500355F1B /* ProfileViewController.swift in Sources */,
+				05A9B8E426D56A9100F7F366 /* Tag+Storable.swift in Sources */,
 				05E934352691B84D00C8A29D /* DateFormatter+Extensions.swift in Sources */,
 				05D3E9B8262A001300E9C234 /* TransactionCell.swift in Sources */,
 				05A0664F264C7FBD00A64EE5 /* StateManager.swift in Sources */,
@@ -863,6 +879,7 @@
 				05E934392691B84D00C8A29D /* UIImage+Extensions.swift in Sources */,
 				0559470B2634C0F200CE727C /* ApplicationCoordinator.swift in Sources */,
 				0555FCB02638A28300099E0B /* TransactionDetailViewController.swift in Sources */,
+				05A9B8E626D56AA000F7F366 /* Instrument+Storable.swift in Sources */,
 				05192BA726B7254D00FD4F5D /* TransactionEntity+CoreDataClass.swift in Sources */,
 				0525028126C700EC00E5D1D6 /* Transaction+Storable.swift in Sources */,
 				05AD5F472624BC6300355F1B /* ZService.swift in Sources */,
@@ -1228,9 +1245,10 @@
 		05A7BC58269B152000EFF5E0 /* ZenmoneyModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				05A9B8E226D4FB0300F7F366 /* main 2.xcdatamodel */,
 				05A7BC59269B152000EFF5E0 /* main.xcdatamodel */,
 			);
-			currentVersion = 05A7BC59269B152000EFF5E0 /* main.xcdatamodel */;
+			currentVersion = 05A9B8E226D4FB0300F7F366 /* main 2.xcdatamodel */;
 			path = ZenmoneyModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
