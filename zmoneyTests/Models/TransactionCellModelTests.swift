@@ -18,7 +18,18 @@ class TransactionCellModelTests: XCTestCase {
     override func setUpWithError() throws {
         try super.setUpWithError()
 
-        instrument = Instrument.init(id: 1, title: "Euro", shortTitle: "EUR", symbol: "test", rate: 0.0, changed: 1)
+        instrument = Instrument.init(
+        """
+            {
+              "id": 1,
+              "title": "Доллар США",
+              "shortTitle": "USD",
+              "symbol": "$",
+              "rate": 73.9968,
+              "changed": 1621125902
+            }
+        """
+        )
     }
 
     override func tearDownWithError() throws {
