@@ -46,11 +46,9 @@ extension Transaction: Storable {
         transactionEntity.incomeBankID = self.incomeBankID
         transactionEntity.outcomeBankID = self.outcomeBankID
         transactionEntity.reminderMaker = self.reminderMarker
-        if let categories = self.categories {
-            for category in categories {
-                transactionEntity.addToCategories(category.makeEntity(context: context))
-            }
-        }
+        categories?.forEach({ category in
+            transactionEntity.addToCategories(category.makeEntity(context: context))
+        })
         transactionEntity.incomeTransactionInstrument = self.incomeTransactionInstrument?.makeEntity(context: context)
         transactionEntity.outcomeTransactionInstrument = self.outcomeTransactionInstrument?.makeEntity(context: context)
 
@@ -103,6 +101,8 @@ extension Transaction: Storable {
                 }
             }
         }
+        let tags = entity.categories?.compactMap({ $0 as? Tag }) ?? []
+        categories?.append(contentsOf: tags)
         self.incomeTransactionInstrument = Instrument.init(
             entity: entity.incomeTransactionInstrument ?? InstrumentEntity.init()
         )
