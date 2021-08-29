@@ -7,6 +7,8 @@
         <attribute name="shortTitle" attributeType="String"/>
         <attribute name="symbol" attributeType="String"/>
         <attribute name="title" attributeType="String"/>
+        <relationship name="incomeTransaction" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TransactionEntity" inverseName="incomeTransactionInstrument" inverseEntity="TransactionEntity"/>
+        <relationship name="outcomeTransaction" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TransactionEntity" inverseName="outcomeTransactionInstrument" inverseEntity="TransactionEntity"/>
     </entity>
     <entity name="TagEntity" representedClassName="TagEntity" syncable="YES" codeGenerationType="category">
         <attribute name="budgetIncome" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -22,6 +24,7 @@
         <attribute name="tagRequired" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="title" attributeType="String"/>
         <attribute name="user" optional="YES" attributeType="Integer 32" usesScalarValueType="YES"/>
+        <relationship name="transaction" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TransactionEntity" inverseName="categories" inverseEntity="TransactionEntity"/>
     </entity>
     <entity name="TransactionEntity" representedClassName="TransactionEntity" syncable="YES" codeGenerationType="category">
         <attribute name="changed" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
@@ -52,13 +55,13 @@
         <attribute name="tag" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
         <attribute name="user" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="viewed" attributeType="Boolean" usesScalarValueType="YES"/>
-        <relationship name="categories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TagEntity"/>
-        <relationship name="incomeTransactionInstrument" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="InstrumentEntity"/>
-        <relationship name="outcomeTransactionInstrument" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="InstrumentEntity"/>
+        <relationship name="categories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TagEntity" inverseName="transaction" inverseEntity="TagEntity"/>
+        <relationship name="incomeTransactionInstrument" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="InstrumentEntity" inverseName="incomeTransaction" inverseEntity="InstrumentEntity"/>
+        <relationship name="outcomeTransactionInstrument" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="InstrumentEntity" inverseName="outcomeTransaction" inverseEntity="InstrumentEntity"/>
     </entity>
     <elements>
-        <element name="InstrumentEntity" positionX="-320.011474609375" positionY="-0.849700927734375" width="128" height="119"/>
-        <element name="TagEntity" positionX="-54" positionY="63" width="128" height="224"/>
-        <element name="TransactionEntity" positionX="-78.50579833984375" positionY="-210.5842895507812" width="133.98681640625" height="14"/>
+        <element name="InstrumentEntity" positionX="-320.011474609375" positionY="-0.849700927734375" width="128" height="149"/>
+        <element name="TagEntity" positionX="-54" positionY="63" width="128" height="239"/>
+        <element name="TransactionEntity" positionX="-78.50579833984375" positionY="-210.5842895507812" width="133.98681640625" height="494"/>
     </elements>
 </model>
