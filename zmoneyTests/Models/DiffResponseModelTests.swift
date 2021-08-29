@@ -21,21 +21,22 @@ extension Reminder: JSONTestable {}
 extension ReminderMarker: JSONTestable {}
 extension DiffResponseModel: JSONTestable {}
 
+// swiftlint:disable force_cast
 class DiffResponseModelTests: XCTestCase {
     func testInstrument() throws {
-        // When
+        // Given
         let instrumentJson = TestConstants.DiffResponses.instrumentJson
-        let instrument = Instrument(
-            id: 1,
-            title: "Доллар США",
-            shortTitle: "USD",
-            symbol: "$",
-            rate: 74.1373,
-            changed: 1620607164
-        )
+
+        // When
+        let instrument = Instrument(instrumentJson)!
 
         // Then
-        XCTAssertEqual(instrument, Instrument(instrumentJson))
+        XCTAssertEqual(instrument.id, 1)
+        XCTAssertEqual(instrument.title, "Доллар США")
+        XCTAssertEqual(instrument.shortTitle, "USD")
+        XCTAssertEqual(instrument.symbol, "$")
+        XCTAssertEqual(instrument.rate, 74.1373)
+        XCTAssertEqual(instrument.changed, 1620607164)
     }
 
     func testCountry() throws {
@@ -80,31 +81,55 @@ class DiffResponseModelTests: XCTestCase {
     func testAccount() throws {
         // When
         let accountJson = TestConstants.DiffResponses.accountJson
-        let account = Account(
-            id: "20fcb30a-867a-4cf6-a525-6f7190679231", user: 1399696, instrument: 2, type: "debt",
-            role: nil, accountPrivate: false, savings: nil, title: "Долги", inBalance: false,
-            creditLimit: 0, startBalance: 0, balance: 0, company: nil, archive: false,
-            enableCorrection: false, startDate: nil, percent: nil, capitalization: nil, changed: 1618781099,
-            syncID: nil, enableSMS: false, endDateOffset: nil, endDateOffsetInterval: nil,
-            payoffStep: nil, payoffInterval: nil
-        )
+        let account = Account(accountJson)!
 
         // Then
-        XCTAssertEqual(account, Account(accountJson))
+        XCTAssertEqual(account.id, "20fcb30a-867a-4cf6-a525-6f7190679231")
+        XCTAssertEqual(account.user, 1399696)
+        XCTAssertEqual(account.instrument, 2)
+        XCTAssertEqual(account.type, "debt")
+        XCTAssertEqual(account.role, nil)
+        XCTAssertEqual(account.accountPrivate, false)
+        XCTAssertEqual(account.savings, nil)
+        XCTAssertEqual(account.title, "Долги")
+        XCTAssertEqual(account.inBalance, false)
+        XCTAssertEqual(account.creditLimit, 0)
+        XCTAssertEqual(account.startBalance, 0)
+        XCTAssertEqual(account.balance, 0)
+        XCTAssertEqual(account.company, nil)
+        XCTAssertEqual(account.archive, false)
+        XCTAssertEqual(account.enableCorrection, false)
+        XCTAssertEqual(account.startDate, nil)
+        XCTAssertEqual(account.capitalization, nil)
+        XCTAssertEqual(account.percent, nil)
+        XCTAssertEqual(account.changed, 1618781099)
+        XCTAssertEqual(account.syncID, nil)
+        XCTAssertEqual(account.enableSMS, false)
+        XCTAssertEqual(account.endDateOffset, nil)
+        XCTAssertEqual(account.endDateOffsetInterval, nil)
+        XCTAssertEqual(account.payoffStep, nil)
+        XCTAssertEqual(account.payoffInterval, nil)
     }
 
     func testTag() throws {
         // When
         let jsonTag = TestConstants.DiffResponses.tagJson
-        let tag = Tag(
-            id: "a6c63e62-687d-4528-89b3-479f73564ab9", user: 1399696, changed: 1618781099,
-            icon: "3002_cars", budgetIncome: false, budgetOutcome: true, tagRequired: nil,
-            color: nil, picture: nil, title: "Машина", showIncome: false, showOutcome: true,
-            parent: nil
-        )
+        let tag = Tag(jsonTag)!
 
         // Then
-        XCTAssertEqual(tag, Tag(jsonTag))
+        XCTAssertEqual(tag.id, "a6c63e62-687d-4528-89b3-479f73564ab9")
+        XCTAssertEqual(tag.user, 1399696)
+        XCTAssertEqual(tag.changed, 1618781099)
+        XCTAssertEqual(tag.icon, "3002_cars")
+        XCTAssertEqual(tag.budgetIncome, false)
+        XCTAssertEqual(tag.budgetOutcome, true)
+        XCTAssertEqual(tag.tagRequired, nil)
+        XCTAssertEqual(tag.color, nil)
+        XCTAssertEqual(tag.picture, nil)
+        XCTAssertEqual(tag.title, "Машина")
+        XCTAssertEqual(tag.showIncome, false)
+        XCTAssertEqual(tag.showOutcome, true)
+        XCTAssertEqual(tag.parent, nil)
     }
 
     func testBudget() throws {

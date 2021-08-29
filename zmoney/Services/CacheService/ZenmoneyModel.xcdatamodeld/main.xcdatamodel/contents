@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="TransactionEntity" representedClassName="TransactionEntity" syncable="YES" codeGenerationType="category">
+        <attribute name="categories" optional="YES" attributeType="Transformable" valueTransformerName="" customClassName="[Tag]"/>
+        <attribute name="changed" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="comment" optional="YES" attributeType="String"/>
+        <attribute name="created" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="hold" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="id" attributeType="String"/>
+        <attribute name="income" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="incomeAccount" attributeType="String"/>
+        <attribute name="incomeBankID" optional="YES" attributeType="String"/>
+        <attribute name="incomeInstrument" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="incomeTransactionInstrument" optional="YES" attributeType="Transformable" valueTransformerName="" customClassName="Instrument"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" usesScalarValueType="NO"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" usesScalarValueType="NO"/>
+        <attribute name="merchant" optional="YES" attributeType="String"/>
+        <attribute name="opIncome" optional="YES" attributeType="Double" usesScalarValueType="YES"/>
+        <attribute name="opIncomeInstrument" optional="YES" attributeType="Integer 32" usesScalarValueType="YES"/>
+        <attribute name="opOutcome" optional="YES" attributeType="Double" usesScalarValueType="YES"/>
+        <attribute name="opOutcomeInstrument" optional="YES" attributeType="Integer 32" usesScalarValueType="YES"/>
+        <attribute name="originalPayee" optional="YES" attributeType="String"/>
+        <attribute name="outcome" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="outcomeAccount" attributeType="String"/>
+        <attribute name="outcomeBankID" optional="YES" attributeType="String"/>
+        <attribute name="outcomeInstrument" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="outcomeTransactionInstrument" optional="YES" attributeType="Transformable" valueTransformerName="" customClassName="Instrument"/>
+        <attribute name="payee" optional="YES" attributeType="String"/>
+        <attribute name="qrCode" optional="YES" attributeType="String"/>
+        <attribute name="reminderMaker" optional="YES" attributeType="String"/>
+        <attribute name="tag" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
+        <attribute name="user" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="viewed" attributeType="Boolean" usesScalarValueType="YES"/>
+    </entity>
+    <elements>
+        <element name="TransactionEntity" positionX="-63" positionY="-108" width="128" height="494"/>
+    </elements>
+</model>

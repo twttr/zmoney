@@ -9,7 +9,6 @@ import UIKit
 import MapKit
 
 struct TransactionCellModel {
-
     let amount: String
     let date: Date
     let currency: String
@@ -21,7 +20,6 @@ struct TransactionCellModel {
     let categoryColor: UIColor
     let comment: String
     let coordinates: CLLocationCoordinate2D?
-
 }
 
 extension TransactionCellModel {
@@ -36,9 +34,8 @@ extension TransactionCellModel {
         } else {
             coordinates = nil
         }
-        if let categoryIconString = transaction.categories?.first?.icon,
-           let image = UIImage.zmoneyCategory(named: categoryIconString) {
-            categorySymbol = image
+        if let categoryIconString = transaction.categories?.first?.icon {
+            categorySymbol = UIImage.zmoneyCategory(named: categoryIconString)
             categoryColor = UIColor.categoryColor(from: categoryIconString)
         } else {
             categorySymbol = UIImage(systemName: "questionmark")!
@@ -52,7 +49,7 @@ extension TransactionCellModel {
         } else {
             amount = "+ \(transaction.income)"
             currency = transaction.incomeTransactionInstrument?.symbol ?? ""
-            account = transaction.fromAccount?.title ?? ""
+            account = transaction.toAccount?.title ?? ""
         }
     }
 }

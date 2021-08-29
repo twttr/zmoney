@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="InstrumentEntity" representedClassName="InstrumentEntity" syncable="YES" codeGenerationType="category">
+        <attribute name="changed" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="rate" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="shortTitle" attributeType="String"/>
+        <attribute name="symbol" attributeType="String"/>
+        <attribute name="title" attributeType="String"/>
+        <relationship name="incomeTransaction" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TransactionEntity" inverseName="incomeTransactionInstrument" inverseEntity="TransactionEntity"/>
+        <relationship name="outcomeTransaction" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TransactionEntity" inverseName="outcomeTransactionInstrument" inverseEntity="TransactionEntity"/>
+    </entity>
+    <entity name="TagEntity" representedClassName="TagEntity" syncable="YES" codeGenerationType="category">
+        <attribute name="budgetIncome" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="budgetOutcome" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="changed" attributeType="Integer 32" usesScalarValueType="YES"/>
+        <attribute name="color" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="icon" optional="YES" attributeType="String"/>
+        <attribute name="id" attributeType="String"/>
+        <attribute name="parent" optional="YES" attributeType="String"/>
+        <attribute name="picture" optional="YES" attributeType="String"/>
+        <attribute name="showIncome" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="showOutcome" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="tagRequired" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="title" attributeType="String"/>
+        <attribute name="user" optional="YES" attributeType="Integer 32" usesScalarValueType="YES"/>
+        <relationship name="transaction" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TransactionEntity" inverseName="categories" inverseEntity="TransactionEntity"/>
+    </entity>
+    <entity name="TransactionEntity" representedClassName="TransactionEntity" syncable="YES" codeGenerationType="category">
+        <attribute name="changed" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="comment" optional="YES" attributeType="String"/>
+        <attribute name="created" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="hold" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="id" attributeType="String"/>
+        <attribute name="income" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="incomeAccount" attributeType="String"/>
+        <attribute name="incomeBankID" optional="YES" attributeType="String"/>
+        <attribute name="incomeInstrument" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" usesScalarValueType="NO"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" usesScalarValueType="NO"/>
+        <attribute name="merchant" optional="YES" attributeType="String"/>
+        <attribute name="opIncome" optional="YES" attributeType="Double" usesScalarValueType="YES"/>
+        <attribute name="opIncomeInstrument" optional="YES" attributeType="Integer 32" usesScalarValueType="YES"/>
+        <attribute name="opOutcome" optional="YES" attributeType="Double" usesScalarValueType="YES"/>
+        <attribute name="opOutcomeInstrument" optional="YES" attributeType="Integer 32" usesScalarValueType="YES"/>
+        <attribute name="originalPayee" optional="YES" attributeType="String"/>
+        <attribute name="outcome" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="outcomeAccount" attributeType="String"/>
+        <attribute name="outcomeBankID" optional="YES" attributeType="String"/>
+        <attribute name="outcomeInstrument" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="payee" optional="YES" attributeType="String"/>
+        <attribute name="qrCode" optional="YES" attributeType="String"/>
+        <attribute name="reminderMaker" optional="YES" attributeType="String"/>
+        <attribute name="tag" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
+        <attribute name="user" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="viewed" attributeType="Boolean" usesScalarValueType="YES"/>
+        <relationship name="categories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TagEntity" inverseName="transaction" inverseEntity="TagEntity"/>
+        <relationship name="incomeTransactionInstrument" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="InstrumentEntity" inverseName="incomeTransaction" inverseEntity="InstrumentEntity"/>
+        <relationship name="outcomeTransactionInstrument" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="InstrumentEntity" inverseName="outcomeTransaction" inverseEntity="InstrumentEntity"/>
+    </entity>
+    <elements>
+        <element name="InstrumentEntity" positionX="-320.011474609375" positionY="-0.849700927734375" width="128" height="149"/>
+        <element name="TagEntity" positionX="-54" positionY="63" width="128" height="239"/>
+        <element name="TransactionEntity" positionX="-78.50579833984375" positionY="-210.5842895507812" width="133.98681640625" height="494"/>
+    </elements>
+</model>
